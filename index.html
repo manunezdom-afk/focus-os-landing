@@ -6,18 +6,18 @@
 <meta name="theme-color" content="#0a0a0a">
 <meta name="color-scheme" content="dark">
 
-<title>FOCUS OS — Un sistema operativo para tu día</title>
-<meta name="description" content="FOCUS OS es un ecosistema de productividad con IA. Tres apps que piensan en conjunto: Focus, Capture y Review. Hoy empieza por Focus.">
+<title>FOCUS OS — Tu agenda, tus tareas y una IA que aprende cómo trabajas</title>
+<meta name="description" content="FOCUS OS es un sistema de productividad con IA. Hoy empieza por Focus, el calendario que piensa contigo. Capture y Review llegan después.">
 
-<meta property="og:title" content="FOCUS OS — Un sistema operativo para tu día">
-<meta property="og:description" content="Tres apps que piensan en conjunto. Una IA que aprende cómo vives. Hoy empieza por Focus.">
+<meta property="og:title" content="FOCUS OS — Tu agenda, tus tareas y una IA que aprende cómo trabajas">
+<meta property="og:description" content="Sistema de productividad con IA. Hoy empieza por Focus.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://focus-os.com">
+<meta property="og:url" content="https://usefocus.me">
 <meta property="og:image" content="/og-image.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FOCUS OS — Un sistema operativo para tu día">
-<meta name="twitter:description" content="Tres apps que piensan en conjunto. Una IA que aprende cómo vives. Hoy empieza por Focus.">
+<meta name="twitter:title" content="FOCUS OS — Tu agenda, tus tareas y una IA que aprende cómo trabajas">
+<meta name="twitter:description" content="Sistema de productividad con IA. Hoy empieza por Focus.">
 <meta name="twitter:image" content="/og-image.png">
 
 <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
@@ -25,7 +25,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 
 <style>
   *,*::before,*::after{box-sizing:border-box}
@@ -33,373 +33,466 @@
   body{
     margin:0;
     background:#0a0a0a;
-    color:#fafafa;
-    font:400 16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:#f4f4f5;
+    font:400 16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
     overflow-x:hidden;
     text-rendering:optimizeLegibility;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
   }
-  h1,h2,h3,h4{font-family:Manrope,system-ui,sans-serif;margin:0;letter-spacing:-.03em}
+  h1,h2,h3,h4{font-family:Manrope,system-ui,sans-serif;margin:0;letter-spacing:-.025em;font-weight:800}
   p{margin:0}
   a{color:inherit;text-decoration:none}
-  button{font:inherit;cursor:pointer}
-  img{max-width:100%;display:block}
-  ::selection{background:rgba(168,85,247,.35);color:#fff}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  img,svg{max-width:100%;display:block}
+  ::selection{background:rgba(167,139,250,.32);color:#fff}
 
-  /* Tokens */
+  /* ─── Tokens ─────────────────────────────── */
   :root{
     --bg: #0a0a0a;
-    --surface: #0f0f10;
-    --border: #1f1f22;
-    --border-strong: #2a2a2e;
-    --text: #fafafa;
+    --bg-2: #0e0e10;
+    --surface: #111114;
+    --surface-2: #16161a;
+    --border: #1d1d22;
+    --border-strong: #2a2a32;
+    --text: #f4f4f5;
     --text-2: #a1a1aa;
-    --text-3: #52525b;
-    --accent-1: #6366f1;
-    --accent-2: #a855f7;
-    --accent-3: #ec4899;
-    --green: #34d399;
+    --text-3: #6b7280;
+    --text-4: #3f3f46;
+    --accent: #a78bfa;
+    --accent-soft: rgba(167,139,250,.12);
+    --accent-line: rgba(167,139,250,.28);
+    --live: #34d399;
+    --warn: #f59e0b;
   }
 
-  /* Aurora ambient */
-  .aurora{
-    position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
-    opacity:.55;
+  /* ─── Background — subtle radial + grid ───── */
+  body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(167,139,250,.10), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 110%, rgba(99,102,241,.06), transparent 60%);
   }
-  .aurora::before,.aurora::after{
-    content:'';position:absolute;width:60vw;height:60vw;border-radius:50%;
-    filter:blur(120px);opacity:.45;
+  body::after{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(ellipse 100% 80% at 50% 0%, #000 30%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse 100% 80% at 50% 0%, #000 30%, transparent 80%);
   }
-  .aurora::before{
-    top:-20vw;left:-15vw;
-    background:radial-gradient(circle,#6366f1 0%,transparent 70%);
-    animation:auroraA 22s ease-in-out infinite;
-  }
-  .aurora::after{
-    bottom:-25vw;right:-15vw;
-    background:radial-gradient(circle,#a855f7 0%,transparent 70%);
-    animation:auroraB 26s ease-in-out infinite;
-  }
-  @keyframes auroraA{50%{transform:translate(40px,30px) scale(1.15)}}
-  @keyframes auroraB{50%{transform:translate(-30px,-40px) scale(1.1)}}
-  @media (prefers-reduced-motion:reduce){.aurora::before,.aurora::after{animation:none}}
 
-  /* Layout */
-  .container{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
-  .section{padding:128px 0;border-top:1px solid var(--border);position:relative}
-  .section:first-of-type{border-top:0}
+  /* ─── Layout ─────────────────────────────── */
+  .container{max-width:1100px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+  .section{padding:112px 0;position:relative}
+  .section + .section{border-top:1px solid var(--border)}
+  .rule{height:1px;background:var(--border);margin:0;border:0}
 
-  .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:500;letter-spacing:.02em}
+  /* ─── Type utilities ─────────────────────── */
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:500;letter-spacing:.04em}
+  .label{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--text-3);
+  }
+  .label .num{color:var(--text-2);margin-right:6px}
 
-  .eyebrow{
+  h1{
+    font-size:clamp(40px,5.6vw,72px);
+    line-height:1.02;letter-spacing:-.035em;
+  }
+  h2{
+    font-size:clamp(30px,3.8vw,48px);
+    line-height:1.08;letter-spacing:-.03em;font-weight:800;
+  }
+  h3{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+  h4{font-size:17px;font-weight:700;letter-spacing:-.015em;line-height:1.3}
+  .lead{
+    font-size:clamp(17px,1.4vw,19px);
+    line-height:1.55;color:var(--text-2);max-width:560px;
+  }
+  .lead b,.lead strong{color:var(--text);font-weight:600}
+  .body{font-size:15px;line-height:1.6;color:var(--text-2);max-width:540px}
+  .body b,.body strong{color:var(--text);font-weight:600}
+
+  /* ─── Buttons ────────────────────────────── */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 18px;border-radius:8px;
+    font-size:13.5px;font-weight:600;letter-spacing:-.005em;
+    transition:transform .15s,background .15s,border-color .15s,color .15s;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--text);color:#0a0a0a}
+  .btn-primary:hover{transform:translateY(-1px);background:#fff}
+  .btn-ghost{border:1px solid var(--border-strong);color:var(--text)}
+  .btn-ghost:hover{border-color:#3a3a45;background:rgba(255,255,255,.025)}
+  .btn-lg{padding:14px 22px;font-size:14px;border-radius:10px}
+  .arrow{font-size:14px;line-height:1;transform:translateY(-1px);transition:transform .2s}
+  .btn:hover .arrow{transform:translate(2px,-1px)}
+
+  /* ─── Header ─────────────────────────────── */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(140%) blur(14px);
+    -webkit-backdrop-filter:saturate(140%) blur(14px);
+    background:rgba(10,10,10,.72);
+    border-bottom:1px solid var(--border);
+  }
+  .site-header-inner{
+    max-width:1100px;margin:0 auto;padding:16px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:Manrope;font-weight:800;letter-spacing:-.015em;font-size:14.5px}
+  .brand-mark{
+    width:22px;height:22px;border-radius:6px;
+    background:radial-gradient(circle at 32% 30%,#e9d5ff 0%,#a855f7 45%,#3b0764 100%);
+    box-shadow:0 0 0 1px rgba(255,255,255,.04),0 0 16px rgba(167,139,250,.35);
+  }
+  .nav{display:flex;align-items:center;gap:26px;font-size:13px;color:var(--text-2)}
+  .nav a{transition:color .15s}
+  .nav a:hover{color:var(--text)}
+
+  /* ─── Hero ───────────────────────────────── */
+  .hero{padding:96px 0 64px}
+  .hero-grid{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);
+    gap:80px;align-items:center;
+  }
+  .hero-status{
+    display:inline-flex;align-items:center;gap:10px;
+    margin-bottom:32px;
     font-family:"JetBrains Mono",ui-monospace,monospace;
     font-size:11px;font-weight:500;
     letter-spacing:.18em;text-transform:uppercase;
     color:var(--text-3);
-    display:inline-flex;align-items:center;gap:8px;margin-bottom:32px;
   }
-  .eyebrow .num{color:var(--text-2)}
-  .eyebrow .dot{width:4px;height:4px;border-radius:50%;background:var(--accent-2);opacity:.8}
-
-  h1{
-    font-weight:900;
-    font-size:clamp(48px,8.5vw,104px);
-    line-height:.96;letter-spacing:-.045em;
-  }
-  h2{
-    font-weight:900;
-    font-size:clamp(36px,5.5vw,64px);
-    line-height:1.02;letter-spacing:-.035em;
-  }
-  h3{font-weight:800;font-size:28px;line-height:1.15}
-  .lead{
-    font-size:clamp(17px,1.6vw,20px);
-    line-height:1.55;color:var(--text-2);max-width:540px;
-  }
-  .lead b, .lead strong{color:var(--text);font-weight:600}
-
-  /* Header */
-  .site-header{
-    position:sticky;top:0;z-index:50;
-    backdrop-filter:saturate(140%) blur(12px);
-    -webkit-backdrop-filter:saturate(140%) blur(12px);
-    background:rgba(10,10,10,.7);
-    border-bottom:1px solid var(--border);
-  }
-  .site-header-inner{
-    max-width:1080px;margin:0 auto;padding:18px 32px;
-    display:flex;align-items:center;justify-content:space-between;gap:24px;
-  }
-  .brand{display:flex;align-items:center;gap:10px;font-family:Manrope;font-weight:800;letter-spacing:-.01em;font-size:15px}
-  .brand-mark{
-    width:24px;height:24px;border-radius:7px;
-    background:radial-gradient(circle at 30% 30%,#c4b5fd 0%,#7c3aed 50%,#1e1b4b 100%);
-    box-shadow:0 0 0 1px rgba(255,255,255,.04),0 0 20px rgba(124,58,237,.4);
-  }
-  .nav{display:flex;align-items:center;gap:28px;font-size:13px;color:var(--text-2)}
-  .nav a{transition:color .15s}
-  .nav a:hover{color:var(--text)}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:9px 16px;border-radius:8px;
-    font-size:13px;font-weight:600;
-    transition:transform .15s,background .15s,border-color .15s;
-  }
-  .btn-primary{background:#fafafa;color:#0a0a0a}
-  .btn-primary:hover{transform:translateY(-1px);background:#fff}
-  .btn-ghost{border:1px solid var(--border-strong);color:var(--text)}
-  .btn-ghost:hover{border-color:#3a3a3e;background:rgba(255,255,255,.03)}
-  .btn-lg{padding:14px 24px;font-size:14px;border-radius:10px}
-  .arrow{font-size:14px;line-height:1;transform:translateY(-1px)}
-
-  /* HERO */
-  .hero{padding:120px 0 64px;border-top:0}
-  .hero-eyebrow{
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:11px;font-weight:500;
-    letter-spacing:.2em;text-transform:uppercase;
-    color:var(--text-3);
-    margin-bottom:40px;
-    display:inline-flex;align-items:center;gap:10px;
-  }
-  .hero-eyebrow::before{
+  .hero-status::before{
     content:'';width:6px;height:6px;border-radius:50%;
-    background:var(--green);
-    box-shadow:0 0 10px var(--green);
+    background:var(--live);
+    box-shadow:0 0 10px var(--live);
     animation:pulse 2.4s ease-in-out infinite;
   }
-  @keyframes pulse{50%{opacity:.4}}
-  .hero h1{margin-bottom:32px;max-width:14ch}
-  .hero .lead{margin-bottom:48px;max-width:560px}
-  .hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .hero-meta{
-    margin-top:64px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:12px;color:var(--text-3);letter-spacing:.05em;
+  @keyframes pulse{50%{opacity:.45}}
+  .hero h1{margin-bottom:28px;max-width:14ch}
+  .hero h1 .em{
+    background:linear-gradient(95deg,#c4b5fd 0%,#a78bfa 50%,#818cf8 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .hero-meta span{display:inline-flex;align-items:center;gap:6px}
-  .hero-meta .sep{color:var(--border-strong)}
+  .hero .lead{margin-bottom:40px;max-width:480px}
+  .hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 
-  /* Quote / problema */
-  .quote{
-    font-family:Manrope;font-weight:500;
-    font-size:clamp(22px,3vw,32px);
-    line-height:1.4;letter-spacing:-.02em;
-    color:var(--text);max-width:860px;
+  /* ─── Hero — Calendar mockup ─────────────── */
+  .mockup{
+    position:relative;
+    background:linear-gradient(180deg,var(--surface) 0%,var(--surface-2) 100%);
+    border:1px solid var(--border-strong);
+    border-radius:14px;
+    padding:18px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.02) inset,
+      0 30px 60px -20px rgba(0,0,0,.5),
+      0 0 80px -20px rgba(167,139,250,.15);
   }
-  .quote span{color:var(--text-3)}
-
-  /* CICLO */
-  .cycle{margin-top:64px;border-top:1px solid var(--border)}
-  .cycle-row{
-    display:grid;
-    grid-template-columns:120px 1fr 2fr;
-    gap:32px;align-items:baseline;
-    padding:32px 0;
+  .mockup-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-bottom:14px;margin-bottom:14px;
     border-bottom:1px solid var(--border);
-    transition:background .2s;
   }
-  .cycle-row:hover{background:rgba(255,255,255,.015)}
-  .cycle-num{
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:13px;color:var(--text-3);font-weight:500;
-    letter-spacing:.05em;
+  .mockup-title{font-family:Manrope;font-weight:700;font-size:14px;letter-spacing:-.01em}
+  .mockup-date{font-size:11.5px;color:var(--text-3);font-family:"JetBrains Mono",monospace;letter-spacing:.04em}
+  .event{
+    display:flex;gap:12px;padding:10px 12px;border-radius:8px;
+    margin-bottom:6px;align-items:flex-start;
+    transition:background .15s;
   }
-  .cycle-title{
-    font-family:Manrope;font-weight:800;
-    font-size:clamp(22px,2.4vw,28px);
-    letter-spacing:-.025em;
+  .event:hover{background:rgba(255,255,255,.02)}
+  .event-time{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11.5px;color:var(--text-3);
+    min-width:42px;padding-top:2px;letter-spacing:.02em;
   }
-  .cycle-desc{color:var(--text-2);font-size:15px;line-height:1.55;max-width:480px}
-  .cycle-foot{
-    margin-top:40px;display:flex;align-items:center;gap:12px;
-    color:var(--text-3);font-size:13px;
+  .event-bar{
+    width:3px;border-radius:2px;align-self:stretch;flex-shrink:0;
   }
-  .cycle-foot .pill{
+  .event-bar.work{background:#60a5fa}
+  .event-bar.focus{background:#a78bfa}
+  .event-bar.personal{background:#fbbf24}
+  .event-bar.meet{background:#34d399}
+  .event-body{flex:1;min-width:0}
+  .event-title{font-size:13.5px;font-weight:600;color:var(--text);line-height:1.3}
+  .event-meta{font-size:11.5px;color:var(--text-3);margin-top:2px}
+  .nova-prop{
+    margin-top:14px;padding:12px 14px;
+    background:linear-gradient(180deg,rgba(167,139,250,.08),rgba(167,139,250,.03));
+    border:1px solid var(--accent-line);
+    border-radius:8px;
+  }
+  .nova-prop-head{
+    display:flex;align-items:center;gap:8px;
+    font-size:11px;font-weight:600;color:var(--accent);
+    letter-spacing:.08em;text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .nova-prop-dot{
     width:8px;height:8px;border-radius:50%;
-    background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);
-    box-shadow:0 0 12px rgba(168,85,247,.5);
+    background:radial-gradient(circle at 32% 30%,#e9d5ff,#a78bfa);
+    box-shadow:0 0 8px rgba(167,139,250,.6);
   }
+  .nova-prop-body{font-size:12.5px;line-height:1.5;color:var(--text-2)}
+  .nova-prop-body b{color:var(--text);font-weight:600}
+  .nova-prop-actions{display:flex;gap:6px;margin-top:10px}
+  .mock-btn{
+    font-size:11px;font-weight:600;
+    padding:5px 11px;border-radius:5px;
+    border:1px solid transparent;cursor:default;
+  }
+  .mock-btn.accept{background:var(--text);color:#0a0a0a}
+  .mock-btn.later{border-color:var(--border-strong);color:var(--text-2)}
 
-  /* APPS */
-  .apps{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    margin-top:64px;background:var(--border);
-    border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  /* ─── Trust strip ────────────────────────── */
+  .strip{
+    padding:24px 0;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
   }
-  .app{background:var(--bg);padding:36px 32px;display:flex;flex-direction:column;gap:14px;min-height:340px}
+  .strip-row{
+    display:flex;justify-content:center;gap:32px;flex-wrap:wrap;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11.5px;color:var(--text-3);letter-spacing:.06em;
+  }
+  .strip-row b{color:var(--text-2);font-weight:500}
+  .strip-row .sep{color:var(--text-4)}
+
+  /* ─── Sistema (cycle) ────────────────────── */
+  .sistema h2{margin:24px 0 24px;max-width:18ch}
+  .sistema .lead{margin-bottom:64px}
+
+  .cycle-wrap{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:64px;align-items:center;
+  }
+  .cycle-svg{width:100%;max-width:480px;margin:0 auto;display:block}
+  .cycle-list{display:flex;flex-direction:column;gap:0}
+  .cycle-step{
+    display:grid;grid-template-columns:48px 1fr;
+    gap:18px;padding:18px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .cycle-step:first-child{border-top:1px solid var(--border)}
+  .cycle-step-num{
+    font-family:"JetBrains Mono",monospace;
+    font-size:12px;font-weight:500;color:var(--text-4);
+    letter-spacing:.04em;padding-top:3px;
+  }
+  .cycle-step-title{font-family:Manrope;font-weight:700;font-size:16px;letter-spacing:-.015em;color:var(--text);margin-bottom:3px}
+  .cycle-step-desc{font-size:13.5px;line-height:1.5;color:var(--text-2)}
+
+  /* ─── Apps ───────────────────────────────── */
+  .apps h2{margin:24px 0 24px;max-width:18ch}
+  .apps .lead{margin-bottom:48px}
+
+  .app-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px}
+  .app-card{
+    background:var(--surface);
+    border:1px solid var(--border-strong);
+    border-radius:14px;
+    padding:32px;display:flex;flex-direction:column;gap:14px;
+    position:relative;overflow:hidden;
+  }
+  .app-card.hero-app{
+    background:linear-gradient(160deg,var(--surface) 0%,var(--surface-2) 100%);
+    border-color:var(--accent-line);
+    box-shadow:0 0 60px -20px rgba(167,139,250,.18);
+    grid-row:span 2;
+  }
+  .app-card.ghost{
+    background:rgba(255,255,255,.012);
+    border:1px dashed var(--border-strong);
+  }
+  .app-card.ghost .app-name,
+  .app-card.ghost .app-tagline{color:var(--text-2)}
+  .app-card.ghost .app-body{color:var(--text-3)}
+
   .app-status{
     align-self:flex-start;
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:10.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
-    padding:5px 10px;border-radius:4px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    padding:4px 9px;border-radius:4px;
     border:1px solid var(--border-strong);color:var(--text-3);
   }
-  .app-status.live{border-color:rgba(52,211,153,.35);color:var(--green);background:rgba(52,211,153,.06)}
+  .app-status.live{
+    border-color:rgba(52,211,153,.3);color:var(--live);
+    background:rgba(52,211,153,.06);
+  }
   .app-name{
-    font-family:Manrope;font-weight:900;
-    font-size:36px;letter-spacing:-.03em;line-height:1;
-    margin-top:8px;
+    font-family:Manrope;font-weight:800;
+    font-size:34px;letter-spacing:-.025em;line-height:1;
+    margin-top:4px;
   }
-  .app-tagline{font-weight:600;font-size:15px;color:var(--text);margin-top:-4px}
-  .app-body{font-size:14px;line-height:1.6;color:var(--text-2);flex:1}
-  .app-link{
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:12px;font-weight:500;letter-spacing:.06em;
-    color:var(--text);display:inline-flex;align-items:center;gap:8px;
-    margin-top:12px;padding-top:16px;border-top:1px solid var(--border);
-    transition:color .15s,gap .15s;
+  .app-tagline{font-weight:600;font-size:14.5px;color:var(--text)}
+  .app-body{font-size:13.5px;line-height:1.6;color:var(--text-2);flex:1}
+  .app-cta{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11.5px;font-weight:500;letter-spacing:.08em;
+    color:var(--text);display:inline-flex;align-items:center;gap:6px;
+    padding-top:14px;margin-top:8px;
+    border-top:1px solid var(--border);
+    transition:gap .15s;
   }
-  .app-link:hover{color:#fff;gap:12px}
-  .app-link.disabled{color:var(--text-3);pointer-events:none}
-  .apps-foot{
-    margin-top:32px;text-align:center;
-    font-size:13px;color:var(--text-3);
-  }
+  .app-cta:hover{gap:10px}
+  .app-cta.disabled{color:var(--text-4);pointer-events:none}
 
-  /* NOVA */
-  .nova-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:64px}
-  .nova-visual{display:flex;justify-content:center;align-items:center;min-height:360px;position:relative}
+  /* Mini calendar mockup inside Focus card */
+  .app-mini{
+    margin-top:16px;
+    background:rgba(0,0,0,.35);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:12px;
+    display:flex;flex-direction:column;gap:5px;
+  }
+  .app-mini-row{
+    display:flex;align-items:center;gap:10px;
+    padding:5px 6px;border-radius:5px;font-size:11.5px;
+  }
+  .app-mini-row .t{font-family:"JetBrains Mono",monospace;color:var(--text-3);min-width:36px}
+  .app-mini-row .b{width:3px;height:14px;border-radius:1.5px;flex-shrink:0}
+  .app-mini-row .b.a{background:#60a5fa}
+  .app-mini-row .b.b{background:#a78bfa}
+  .app-mini-row .b.c{background:#34d399}
+  .app-mini-row .l{color:var(--text-2);font-size:12px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* ─── Nova ───────────────────────────────── */
+  .nova-section h2{margin:24px 0 24px;max-width:14ch}
+
+  .nova-grid{
+    display:grid;grid-template-columns:340px 1fr;
+    gap:64px;align-items:center;margin-top:56px;
+  }
+  .nova-visual{
+    display:flex;align-items:center;justify-content:center;
+    min-height:340px;position:relative;
+  }
   .nova-orb{
-    width:280px;height:280px;border-radius:50%;
+    width:240px;height:240px;border-radius:50%;
     position:relative;
-    background:
-      radial-gradient(circle at 32% 28%,#e9d5ff 0%,#a855f7 28%,#4c1d95 60%,#1e1b4b 90%);
+    background:radial-gradient(circle at 30% 26%,#f3e8ff 0%,#a78bfa 32%,#5b21b6 65%,#1e1b4b 95%);
     box-shadow:
-      0 0 100px rgba(168,85,247,.35),
-      0 0 0 1px rgba(168,85,247,.15),
-      inset -30px -30px 80px rgba(0,0,0,.5),
-      inset 20px 20px 50px rgba(255,255,255,.06);
+      0 0 80px rgba(167,139,250,.35),
+      0 0 0 1px rgba(167,139,250,.18),
+      inset -28px -28px 70px rgba(0,0,0,.55),
+      inset 18px 18px 40px rgba(255,255,255,.07);
     animation:novaBreath 6s ease-in-out infinite;
   }
   .nova-orb::before{
-    content:'';position:absolute;inset:-60px;border-radius:50%;
-    background:conic-gradient(from 0deg,transparent 0deg,rgba(168,85,247,.18) 90deg,transparent 180deg,rgba(99,102,241,.18) 270deg,transparent 360deg);
-    filter:blur(30px);
+    content:'';position:absolute;inset:-50px;border-radius:50%;
+    background:conic-gradient(from 0deg,transparent 0deg,rgba(167,139,250,.18) 90deg,transparent 180deg,rgba(99,102,241,.18) 270deg,transparent 360deg);
+    filter:blur(28px);
     animation:novaSpin 18s linear infinite;
     z-index:-1;
-  }
-  .nova-orb::after{
-    content:'';position:absolute;inset:-2px;border-radius:50%;
-    background:radial-gradient(circle at 50% 50%,transparent 60%,rgba(255,255,255,.04) 100%);
-    pointer-events:none;
   }
   @keyframes novaBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
   @keyframes novaSpin{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion:reduce){.nova-orb,.nova-orb::before{animation:none}}
 
-  .nova-phrases{
-    margin-top:24px;height:28px;position:relative;
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:13px;letter-spacing:.06em;color:var(--accent-2);
-  }
-  .nova-phrases span{
-    position:absolute;left:0;top:0;opacity:0;
-    animation:novaPhrase 12s ease-in-out infinite;
-  }
-  .nova-phrases span:nth-child(1){animation-delay:0s}
-  .nova-phrases span:nth-child(2){animation-delay:4s}
-  .nova-phrases span:nth-child(3){animation-delay:8s}
-  @keyframes novaPhrase{
-    0%,28%{opacity:1;transform:translateY(0)}
-    33%,100%{opacity:0;transform:translateY(-8px)}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .nova-phrases span{animation:none;opacity:1;position:static}
-    .nova-phrases{height:auto;display:flex;flex-direction:column;gap:6px}
-  }
+  .nova-content .lead{margin-bottom:36px;max-width:520px}
 
-  .nova-content h2{margin-bottom:20px}
-  .nova-content .lead{margin-bottom:0}
+  .nova-demo{
+    background:var(--surface);
+    border:1px solid var(--border-strong);
+    border-radius:12px;
+    padding:18px;
+    max-width:440px;
+    box-shadow:0 20px 40px -20px rgba(0,0,0,.5);
+  }
+  .nova-demo-head{
+    display:flex;align-items:center;gap:8px;
+    font-size:11px;font-weight:600;color:var(--accent);
+    letter-spacing:.08em;text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .nova-demo-body{font-size:14px;line-height:1.55;color:var(--text-2);margin-bottom:14px}
+  .nova-demo-body b{color:var(--text);font-weight:600}
+  .nova-demo-actions{display:flex;gap:8px}
+  .nova-demo-actions .mock-btn{font-size:12px;padding:7px 14px;border-radius:6px}
 
-  .nova-principles{
-    margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
-    border-top:1px solid var(--border);padding-top:40px;
+  .principles{
+    margin-top:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border-top:1px solid var(--border);
   }
-  .principle .label{
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--accent-2);margin-bottom:10px;
+  .principle{
+    padding:32px 24px 32px 0;border-right:1px solid var(--border);
   }
-  .principle h4{font-family:Manrope;font-weight:800;font-size:18px;letter-spacing:-.02em;margin-bottom:6px}
-  .principle p{font-size:14px;line-height:1.55;color:var(--text-2)}
+  .principle:last-child{border-right:0;padding-right:0}
+  .principle:not(:first-child){padding-left:24px}
+  .principle .label{margin-bottom:12px;display:block;color:var(--accent)}
+  .principle h4{margin-bottom:6px;color:var(--text)}
+  .principle p{font-size:13.5px;line-height:1.55;color:var(--text-2)}
 
-  /* MANIFIESTO */
-  .manifesto{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
-  .m-card{
-    border:1px solid var(--border);border-radius:12px;
-    padding:28px 24px;background:rgba(255,255,255,.01);
-  }
-  .m-card .ico{
-    width:36px;height:36px;border-radius:9px;
-    display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(168,85,247,.12));
-    border:1px solid rgba(168,85,247,.2);
-    margin-bottom:18px;color:var(--accent-2);
-  }
-  .m-card h4{font-family:Manrope;font-weight:800;font-size:18px;letter-spacing:-.02em;margin-bottom:8px;color:var(--text)}
-  .m-card p{font-size:14px;line-height:1.55;color:var(--text-2)}
-
-  /* CTA FINAL */
-  .final{text-align:center;padding:160px 0;border-top:1px solid var(--border);position:relative}
-  .final h2{margin:0 auto 24px;max-width:14ch}
-  .final .lead{margin:0 auto 48px}
+  /* ─── CTA Final ──────────────────────────── */
+  .final{text-align:center;padding:128px 0}
+  .final h2{margin:24px auto 20px;max-width:14ch}
+  .final .lead{margin:0 auto 36px}
   .final-meta{
-    margin-top:32px;
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:12px;color:var(--text-3);letter-spacing:.05em;
-    display:flex;justify-content:center;gap:18px;flex-wrap:wrap;
+    margin-top:28px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11.5px;color:var(--text-3);letter-spacing:.06em;
+    display:flex;justify-content:center;gap:16px;flex-wrap:wrap;
   }
-  .final-meta .sep{color:var(--border-strong)}
+  .final-meta .sep{color:var(--text-4)}
 
-  /* FOOTER */
+  /* ─── Footer ─────────────────────────────── */
   footer{
     border-top:1px solid var(--border);
-    padding:48px 0;color:var(--text-3);font-size:13px;
+    padding:40px 0 56px;color:var(--text-3);font-size:13px;
     position:relative;z-index:1;
   }
   .footer-inner{
-    max-width:1080px;margin:0 auto;padding:0 32px;
+    max-width:1100px;margin:0 auto;padding:0 32px;
     display:flex;justify-content:space-between;align-items:center;
     flex-wrap:wrap;gap:20px;
   }
-  .footer-inner a{transition:color .15s}
-  .footer-inner a:hover{color:var(--text-2)}
   .footer-brand{display:flex;align-items:center;gap:10px;color:var(--text-2)}
   .footer-brand .brand-mark{width:18px;height:18px;border-radius:5px}
   .footer-brand b{font-family:Manrope;font-weight:800;color:var(--text-2);letter-spacing:-.01em}
-  .footer-links{display:flex;gap:24px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.05em}
-
-  /* Responsive */
-  @media (max-width:900px){
-    .container{padding:0 24px}
-    .section{padding:80px 0}
-    .hero{padding:64px 0 32px}
-    .nav{display:none}
-    .cycle-row{grid-template-columns:1fr;gap:8px;padding:24px 0}
-    .cycle-num{font-size:11px}
-    .apps{grid-template-columns:1fr}
-    .nova-wrap{grid-template-columns:1fr;gap:40px}
-    .nova-orb{width:220px;height:220px}
-    .nova-principles{grid-template-columns:1fr;gap:24px;padding-top:32px;margin-top:48px}
-    .manifesto{grid-template-columns:1fr;gap:16px;margin-top:48px}
-    .footer-inner{flex-direction:column;text-align:center;gap:16px}
-    .final{padding:96px 0}
-    h1{font-size:clamp(40px,11vw,68px)}
+  .footer-meta{
+    font-family:"JetBrains Mono",monospace;font-size:11.5px;
+    color:var(--text-3);letter-spacing:.04em;
   }
-  @media (max-width:540px){
-    .hero-meta{gap:12px}
-    .hero-meta .sep{display:none}
-    .final-meta .sep{display:none}
+  .footer-links{display:flex;gap:22px;font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.06em}
+  .footer-links a{transition:color .15s}
+  .footer-links a:hover{color:var(--text-2)}
+
+  /* ─── Responsive ─────────────────────────── */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:56px}
+    .hero{padding:64px 0 32px}
+    .mockup{max-width:460px;margin:0 auto}
+    .cycle-wrap{grid-template-columns:1fr;gap:48px}
+    .cycle-svg{max-width:360px}
+    .nova-grid{grid-template-columns:1fr;gap:40px}
+    .app-grid{grid-template-columns:1fr;gap:14px}
+    .app-card.hero-app{grid-row:auto}
+    .principles{grid-template-columns:1fr;border-top:0}
+    .principle{border-right:0;border-top:1px solid var(--border);padding:24px 0}
+    .principle:not(:first-child){padding-left:0;padding-top:24px}
+  }
+  @media (max-width:720px){
+    .container{padding:0 22px}
+    .section{padding:80px 0}
+    .nav{display:none}
+    .footer-inner{flex-direction:column;text-align:center;gap:14px}
+    .final{padding:88px 0}
+    .strip-row{gap:18px}
+    .strip-row .sep{display:none}
   }
 </style>
 </head>
 <body id="top">
 
-<div class="aurora" aria-hidden="true"></div>
-
-<!-- HEADER -->
+<!-- ─── HEADER ──────────────────────────────── -->
 <header class="site-header">
   <div class="site-header-inner">
     <a href="#top" class="brand">
@@ -407,8 +500,8 @@
       <span>FOCUS&nbsp;OS</span>
     </a>
     <nav class="nav">
-      <a href="#ciclo">El ciclo</a>
-      <a href="#apps">Ecosistema</a>
+      <a href="#sistema">Sistema</a>
+      <a href="#apps">Apps</a>
       <a href="#nova">Nova</a>
     </nav>
     <a href="https://app.usefocus.me" class="btn btn-ghost">
@@ -417,221 +510,329 @@
   </div>
 </header>
 
-<main class="container">
+<main>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-eyebrow">FOCUS_OS_v1 — EN_CONSTRUCCIÓN</div>
-    <h1>Del caos diario a claridad accionable.</h1>
-    <p class="lead">FOCUS OS es un ecosistema de productividad con IA. Tres apps que <b>piensan en conjunto</b>. Una IA que aprende cómo vives. Hoy empieza por <b>Focus</b> — Capture y Review llegan después.</p>
-    <div class="hero-ctas">
-      <a href="https://app.usefocus.me" class="btn btn-primary btn-lg">
-        Probar Focus <span class="arrow">→</span>
-      </a>
-      <a href="#ciclo" class="btn btn-ghost btn-lg">
-        Ver el ecosistema
-      </a>
-    </div>
-    <div class="hero-meta">
-      <span>v1.0</span>
-      <span class="sep">/</span>
-      <span>gratis</span>
-      <span class="sep">/</span>
-      <span>sin cuenta</span>
-      <span class="sep">/</span>
-      <span>funciona offline</span>
-    </div>
-  </section>
+  <!-- ─── HERO ──────────────────────────────── -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-status">FOCUS_OS · v1.0 · EN VIVO</div>
+        <h1>Tu agenda, tus tareas, y una IA que <span class="em">aprende cómo trabajas</span>.</h1>
+        <p class="lead">FOCUS OS es un sistema de productividad con IA. Hoy empieza por <b>Focus</b>, el calendario que piensa contigo. <b>Capture</b> y <b>Review</b> llegan después.</p>
+        <div class="hero-ctas">
+          <a href="https://app.usefocus.me" class="btn btn-primary btn-lg">
+            Abrir Focus <span class="arrow">→</span>
+          </a>
+          <a href="#sistema" class="btn btn-ghost btn-lg">
+            Ver el sistema
+          </a>
+        </div>
+      </div>
 
-  <!-- 01 / EL PROBLEMA -->
-  <section class="section" id="problema">
-    <div class="eyebrow"><span class="num">01</span> / EL PROBLEMA</div>
-    <h2>Tu día está roto en pedazos.</h2>
-    <p class="quote" style="margin-top:48px">
-      Calendario para la agenda. Notas para las ideas. Tareas en otra app. Recordatorios en el teléfono.
-      <span>Ninguna sabe lo que haces en la otra.</span>
-      Cada herramienta resolvió su parte; nadie resolvió el conjunto.
-    </p>
-  </section>
-
-  <!-- 02 / EL CICLO -->
-  <section class="section" id="ciclo">
-    <div class="eyebrow"><span class="num">02</span> / EL CICLO</div>
-    <h2>Cinco pasos.<br>Una sola IA conectándolos.</h2>
-    <p class="lead" style="margin-top:24px">FOCUS OS modela cómo vive tu día. Capturas, organizas, ejecutas, revisas, mejoras — y vuelves a empezar con lo que aprendiste.</p>
-
-    <div class="cycle">
-      <div class="cycle-row">
-        <div class="cycle-num">01 / CAPTURAR</div>
-        <div class="cycle-title">Vacías la mente.</div>
-        <div class="cycle-desc">Ideas, tareas, recordatorios sin orden. Lo escribes o lo dices — Capture lo recibe.</div>
+      <!-- Calendar mockup -->
+      <div class="mockup" aria-hidden="true">
+        <div class="mockup-head">
+          <span class="mockup-title">Mi Día</span>
+          <span class="mockup-date">vie · 25 abr</span>
+        </div>
+        <div class="event">
+          <span class="event-time">09:00</span>
+          <span class="event-bar meet"></span>
+          <div class="event-body">
+            <div class="event-title">Reunión con equipo</div>
+            <div class="event-meta">45 min · Sala Mercurio</div>
+          </div>
+        </div>
+        <div class="event">
+          <span class="event-time">11:00</span>
+          <span class="event-bar focus"></span>
+          <div class="event-body">
+            <div class="event-title">Foco profundo</div>
+            <div class="event-meta">90 min · sin notificaciones</div>
+          </div>
+        </div>
+        <div class="event">
+          <span class="event-time">14:30</span>
+          <span class="event-bar work"></span>
+          <div class="event-body">
+            <div class="event-title">Llamada con cliente</div>
+            <div class="event-meta">30 min</div>
+          </div>
+        </div>
+        <div class="event">
+          <span class="event-time">19:00</span>
+          <span class="event-bar personal"></span>
+          <div class="event-body">
+            <div class="event-title">Gimnasio</div>
+            <div class="event-meta">60 min</div>
+          </div>
+        </div>
+        <div class="nova-prop">
+          <div class="nova-prop-head">
+            <span class="nova-prop-dot"></span>
+            <span>Nova propone</span>
+          </div>
+          <div class="nova-prop-body">Mover <b>Foco profundo</b> a las 10:00 — es tu mejor franja según las últimas dos semanas.</div>
+          <div class="nova-prop-actions">
+            <span class="mock-btn accept">Aceptar</span>
+            <span class="mock-btn later">No ahora</span>
+          </div>
+        </div>
       </div>
-      <div class="cycle-row">
-        <div class="cycle-num">02 / ORGANIZAR</div>
-        <div class="cycle-title">Nova agrupa y prioriza.</div>
-        <div class="cycle-desc">Cada cosa en su lugar: lo que tiene hora va a la agenda; lo accionable, a tareas; lo que necesita aviso, a recordatorios.</div>
-      </div>
-      <div class="cycle-row">
-        <div class="cycle-num">03 / EJECUTAR</div>
-        <div class="cycle-title">Mi Día te muestra qué importa ahora.</div>
-        <div class="cycle-desc">No la lista entera. Lo de hoy, en orden, con foco en lo que mueve la aguja.</div>
-      </div>
-      <div class="cycle-row">
-        <div class="cycle-num">04 / REVISAR</div>
-        <div class="cycle-title">Cómo te fue de verdad.</div>
-        <div class="cycle-desc">Cuándo rendiste, qué postergaste, dónde se fue el tiempo. Sin interpretaciones.</div>
-      </div>
-      <div class="cycle-row">
-        <div class="cycle-num">05 / MEJORAR</div>
-        <div class="cycle-title">El próximo ciclo arranca con lo que aprendiste.</div>
-        <div class="cycle-desc">Nova ajusta sus propuestas. Tú ajustas tus rituales. El sistema mejora contigo.</div>
-      </div>
-    </div>
-
-    <div class="cycle-foot">
-      <span class="pill" aria-hidden="true"></span>
-      <span>Nova vive entre los cinco pasos.</span>
     </div>
   </section>
 
-  <!-- 03 / LAS APPS -->
-  <section class="section" id="apps">
-    <div class="eyebrow"><span class="num">03</span> / LAS APPS</div>
-    <h2>Tres apps.<br>Un solo sistema.</h2>
-    <p class="lead" style="margin-top:24px">Cada app cubre una parte del ciclo. Comparten datos, contexto e inteligencia.</p>
+  <!-- ─── TRUST STRIP ───────────────────────── -->
+  <section class="strip">
+    <div class="container">
+      <div class="strip-row">
+        <span><b>v1.0</b> en producción</span>
+        <span class="sep">·</span>
+        <span><b>0 kb</b> de tracking</span>
+        <span class="sep">·</span>
+        <span>funciona <b>offline</b></span>
+        <span class="sep">·</span>
+        <span><b>sin cuenta</b> para empezar</span>
+        <span class="sep">·</span>
+        <span><b>gratis</b> mientras esté en beta</span>
+      </div>
+    </div>
+  </section>
 
-    <div class="apps">
-      <article class="app">
-        <span class="app-status live">[ DISPONIBLE ]</span>
+  <!-- ─── SISTEMA / CICLO ───────────────────── -->
+  <section class="section sistema container" id="sistema">
+    <span class="label"><span class="num">01</span>EL SISTEMA</span>
+    <h2>Cinco pasos. Una sola IA conectándolos.</h2>
+    <p class="lead">FOCUS OS modela cómo vive un día. Capturas, organizas, ejecutas, revisas, mejoras — y vuelves a empezar con lo aprendido.</p>
+
+    <div class="cycle-wrap">
+      <!-- Circular cycle SVG -->
+      <svg class="cycle-svg" viewBox="0 0 480 480" role="img" aria-label="Ciclo de cinco pasos con Nova al centro">
+        <defs>
+          <radialGradient id="novaCenter" cx="32%" cy="28%" r="70%">
+            <stop offset="0%" stop-color="#f3e8ff"/>
+            <stop offset="35%" stop-color="#a78bfa"/>
+            <stop offset="75%" stop-color="#5b21b6"/>
+            <stop offset="100%" stop-color="#1e1b4b"/>
+          </radialGradient>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#3f3f46"/>
+          </marker>
+        </defs>
+
+        <!-- Connecting arcs between nodes (5-pointed cycle) -->
+        <g fill="none" stroke="#2a2a32" stroke-width="1.2" stroke-dasharray="3 4">
+          <path d="M 240,80  Q 380,120 437,232" marker-end="url(#arrow)"/>
+          <path d="M 437,232 Q 430,400 318,440" marker-end="url(#arrow)"/>
+          <path d="M 318,440 Q 180,475 78,358"  marker-end="url(#arrow)"/>
+          <path d="M 78,358  Q 18,210  120,108" marker-end="url(#arrow)"/>
+          <path d="M 120,108 Q 175,75 230,78"   marker-end="url(#arrow)"/>
+        </g>
+
+        <!-- Nova orb at center -->
+        <circle cx="240" cy="240" r="62" fill="url(#novaCenter)"/>
+        <circle cx="240" cy="240" r="62" fill="none" stroke="rgba(167,139,250,.4)" stroke-width="1"/>
+        <text x="240" y="244" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10.5" fill="#fff" letter-spacing="2">NOVA</text>
+
+        <!-- 5 Nodes — circles + labels -->
+        <!-- 01 Capturar (top) -->
+        <g>
+          <circle cx="240" cy="80" r="22" fill="#0e0e10" stroke="#2a2a32" stroke-width="1"/>
+          <text x="240" y="84" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#a1a1aa">01</text>
+          <text x="240" y="50" text-anchor="middle" font-family="Manrope,sans-serif" font-size="13" font-weight="700" fill="#f4f4f5">Capturar</text>
+        </g>
+        <!-- 02 Organizar (top-right) -->
+        <g>
+          <circle cx="437" cy="232" r="22" fill="#0e0e10" stroke="#2a2a32" stroke-width="1"/>
+          <text x="437" y="236" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#a1a1aa">02</text>
+          <text x="437" y="208" text-anchor="middle" font-family="Manrope,sans-serif" font-size="13" font-weight="700" fill="#f4f4f5">Organizar</text>
+        </g>
+        <!-- 03 Ejecutar (bottom-right) -->
+        <g>
+          <circle cx="358" cy="408" r="22" fill="#0e0e10" stroke="#2a2a32" stroke-width="1"/>
+          <text x="358" y="412" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#a1a1aa">03</text>
+          <text x="358" y="446" text-anchor="middle" font-family="Manrope,sans-serif" font-size="13" font-weight="700" fill="#f4f4f5">Ejecutar</text>
+        </g>
+        <!-- 04 Revisar (bottom-left) -->
+        <g>
+          <circle cx="122" cy="408" r="22" fill="#0e0e10" stroke="#2a2a32" stroke-width="1"/>
+          <text x="122" y="412" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#a1a1aa">04</text>
+          <text x="122" y="446" text-anchor="middle" font-family="Manrope,sans-serif" font-size="13" font-weight="700" fill="#f4f4f5">Revisar</text>
+        </g>
+        <!-- 05 Mejorar (top-left) -->
+        <g>
+          <circle cx="43" cy="232" r="22" fill="#0e0e10" stroke="#2a2a32" stroke-width="1"/>
+          <text x="43" y="236" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#a1a1aa">05</text>
+          <text x="43" y="208" text-anchor="middle" font-family="Manrope,sans-serif" font-size="13" font-weight="700" fill="#f4f4f5">Mejorar</text>
+        </g>
+      </svg>
+
+      <!-- Step list (parallel narrative) -->
+      <div class="cycle-list">
+        <div class="cycle-step">
+          <span class="cycle-step-num">01</span>
+          <div>
+            <div class="cycle-step-title">Capturar</div>
+            <p class="cycle-step-desc">Vacías la mente. Hablas o escribes algo desordenado y el sistema lo recibe.</p>
+          </div>
+        </div>
+        <div class="cycle-step">
+          <span class="cycle-step-num">02</span>
+          <div>
+            <div class="cycle-step-title">Organizar</div>
+            <p class="cycle-step-desc">Nova agrupa y prioriza. Lo que tiene hora va a la agenda; lo accionable, a tareas.</p>
+          </div>
+        </div>
+        <div class="cycle-step">
+          <span class="cycle-step-num">03</span>
+          <div>
+            <div class="cycle-step-title">Ejecutar</div>
+            <p class="cycle-step-desc">Mi Día te muestra qué importa ahora. No la lista entera — lo de hoy, en orden.</p>
+          </div>
+        </div>
+        <div class="cycle-step">
+          <span class="cycle-step-num">04</span>
+          <div>
+            <div class="cycle-step-title">Revisar</div>
+            <p class="cycle-step-desc">Cómo te fue de verdad: cuándo rendiste, qué postergaste, dónde se fue el tiempo.</p>
+          </div>
+        </div>
+        <div class="cycle-step">
+          <span class="cycle-step-num">05</span>
+          <div>
+            <div class="cycle-step-title">Mejorar</div>
+            <p class="cycle-step-desc">Nova ajusta sus propuestas. Tú ajustas tus rituales. El sistema mejora contigo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── APPS ──────────────────────────────── -->
+  <section class="section apps container" id="apps">
+    <span class="label"><span class="num">02</span>LAS APPS</span>
+    <h2>Una está disponible. Dos llegan después.</h2>
+    <p class="lead">Cada app cubre una parte del ciclo. Comparten datos, contexto e inteligencia. Hoy puedes usar Focus.</p>
+
+    <div class="app-grid">
+      <!-- Focus — dominant card -->
+      <article class="app-card hero-app">
+        <span class="app-status live">● Disponible</span>
         <h3 class="app-name">Focus</h3>
         <p class="app-tagline">El calendario que piensa contigo.</p>
-        <p class="app-body">Tu agenda, tareas y recordatorios en un solo lugar. Lenguaje natural, ritual diario, modo offline. La cara ejecutiva del ecosistema.</p>
-        <a href="https://app.usefocus.me" class="app-link">Probar ahora <span class="arrow">→</span></a>
+        <p class="app-body">Tu agenda, tareas y recordatorios en un solo lugar. Lenguaje natural para crear eventos, ritual diario para empezar y cerrar el día, modo offline. Funciona en mobile e iOS instalado como PWA.</p>
+
+        <div class="app-mini" aria-hidden="true">
+          <div class="app-mini-row"><span class="t">09:00</span><span class="b a"></span><span class="l">Reunión equipo</span></div>
+          <div class="app-mini-row"><span class="t">11:00</span><span class="b b"></span><span class="l">Foco profundo</span></div>
+          <div class="app-mini-row"><span class="t">14:30</span><span class="b a"></span><span class="l">Llamada cliente</span></div>
+          <div class="app-mini-row"><span class="t">19:00</span><span class="b c"></span><span class="l">Gimnasio</span></div>
+        </div>
+
+        <a href="https://app.usefocus.me" class="app-cta">Abrir Focus <span class="arrow">→</span></a>
       </article>
 
-      <article class="app">
-        <span class="app-status">[ PRÓXIMO ]</span>
+      <!-- Capture — ghost card -->
+      <article class="app-card ghost">
+        <span class="app-status">Próximo</span>
         <h3 class="app-name">Capture</h3>
         <p class="app-tagline">Vacía la mente sin pensar.</p>
-        <p class="app-body">Hablas o escribes algo desordenado. Capture lo convierte en tareas, eventos, recordatorios o ideas, y los reparte al resto del ecosistema.</p>
-        <span class="app-link disabled">Aún no</span>
+        <p class="app-body">Hablas o escribes algo desordenado. Capture lo convierte en tareas, eventos o recordatorios y los reparte al ecosistema.</p>
+        <span class="app-cta disabled">En desarrollo</span>
       </article>
 
-      <article class="app">
-        <span class="app-status">[ PRÓXIMO ]</span>
+      <!-- Review — ghost card -->
+      <article class="app-card ghost">
+        <span class="app-status">Próximo</span>
         <h3 class="app-name">Review</h3>
         <p class="app-tagline">Mira la semana de cerca.</p>
-        <p class="app-body">Analiza tus patrones: cuándo rindes, qué postergas, dónde se va el tiempo. Cierra el ciclo aprendiendo de cómo viviste tu agenda.</p>
-        <span class="app-link disabled">Aún no</span>
+        <p class="app-body">Analiza tus patrones: cuándo rindes, qué postergas, dónde se va el tiempo. Cierra el ciclo con datos.</p>
+        <span class="app-cta disabled">En desarrollo</span>
       </article>
     </div>
-
-    <p class="apps-foot">Las tres comparten la misma capa de inteligencia — Nova.</p>
   </section>
 
-  <!-- 04 / NOVA -->
-  <section class="section" id="nova">
-    <div class="eyebrow"><span class="num">04</span> / NOVA · LA INTELIGENCIA CENTRAL</div>
+  <!-- ─── NOVA ──────────────────────────────── -->
+  <section class="section nova-section container" id="nova">
+    <span class="label"><span class="num">03</span>NOVA · LA INTELIGENCIA CENTRAL</span>
+    <h2>Nova no es un chatbot.</h2>
 
-    <div class="nova-wrap">
+    <div class="nova-grid">
       <div class="nova-visual">
         <div class="nova-orb" aria-hidden="true"></div>
       </div>
+
       <div class="nova-content">
-        <h2>Nova no es un chatbot.</h2>
         <p class="lead">Es el <b>hilo que conecta</b> las tres apps. Vive entre Focus, Capture y Review. Lo que aprende en una alimenta a las otras. No reemplaza tu criterio — propone, y tú decides.</p>
-        <div class="nova-phrases" aria-hidden="true">
-          <span>Nova aprende.</span>
-          <span>Nova propone.</span>
-          <span>Nova nunca actúa sola.</span>
+
+        <div class="nova-demo" aria-hidden="true">
+          <div class="nova-demo-head">
+            <span class="nova-prop-dot"></span>
+            <span>Nova propone</span>
+          </div>
+          <div class="nova-demo-body">Tu reunión de las <b>14:00 con Carlos</b> quedó sin agenda. ¿Bloqueo 30 min antes para que la prepares?</div>
+          <div class="nova-demo-actions">
+            <button class="mock-btn accept">Aceptar</button>
+            <button class="mock-btn later">No ahora</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="nova-principles">
+    <div class="principles">
       <div class="principle">
-        <div class="label">— Aprende</div>
+        <span class="label">— Aprende</span>
         <h4>De cómo vives.</h4>
         <p>Cómo agendas, qué postergas, cuándo rindes mejor. Sin tracking externo: solo tu propio uso.</p>
       </div>
       <div class="principle">
-        <div class="label">— Propone</div>
+        <span class="label">— Propone</span>
         <h4>Cambios concretos.</h4>
-        <p>Mover una reunión, bloquear foco profundo, agregar una tarea. En lenguaje natural, al pie de tu día.</p>
+        <p>Mover una reunión, bloquear foco, agregar una tarea. En lenguaje natural, al pie de tu día.</p>
       </div>
       <div class="principle">
-        <div class="label">— Pide permiso</div>
+        <span class="label">— Pide permiso</span>
         <h4>Nunca actúa sola.</h4>
-        <p>Cada cambio pasa por una bandeja. Apruebas o rechazas. Tu agenda nunca se mueve sin que tú lo decidas.</p>
+        <p>Cada cambio pasa por una bandeja. Apruebas o rechazas. Tu agenda nunca se mueve sin que tú decidas.</p>
       </div>
     </div>
   </section>
 
-  <!-- 05 / POR QUÉ UN ECOSISTEMA -->
-  <section class="section" id="por-que">
-    <div class="eyebrow"><span class="num">05</span> / POR QUÉ UN ECOSISTEMA</div>
-    <h2>Las apps sueltas<br>no resuelven el día.</h2>
-
-    <div class="manifesto">
-      <div class="m-card">
-        <div class="ico" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
-        </div>
-        <h4>Las apps sueltas dispersan.</h4>
-        <p>Saltas entre cinco apps al día. Nada conecta. Cada una pide su propia atención, su propio ritual, su propio tag.</p>
-      </div>
-      <div class="m-card">
-        <div class="ico" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
-        </div>
-        <h4>Un sistema piensa en conjunto.</h4>
-        <p>Capturar, organizar, ejecutar y revisar viven en el mismo lugar. La información fluye sin que tengas que copiarla.</p>
-      </div>
-      <div class="m-card">
-        <div class="ico" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 014 4v2a4 4 0 01-4 4 4 4 0 01-4-4V7a4 4 0 014-4z"/><path d="M5 21c1.5-3 4-5 7-5s5.5 2 7 5"/></svg>
-        </div>
-        <h4>La IA es la columna, no un add-on.</h4>
-        <p>Nova aprende de cómo usas todo el ecosistema, no de una sola app. Por eso sus propuestas tienen contexto.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 / EMPEZAR -->
-  <section class="final" id="empezar">
-    <div class="eyebrow" style="margin-bottom:32px"><span class="num">06</span> / EMPIEZA · FOCUS DISPONIBLE HOY</div>
-    <h2>Empieza por el calendario.</h2>
-    <p class="lead">Focus es la primera puerta al ecosistema. Pruébalo y te llevas la experiencia completa de Nova. <b>Capture</b> y <b>Review</b> llegan después.</p>
+  <!-- ─── CTA FINAL ─────────────────────────── -->
+  <section class="final container" id="empezar">
+    <span class="label">EMPIEZA HOY</span>
+    <h2>El sistema arranca por el calendario.</h2>
+    <p class="lead">Focus es la primera puerta. Pruébalo y te llevas la experiencia completa de Nova. Capture y Review llegan cuando estén listas.</p>
     <a href="https://app.usefocus.me" class="btn btn-primary btn-lg">
       Abrir Focus <span class="arrow">→</span>
     </a>
     <div class="final-meta">
       <span>gratis</span>
-      <span class="sep">/</span>
+      <span class="sep">·</span>
       <span>sin cuenta</span>
-      <span class="sep">/</span>
+      <span class="sep">·</span>
       <span>sin tracking</span>
-      <span class="sep">/</span>
-      <span>código del sistema en construcción</span>
+      <span class="sep">·</span>
+      <span>funciona offline</span>
     </div>
   </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- ─── FOOTER ──────────────────────────────── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="brand-mark" aria-hidden="true"></span>
       <b>FOCUS&nbsp;OS</b>
-      <span style="color:var(--text-3)">— Un ecosistema en construcción</span>
+      <span style="color:var(--text-3)">— Sistema en construcción</span>
     </div>
     <div class="footer-links">
       <a href="https://app.usefocus.me">probar_focus</a>
-      <a href="#apps">ecosistema</a>
+      <a href="#sistema">sistema</a>
       <a href="#nova">nova</a>
     </div>
-    <div class="mono" style="font-size:12px;color:var(--text-3)">© 2026</div>
+    <div class="footer-meta">© 2026</div>
   </div>
 </footer>
 
