@@ -495,20 +495,221 @@
   .focus-mini-row .b.d{background:#ffd60a}
   .focus-mini-row .l{font-size:13px;color:var(--text);font-weight:500}
 
-  .roadmap-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:24px;
-  }
-  .roadmap-card{
-    background:rgba(255,255,255,.015);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:48px 40px;text-align:left;
+  /* ─── Echos showcase ──────────────────────── */
+  .echos-showcase{
+    background:linear-gradient(180deg,#0e0c1c 0%,#0a0814 100%);
+    border:1px solid var(--border-2);
+    border-radius:24px;
+    padding:64px 56px;
+    margin-bottom:24px;
+    text-align:left;
     position:relative;overflow:hidden;
   }
-  .roadmap-card .eyebrow{margin-bottom:14px}
-  .roadmap-card h3{font-size:32px;margin-bottom:12px;letter-spacing:-.025em}
-  .roadmap-card .tagline{font-size:17px;font-weight:500;color:var(--text-2);margin-bottom:14px;letter-spacing:-.01em}
-  .roadmap-card .body{font-size:15px;color:var(--text-3);max-width:none}
+  .echos-showcase::before{
+    content:'';position:absolute;
+    top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,rgba(155,130,255,.18) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  .echos-showcase::after{
+    content:'';position:absolute;
+    bottom:-220px;left:-180px;width:480px;height:480px;border-radius:50%;
+    background:radial-gradient(circle,rgba(155,130,255,.10) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .echos-showcase-header{
+    max-width:640px;margin-bottom:48px;position:relative;z-index:1;
+  }
+  .echos-showcase-header .eyebrow{margin-bottom:16px}
+  .echos-showcase-header h3{font-size:clamp(28px,3vw,40px);margin-bottom:16px;letter-spacing:-.025em;line-height:1.1}
+  .echos-showcase-header .body{font-size:17px;color:var(--text-2);max-width:none;line-height:1.55}
+
+  .echos-mockup{
+    position:relative;z-index:1;
+    background:#0a0814;
+    border:1px solid #221f33;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(155,130,255,.05);
+  }
+  .echos-chrome{
+    display:flex;align-items:center;gap:8px;
+    padding:11px 14px;
+    border-bottom:1px solid #1a1828;
+    background:#100e1a;
+  }
+  .echos-chrome .dot{width:10px;height:10px;border-radius:50%;background:#3a3656}
+  .echos-chrome .url{
+    margin-left:14px;
+    font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+    color:#8a82a0;letter-spacing:.005em;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .echos-chrome .url b{color:#c0b9d5;font-weight:600}
+  .echos-pane{
+    display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+  }
+  .echos-editor{padding:32px 36px}
+  .echos-editor-title{
+    font:600 20px/1.2 Inter,-apple-system,sans-serif;
+    letter-spacing:-.018em;color:var(--text);
+    margin-bottom:4px;
+  }
+  .echos-editor-meta{
+    font-size:11.5px;color:#6a627d;margin-bottom:24px;
+    letter-spacing:.005em;
+  }
+  .echos-editor-stack{display:flex;flex-direction:column;gap:8px}
+
+  .eblock{
+    position:relative;
+    padding:11px 14px 12px 18px;
+    background:rgba(255,255,255,.015);
+    border:1px solid #1a1828;
+    border-radius:8px;
+    transition:transform .25s ease,border-color .25s ease,background .25s ease,opacity .55s ease;
+    opacity:0;transform:translateY(14px);
+    transition-delay:calc(var(--i,0) * 90ms);
+  }
+  .echos-showcase.in .eblock{opacity:1;transform:translateY(0)}
+  .eblock:hover{
+    transform:translateY(-2px);
+    border-color:#2c2939;
+    background:rgba(255,255,255,.028);
+  }
+  .eblock::before{
+    content:'';position:absolute;
+    left:0;top:11px;bottom:11px;width:2px;border-radius:0 2px 2px 0;
+    background:var(--block-color,#9b82ff);
+  }
+  .eblock-tag{
+    display:inline-block;
+    font:600 9.5px/1 Inter,sans-serif;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--block-color,#9b82ff);
+    margin-bottom:6px;
+  }
+  .eblock-h{
+    font:600 13.5px/1.3 Inter,sans-serif;
+    color:var(--text);margin:2px 0 4px;
+    letter-spacing:-.005em;
+  }
+  .eblock-p{font:400 13px/1.55 Inter,sans-serif;color:#a8a1bd;margin:0}
+  .eblock-p b{color:var(--text);font-weight:500}
+
+  .echos-nova-pane{
+    padding:32px 28px;
+    border-left:1px solid #1a1828;
+    background:linear-gradient(180deg,rgba(155,130,255,.04) 0%,transparent 60%);
+  }
+  .echos-nova-head{
+    display:flex;align-items:center;gap:8px;
+    font:600 11px/1 Inter,sans-serif;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:#b69bff;margin-bottom:18px;
+  }
+  .echos-nova-head::before{
+    content:'';width:6px;height:6px;border-radius:50%;
+    background:#b69bff;box-shadow:0 0 12px rgba(182,155,255,.6);
+  }
+  .ncard{
+    position:relative;
+    background:rgba(155,130,255,.06);
+    border:1px solid rgba(155,130,255,.14);
+    border-radius:8px;
+    padding:11px 13px;
+    margin-bottom:10px;
+    opacity:0;transform:translateY(8px);
+    transition:opacity .55s ease,transform .55s ease,border-color .25s ease,background .25s ease;
+    transition-delay:calc(var(--i,0) * 100ms + 280ms);
+  }
+  .echos-showcase.in .ncard{opacity:1;transform:translateY(0)}
+  .ncard-tag{
+    display:inline-flex;align-items:center;gap:6px;
+    font:600 9.5px/1 Inter,sans-serif;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:#b69bff;margin-bottom:6px;
+  }
+  .ncard-p{font:400 12.5px/1.5 Inter,sans-serif;color:#cfc6e6;margin:0}
+  .ncard-p b{color:var(--text);font-weight:500}
+  .ncard-p em{font-style:italic;color:#a8a1bd}
+
+  .ncard.to-focus{
+    background:linear-gradient(135deg,rgba(155,130,255,.12),rgba(94,158,255,.10));
+    border-color:rgba(94,158,255,.24);
+    cursor:default;
+  }
+  .ncard.to-focus .ncard-tag{color:#8da4ff}
+  .ncard.to-focus .ncard-tag::after{
+    content:'→ Focus';
+    font:600 9px/1 Inter,sans-serif;
+    letter-spacing:.10em;
+    padding:3px 7px;border-radius:99px;
+    background:rgba(94,158,255,.16);
+    color:#8da4ff;
+  }
+  .ncard.to-focus::after{
+    content:'';position:absolute;
+    inset:-1px;border-radius:8px;
+    pointer-events:none;
+    box-shadow:0 0 0 0 rgba(94,158,255,0);
+    transition:box-shadow .35s ease;
+  }
+  .ncard.to-focus:hover{transform:translateY(-2px)}
+  .ncard.to-focus:hover::after{box-shadow:0 0 0 1px rgba(94,158,255,.5),0 0 32px -4px rgba(94,158,255,.42)}
+  .echos-showcase.in .ncard.to-focus{animation:focusPulse 4.5s ease-in-out 1.8s infinite}
+  @keyframes focusPulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(94,158,255,0)}
+    50%{box-shadow:0 0 36px -8px rgba(94,158,255,.34)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .eblock,.ncard{transition:none;opacity:1;transform:none}
+    .echos-showcase.in .ncard.to-focus{animation:none}
+  }
+
+  /* ─── Spark teaser ────────────────────────── */
+  .spark-teaser{
+    background:linear-gradient(180deg,#16140e 0%,#100e0a 100%);
+    border:1px solid var(--border-2);
+    border-radius:18px;
+    padding:44px 48px;
+    display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
+    gap:48px;align-items:center;text-align:left;
+    position:relative;overflow:hidden;
+  }
+  .spark-teaser::before{
+    content:'';position:absolute;
+    top:-130px;right:-110px;width:360px;height:360px;border-radius:50%;
+    background:radial-gradient(circle,rgba(249,115,22,.13) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .spark-teaser .eyebrow{margin-bottom:14px}
+  .spark-teaser h3{font-size:28px;margin-bottom:10px;letter-spacing:-.025em}
+  .spark-teaser .tagline{font-size:16px;font-weight:500;color:var(--text-2);margin-bottom:12px;letter-spacing:-.01em}
+  .spark-teaser .body{font-size:14.5px;color:var(--text-3);max-width:none;line-height:1.6}
+  .spark-cards{
+    position:relative;z-index:1;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .spark-card{
+    background:rgba(255,255,255,.018);
+    border:1px solid #221d18;
+    border-radius:8px;padding:11px 13px;
+  }
+  .spark-card .lbl{
+    font:600 9.5px/1 Inter,sans-serif;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:#F97316;
+  }
+  .spark-card .q{
+    margin-top:7px;
+    font:500 12.5px/1.45 Inter,sans-serif;color:var(--text);
+  }
+  .spark-card .meta{margin-top:4px;font-size:11.5px;color:var(--text-3)}
+  .spark-card.flip{
+    background:linear-gradient(135deg,rgba(249,115,22,.10),rgba(249,115,22,.04));
+    border-color:rgba(249,115,22,.22);
+  }
 
   /* ─── Nova ───────────────────────────────── */
   .nova{background:var(--bg-2);text-align:center;position:relative;overflow:hidden}
@@ -620,8 +821,11 @@
       grid-template-columns:1fr;gap:40px;
       padding:48px 32px;
     }
-    .roadmap-grid{grid-template-columns:1fr;gap:16px}
-    .roadmap-card{padding:36px 28px}
+    .echos-showcase{padding:48px 32px}
+    .echos-showcase-header{margin-bottom:36px}
+    .echos-editor{padding:24px 22px}
+    .echos-nova-pane{padding:24px 22px}
+    .spark-teaser{grid-template-columns:1fr;padding:36px 28px;gap:28px}
     .cycle-stage{grid-template-columns:1fr}
     .cycle-orbit{min-height:610px}
     .cycle-panel{min-height:auto}
@@ -667,7 +871,14 @@
     .cycle-panel h3{font-size:28px}
     .focus-feature{padding:40px 24px;border-radius:18px}
     .focus-feature h3{font-size:26px}
-    .roadmap-card{padding:32px 24px;border-radius:14px}
+    .echos-showcase{padding:36px 22px;border-radius:18px}
+    .echos-mockup{border-radius:12px}
+    .echos-chrome{padding:9px 12px}
+    .echos-chrome .url{font-size:10.5px}
+    .echos-pane{grid-template-columns:1fr}
+    .echos-editor{padding:22px 18px}
+    .echos-nova-pane{padding:22px 18px;border-left:none;border-top:1px solid #1a1828}
+    .spark-teaser{padding:28px 20px;border-radius:14px}
     .footer-inner{flex-direction:column;text-align:center;gap:14px}
     .final{padding:96px 0}
     .final-meta{gap:14px}
@@ -908,20 +1119,82 @@
       <h2 class="reveal">Lo que viene.</h2>
       <p class="subhead reveal">Echos y Spark completan el ecosistema. Misma Nova, distinto rol: Focus organiza el cuándo, Echos ordena el qué, Spark se encarga del cómo lo recordás.</p>
 
-      <div class="roadmap-grid reveal" style="margin-top:64px">
-        <article class="roadmap-card">
-          <span class="eyebrow echos">Echos · En desarrollo</span>
-          <h3>Echos</h3>
-          <p class="tagline">Ordena lo que aprendes.</p>
+      <!-- Echos showcase -->
+      <article class="echos-showcase reveal" style="margin-top:64px" aria-labelledby="echos-h">
+        <header class="echos-showcase-header">
+          <span class="eyebrow echos">Echos · Próximamente</span>
+          <h3 id="echos-h">El cuaderno que <br>ordena lo que aprendes.</h3>
           <p class="body">La libreta académica con bloques semánticos: Concepto, Definición, Duda, Fecha, Tarea. Nova lee cada clase, extrae lo importante con cita literal y manda las fechas a Focus como sugerencia. Tu cuaderno sigue siendo tuyo.</p>
-        </article>
-        <article class="roadmap-card">
-          <span class="eyebrow spark">Spark · En desarrollo</span>
-          <h3>Spark</h3>
-          <p class="tagline">El repaso que se queda.</p>
-          <p class="body">Las preguntas que Nova encuentra en tus apuntes de Echos se vuelven flashcards de repaso espaciado. Cuando Focus tiene un examen agendado, Spark prepara el material y bloquea las sesiones para que llegues listo.</p>
-        </article>
-      </div>
+        </header>
+
+        <div class="echos-mockup" aria-hidden="true">
+          <div class="echos-chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url"><b>echos.app</b> · Biología · Clase 8 — Mitosis y meiosis</span>
+          </div>
+          <div class="echos-pane">
+            <div class="echos-editor">
+              <div class="echos-editor-title">Clase 8 — Mitosis y meiosis</div>
+              <div class="echos-editor-meta">Biología · 25 abr · Analizada por Nova</div>
+              <div class="echos-editor-stack">
+                <div class="eblock" style="--block-color:#f4f1fb;--i:0">
+                  <span class="eblock-tag">Concepto</span>
+                  <p class="eblock-h">Mitosis</p>
+                  <p class="eblock-p">División celular que produce dos células hijas idénticas a la madre. Cuatro fases: profase, metafase, anafase, telofase.</p>
+                </div>
+                <div class="eblock" style="--block-color:#9b82ff;--i:1">
+                  <span class="eblock-tag">Definición</span>
+                  <p class="eblock-p">Cromosoma homólogo: par con la misma información genética.</p>
+                </div>
+                <div class="eblock" style="--block-color:#f4b454;--i:2">
+                  <span class="eblock-tag">Duda</span>
+                  <p class="eblock-p">¿Por qué la meiosis necesita dos divisiones?</p>
+                </div>
+                <div class="eblock" style="--block-color:#8da4ff;--i:3">
+                  <span class="eblock-tag">Fecha</span>
+                  <p class="eblock-p"><b>Examen parcial</b> — 30 abr</p>
+                </div>
+              </div>
+            </div>
+            <aside class="echos-nova-pane">
+              <div class="echos-nova-head">Nova encontró</div>
+              <div class="ncard" style="--i:0">
+                <span class="ncard-tag">Pregunta de examen</span>
+                <p class="ncard-p">¿Qué diferencia clave hay entre mitosis y meiosis?</p>
+              </div>
+              <div class="ncard" style="--i:1">
+                <span class="ncard-tag">Concepto · 93%</span>
+                <p class="ncard-p">Cita: <em>"División celular que produce dos células idénticas..."</em></p>
+              </div>
+              <div class="ncard to-focus" style="--i:2">
+                <span class="ncard-tag">Para Focus</span>
+                <p class="ncard-p"><b>Examen el 30 abr</b> — bloque de estudio sugerido el 28</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </article>
+
+      <!-- Spark teaser -->
+      <article class="spark-teaser reveal" aria-labelledby="spark-h">
+        <div>
+          <span class="eyebrow spark">Spark · Próximamente</span>
+          <h3 id="spark-h">El repaso que se queda.</h3>
+          <p class="tagline">De los apuntes de Echos al examen de Focus.</p>
+          <p class="body">Las preguntas que Nova encuentra en tus apuntes se vuelven flashcards de repaso espaciado. Cuando Focus tiene un examen agendado, Spark prepara el material y bloquea las sesiones para que llegues listo.</p>
+        </div>
+        <div class="spark-cards" aria-hidden="true">
+          <div class="spark-card">
+            <span class="lbl">Flashcard 1 / 12</span>
+            <div class="q">¿Qué diferencia clave hay entre mitosis y meiosis?</div>
+          </div>
+          <div class="spark-card flip">
+            <span class="lbl">Repaso programado</span>
+            <div class="q">3 sesiones agendadas en Focus</div>
+            <div class="meta">Próxima · jueves 18:00</div>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
