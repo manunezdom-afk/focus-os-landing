@@ -711,6 +711,159 @@
     border-color:rgba(249,115,22,.22);
   }
 
+  /* ─── Ecosistema (family flow) ────────────── */
+  .ecosystem-stage-wrap{
+    position:relative;
+    margin:64px auto 80px;
+    max-width:1020px;
+  }
+  .eco-stage{
+    position:relative;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:28px;
+    text-align:left;
+    z-index:2;
+  }
+  .eco-card{
+    --eco-c:#9b82ff;
+    --eco-c-rgb:155,130,255;
+    position:relative;
+    background:linear-gradient(180deg,#15151a 0%,#0d0d11 100%);
+    border:1px solid var(--border-2);
+    border-radius:16px;
+    padding:20px 22px 22px;
+    transition:transform .35s ease,border-color .3s ease,box-shadow .35s ease;
+  }
+  .eco-card::after{
+    content:'';position:absolute;
+    inset:0;border-radius:16px;
+    pointer-events:none;
+    box-shadow:0 0 0 0 rgba(var(--eco-c-rgb),0);
+    transition:box-shadow .35s ease;
+  }
+  .eco-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(var(--eco-c-rgb),.32);
+  }
+  .eco-card:hover::after{
+    box-shadow:0 24px 60px -22px rgba(var(--eco-c-rgb),.34);
+  }
+  .eco-card.echos{--eco-c:#9b82ff;--eco-c-rgb:155,130,255}
+  .eco-card.focus{--eco-c:#5e9eff;--eco-c-rgb:94,158,255}
+  .eco-card.spark{--eco-c:#F97316;--eco-c-rgb:249,115,22}
+
+  .eco-card-head{
+    display:flex;align-items:center;gap:10px;margin-bottom:18px;
+  }
+  .eco-icon{
+    width:30px;height:30px;border-radius:7px;
+    background:#0a0a0c;border:1px solid var(--border);
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .eco-icon svg{width:16px;height:16px}
+  .eco-card h3{
+    font:600 17px/1 Inter,sans-serif;
+    letter-spacing:-.018em;color:var(--text);margin:0;
+  }
+  .eco-role{
+    margin-left:auto;
+    font:600 9.5px/1 Inter,sans-serif;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--eco-c);
+  }
+  .eco-content{display:flex;flex-direction:column;gap:6px}
+  .eco-pill{
+    display:flex;align-items:center;gap:8px;
+    padding:8px 10px;border-radius:7px;
+    background:rgba(255,255,255,.018);
+    border:1px solid #1a1a1f;
+    font:500 12px/1.3 Inter,sans-serif;
+    color:var(--text);
+  }
+  .eco-pill::before{
+    content:'';width:5px;height:5px;border-radius:50%;
+    background:var(--eco-c);flex-shrink:0;
+    box-shadow:0 0 8px rgba(var(--eco-c-rgb),.5);
+  }
+  .eco-pill .meta{margin-left:auto;color:var(--text-3);font-weight:400;font-size:11px}
+  .eco-status{
+    display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+    font:600 10px/1 Inter,sans-serif;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--text-3);
+  }
+  .eco-status.live{color:var(--live)}
+  .eco-status.live::before{
+    content:'';width:6px;height:6px;border-radius:50%;
+    background:var(--live);box-shadow:0 0 10px rgba(48,209,88,.6);
+  }
+
+  /* SVG flow layer */
+  .eco-flow{
+    position:absolute;
+    left:0;right:0;
+    top:calc(100% - 8px);
+    height:148px;
+    pointer-events:none;
+    z-index:1;
+  }
+  .eco-flow svg{width:100%;height:100%;display:block;overflow:visible}
+
+  /* Nova hub at convergence */
+  .eco-hub{
+    position:absolute;
+    left:50%;
+    top:calc(100% + 110px);
+    transform:translate(-50%,-50%);
+    z-index:3;
+  }
+  .eco-hub-orb{
+    width:64px;height:64px;border-radius:50%;
+    background:
+      radial-gradient(circle at 32% 30%,rgba(255,255,255,.45) 0%,transparent 30%),
+      conic-gradient(from 200deg at 50% 50%,#6e3aff 0%,#a84dff 40%,#ff8fb1 70%,#6e3aff 100%);
+    box-shadow:
+      0 0 0 1px rgba(167,139,250,.35) inset,
+      0 0 60px -8px rgba(167,139,250,.65),
+      0 0 22px -4px rgba(255,255,255,.18);
+    animation:hubBreath 5s ease-in-out infinite;
+  }
+  @keyframes hubBreath{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.06)}
+  }
+  .eco-hub-label{
+    position:absolute;left:50%;top:calc(100% + 18px);transform:translateX(-50%);
+    font:600 11px/1 Inter,sans-serif;
+    letter-spacing:.16em;text-transform:uppercase;
+    color:#cab8ff;white-space:nowrap;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .eco-hub-orb{animation:none}
+    .eco-flow .particle{display:none}
+  }
+
+  .eco-caption{
+    max-width:600px;margin:120px auto 0;
+    text-align:center;
+    font:400 16px/1.65 Inter,sans-serif;
+    color:var(--text-2);
+    letter-spacing:-.005em;
+  }
+  .eco-caption b{color:var(--text);font-weight:500}
+  .eco-caption .c-echos{color:#b69bff;font-weight:500}
+  .eco-caption .c-focus{color:#7eb3ff;font-weight:500}
+  .eco-caption .c-spark{color:#fb923c;font-weight:500}
+
+  @media (max-width:980px){
+    .ecosystem-stage-wrap{margin:48px auto 60px}
+    .eco-stage{grid-template-columns:1fr;gap:14px}
+    .eco-flow{display:none}
+    .eco-hub{position:relative;top:auto;left:auto;transform:none;display:flex;justify-content:center;margin:32px 0 28px}
+    .eco-hub-label{position:relative;top:auto;left:auto;transform:none;text-align:center;margin-top:14px}
+    .eco-caption{margin-top:40px}
+  }
+
   /* ─── Nova ───────────────────────────────── */
   .nova{background:var(--bg-2);text-align:center;position:relative;overflow:hidden}
   .nova::before{
@@ -898,7 +1051,7 @@
     <nav class="nav">
       <a href="#sistema">Sistema</a>
       <a href="#focus">Focus</a>
-      <a href="#roadmap">Roadmap</a>
+      <a href="#ecosistema">Ecosistema</a>
       <a href="#nova">Nova</a>
     </nav>
     <a href="https://app.usefocus.me" class="header-cta">
@@ -1112,15 +1265,140 @@
     </div>
   </section>
 
-  <!-- ─── ROADMAP — Echos y Spark ────────────── -->
-  <section class="section apps" id="roadmap" style="padding-top:0">
+  <!-- ─── ECOSISTEMA — Family flow + deep dives ─ -->
+  <section class="section apps" id="ecosistema" style="padding-top:0">
     <div class="container">
-      <span class="eyebrow muted reveal">El roadmap</span>
-      <h2 class="reveal">Lo que viene.</h2>
-      <p class="subhead reveal">Echos y Spark completan el ecosistema. Misma Nova, distinto rol: Focus organiza el cuándo, Echos ordena el qué, Spark se encarga del cómo lo recordás.</p>
+      <span class="eyebrow muted reveal">El ecosistema</span>
+      <h2 class="reveal">Tres apps. Una sola Nova.</h2>
+      <p class="subhead reveal">Misma capa AI por debajo. Misma cuenta. Cada app con un trabajo. Ninguna se mete con la otra.</p>
+
+      <!-- Family flow stage -->
+      <div class="ecosystem-stage-wrap reveal">
+        <div class="eco-stage">
+          <article class="eco-card echos">
+            <div class="eco-card-head">
+              <span class="eco-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#9b82ff" stroke-width="1.7" stroke-linecap="round">
+                  <path d="M7.5 12a4.5 4.5 0 0 1 4.5-4.5"/>
+                  <path d="M7.5 12a4.5 4.5 0 0 0 4.5 4.5"/>
+                  <path d="M11 12a2 2 0 0 1 2-2"/>
+                  <path d="M11 12a2 2 0 0 0 2 2"/>
+                  <circle cx="15.5" cy="12" r="1" fill="#9b82ff" stroke="none"/>
+                </svg>
+              </span>
+              <h3>Echos</h3>
+              <span class="eco-role">Captura</span>
+            </div>
+            <div class="eco-content">
+              <span class="eco-pill">Concepto · Mitosis</span>
+              <span class="eco-pill">Fecha · 30 abr</span>
+            </div>
+            <span class="eco-status">Próximamente</span>
+          </article>
+
+          <article class="eco-card focus">
+            <div class="eco-card-head">
+              <span class="eco-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#5e9eff" stroke-width="1.7">
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <circle cx="12" cy="12" r="1.2" fill="#5e9eff" stroke="none"/>
+                </svg>
+              </span>
+              <h3>Focus</h3>
+              <span class="eco-role">Organiza</span>
+            </div>
+            <div class="eco-content">
+              <span class="eco-pill">11:00 · Foco profundo</span>
+              <span class="eco-pill">28 abr · Estudio Bio</span>
+            </div>
+            <span class="eco-status live">Disponible</span>
+          </article>
+
+          <article class="eco-card spark">
+            <div class="eco-card-head">
+              <span class="eco-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="#F97316" stroke="#F97316" stroke-width="1.2" stroke-linejoin="round">
+                  <path d="M14 4 L7 14 H11 L10 20 L17 10 H13 L14 4 Z"/>
+                </svg>
+              </span>
+              <h3>Spark</h3>
+              <span class="eco-role">Memoriza</span>
+            </div>
+            <div class="eco-content">
+              <span class="eco-pill">12 flashcards listas</span>
+              <span class="eco-pill">Próximo · jueves</span>
+            </div>
+            <span class="eco-status">Próximamente</span>
+          </article>
+        </div>
+
+        <div class="eco-flow" aria-hidden="true">
+          <svg viewBox="0 0 1020 148" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="flowEchos" x1="0" y1="0" x2="0.6" y2="1">
+                <stop offset="0%" stop-color="#9b82ff" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#9b82ff" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="flowFocus" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5e9eff" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#5e9eff" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="flowSpark" x1="1" y1="0" x2="0.4" y2="1">
+                <stop offset="0%" stop-color="#F97316" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#F97316" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+              </linearGradient>
+              <path id="pathEchos" d="M170 0 C 170 70 320 100 510 130"/>
+              <path id="pathFocus" d="M510 0 C 510 65 510 95 510 130"/>
+              <path id="pathSpark" d="M850 0 C 850 70 700 100 510 130"/>
+            </defs>
+
+            <use href="#pathEchos" stroke="url(#flowEchos)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
+            <use href="#pathFocus" stroke="url(#flowFocus)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
+            <use href="#pathSpark" stroke="url(#flowSpark)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
+
+            <circle class="particle" r="3.5" fill="#9b82ff" opacity=".95">
+              <animateMotion dur="3.6s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#pathEchos"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="particle" r="3.5" fill="#5e9eff" opacity=".95">
+              <animateMotion dur="3.6s" begin="1.2s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#pathFocus"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" begin="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="particle" r="3.5" fill="#F97316" opacity=".95">
+              <animateMotion dur="3.6s" begin="2.4s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#pathSpark"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" begin="2.4s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+
+        <div class="eco-hub" aria-hidden="true">
+          <div class="eco-hub-orb"></div>
+          <div class="eco-hub-label">Nova</div>
+        </div>
+      </div>
+
+      <p class="eco-caption reveal">
+        Lo que <span class="c-echos">Echos</span> captura llega a <span class="c-focus">Focus</span> como sugerencia. Los conceptos viajan a <span class="c-spark">Spark</span> como flashcards. <b>Nova es la única capa que las ve a las tres.</b>
+      </p>
+
+      <!-- ─── DEEP DIVES ──────────────────────── -->
+      <div class="reveal" style="margin-top:120px;text-align:center">
+        <span class="eyebrow muted">En detalle</span>
+        <h2 style="margin:8px auto 0;max-width:18ch">Cada app, de cerca.</h2>
+      </div>
 
       <!-- Echos showcase -->
-      <article class="echos-showcase reveal" style="margin-top:64px" aria-labelledby="echos-h">
+      <article class="echos-showcase reveal" style="margin-top:48px" aria-labelledby="echos-h">
         <header class="echos-showcase-header">
           <span class="eyebrow echos">Echos · Próximamente</span>
           <h3 id="echos-h">El cuaderno que <br>ordena lo que aprendes.</h3>
