@@ -1,20 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <defs>
     <linearGradient id="focus-bg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#131620"></stop>
-      <stop offset="100%" stop-color="#07080B"></stop>
+      <stop offset="0%" stop-color="#15151a"></stop>
+      <stop offset="100%" stop-color="#0a0a0c"></stop>
     </linearGradient>
-    <radialGradient id="focus-ring" cx="50%" cy="50%" r="50%">
-      <stop offset="60%" stop-color="#A8B0FF" stop-opacity="0"></stop>
-      <stop offset="100%" stop-color="#6B75E8" stop-opacity="0.3"></stop>
+    <radialGradient id="focus-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5e9eff" stop-opacity="0.28"></stop>
+      <stop offset="55%" stop-color="#5e9eff" stop-opacity="0.08"></stop>
+      <stop offset="100%" stop-color="#5e9eff" stop-opacity="0"></stop>
+    </radialGradient>
+    <radialGradient id="focus-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#bcd6ff"></stop>
+      <stop offset="100%" stop-color="#5e9eff"></stop>
     </radialGradient>
   </defs>
-  <rect x="0" y="0" width="128" height="128" rx="28" fill="url(#focus-bg)"></rect>
-  <rect x="0" y="0" width="128" height="128" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"></rect>
 
-  <circle cx="64" cy="64" r="38" fill="none" stroke="#6B75E8" stroke-opacity="0.35" stroke-width="1"></circle>
-  <circle cx="64" cy="64" r="26" fill="none" stroke="#A8B0FF" stroke-opacity="0.55" stroke-width="1"></circle>
-  <circle cx="64" cy="64" r="14" fill="none" stroke="#E8EAFF" stroke-opacity="0.85" stroke-width="1.25"></circle>
-  <circle cx="64" cy="64" r="4" fill="#E8EAFF"></circle>
-  <circle cx="64" cy="64" r="50" fill="url(#focus-ring)"></circle>
+  <rect x="0" y="0" width="128" height="128" rx="28" fill="url(#focus-bg)"></rect>
+  <rect x="0" y="0" width="128" height="128" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="1"></rect>
+
+  <circle cx="64" cy="64" r="46" fill="url(#focus-glow)"></circle>
+
+  <circle cx="64" cy="64" r="32" fill="none" stroke="#5e9eff" stroke-opacity="0.55" stroke-width="1.6"></circle>
+  <circle cx="64" cy="64" r="16" fill="none" stroke="#5e9eff" stroke-opacity="0.85" stroke-width="1.6"></circle>
+  <circle cx="64" cy="64" r="6" fill="url(#focus-core)"></circle>
 </svg>
