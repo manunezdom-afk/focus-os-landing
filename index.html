@@ -450,6 +450,18 @@
     border-radius:14px;
     padding:18px;
     box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
+    position:relative;overflow:hidden;
+  }
+  .focus-mini::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(115deg,transparent 30%,rgba(167,139,250,.08) 50%,transparent 70%);
+    transform:translateX(-100%);
+  }
+  .focus-feature.in .focus-mini::after{
+    animation:focusMiniSheen 1.6s cubic-bezier(.4,0,.2,1) .2s forwards;
+  }
+  @keyframes focusMiniSheen{
+    to{transform:translateX(100%)}
   }
   .focus-mini-head{
     display:flex;justify-content:space-between;align-items:center;
@@ -458,17 +470,61 @@
     font-size:13px;font-weight:600;
   }
   .focus-mini-head .d{color:var(--text-3);font-weight:400;font-size:11.5px}
+  .focus-mini-head .live-dot{
+    display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:#30d158;margin-right:7px;vertical-align:middle;
+    box-shadow:0 0 0 0 rgba(48,209,88,.55);
+    animation:focusMiniDot 2.2s ease-out infinite;
+  }
+  @keyframes focusMiniDot{
+    0%{box-shadow:0 0 0 0 rgba(48,209,88,.55)}
+    70%{box-shadow:0 0 0 8px rgba(48,209,88,0)}
+    100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}
+  }
   .focus-mini-row{
     display:grid;grid-template-columns:42px 4px 1fr;
     gap:10px;align-items:center;padding:7px 6px;border-radius:6px;
+    position:relative;
+    opacity:0;transform:translateX(-10px);
+    transition:opacity .55s cubic-bezier(.4,0,.2,1),
+               transform .55s cubic-bezier(.4,0,.2,1),
+               background-color .35s ease;
   }
-  .focus-mini-row .t{font-size:11.5px;color:var(--text-3);font-variant-numeric:tabular-nums}
-  .focus-mini-row .b{height:20px;border-radius:2px;align-self:stretch}
+  .focus-feature.in .focus-mini-row{opacity:1;transform:none}
+  .focus-feature.in .focus-mini-row:nth-of-type(1){transition-delay:.15s}
+  .focus-feature.in .focus-mini-row:nth-of-type(2){transition-delay:.28s}
+  .focus-feature.in .focus-mini-row:nth-of-type(3){transition-delay:.41s}
+  .focus-feature.in .focus-mini-row:nth-of-type(4){transition-delay:.54s}
+  .focus-feature.in .focus-mini-row:nth-of-type(5){transition-delay:.67s}
+  .focus-mini-row:hover{background:rgba(255,255,255,.025)}
+  .focus-mini-row .t{font-size:11.5px;color:var(--text-3);font-variant-numeric:tabular-nums;transition:color .3s ease}
+  .focus-mini-row .b{
+    height:20px;border-radius:2px;align-self:stretch;
+    transform:scaleY(.15);transform-origin:center;
+    transition:transform .55s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+  }
+  .focus-feature.in .focus-mini-row .b{transform:scaleY(1)}
+  .focus-feature.in .focus-mini-row:nth-of-type(1) .b{transition-delay:.35s}
+  .focus-feature.in .focus-mini-row:nth-of-type(2) .b{transition-delay:.48s}
+  .focus-feature.in .focus-mini-row:nth-of-type(3) .b{transition-delay:.61s}
+  .focus-feature.in .focus-mini-row:nth-of-type(4) .b{transition-delay:.74s}
+  .focus-feature.in .focus-mini-row:nth-of-type(5) .b{transition-delay:.87s}
   .focus-mini-row .b.a{background:#5e9eff}
   .focus-mini-row .b.b{background:#a78bfa}
   .focus-mini-row .b.c{background:#30d158}
   .focus-mini-row .b.d{background:#ffd60a}
-  .focus-mini-row .l{font-size:13px;color:var(--text);font-weight:500}
+  .focus-mini-row .l{font-size:13px;color:var(--text);font-weight:500;transition:color .3s ease}
+  .focus-mini-row.now{background:rgba(167,139,250,.09)}
+  .focus-mini-row.now .t{color:var(--text)}
+  .focus-mini-row.now .l{color:#fff}
+  .focus-mini-row.now .b.a{box-shadow:0 0 14px rgba(94,158,255,.7)}
+  .focus-mini-row.now .b.b{box-shadow:0 0 14px rgba(167,139,250,.75)}
+  .focus-mini-row.now .b.c{box-shadow:0 0 14px rgba(48,209,88,.7)}
+  .focus-mini-row.now .b.d{box-shadow:0 0 14px rgba(255,214,10,.7)}
+  @media (prefers-reduced-motion:reduce){
+    .focus-mini-row,.focus-mini-row .b{opacity:1;transform:none;transition:none}
+    .focus-mini::after,.focus-mini-head .live-dot{animation:none}
+  }
 
   /* ─── Echos showcase ──────────────────────── */
   .echos-showcase{
@@ -1108,9 +1164,9 @@
           <p class="body">No te enseña la lista entera ni te abruma con todo lo pendiente. Te muestra los bloques de hoy, agendados con tu energía y prioridades reales. Lenguaje natural para crear eventos, ritual diario para empezar y cerrar, modo offline. Funciona en móvil instalado como PWA.</p>
           <a href="https://app.usefocus.me" class="feature-cta">Abrir Focus <span class="arrow">→</span></a>
         </div>
-        <div class="focus-mini" aria-hidden="true">
+        <div class="focus-mini" aria-hidden="true" id="focusMini">
           <div class="focus-mini-head">
-            <span>Mi Día</span>
+            <span><span class="live-dot"></span>Mi Día</span>
             <span class="d">vie · 25 abr</span>
           </div>
           <div class="focus-mini-row"><span class="t">09:00</span><span class="b c"></span><span class="l">Reunión equipo</span></div>
@@ -1431,6 +1487,35 @@
       });
     }, { threshold: 0.02, rootMargin: '180px 0px 80px 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+
+  // Mi Día — cycle a "now" highlight through the rows
+  (function () {
+    var mini = document.getElementById('focusMini');
+    if (!mini) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var rows = mini.querySelectorAll('.focus-mini-row');
+    if (!rows.length) return;
+    var i = 0, started = false, timer = null;
+
+    function tick(){
+      rows.forEach(function (r) { r.classList.remove('now'); });
+      rows[i].classList.add('now');
+      i = (i + 1) % rows.length;
+    }
+    function start(){
+      if (started) return;
+      started = true;
+      // wait for the staggered reveal to finish
+      setTimeout(function(){ tick(); timer = setInterval(tick, 1800); }, 1100);
+    }
+    if (typeof IntersectionObserver === 'undefined') { start(); return; }
+    var io2 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { start(); io2.unobserve(entry.target); }
+      });
+    }, { threshold: 0.25 });
+    io2.observe(mini);
   })();
 </script>
 
