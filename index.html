@@ -185,11 +185,13 @@
 
   /* ─── Hero ───────────────────────────────── */
   .hero{
-    padding:120px 0 80px;
+    padding:120px 0 96px;
     text-align:center;
     position:relative;
+    overflow:hidden;
     background:
-      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(167,139,250,.18), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(167,139,250,.18), transparent 70%),
+      radial-gradient(circle at 50% 78%, rgba(167,139,250,.10), transparent 42%),
       #000;
   }
   .hero h1{
@@ -202,8 +204,10 @@
   .hero .subhead{margin:0 auto 40px}
   .hero-ctas{
     display:flex;align-items:center;justify-content:center;
-    gap:20px;flex-wrap:wrap;margin-bottom:80px;
+    gap:20px;flex-wrap:wrap;margin-bottom:96px;
   }
+  .hero .cycle-stage{margin-top:8px}
+  .hero .cycle-caption{margin-top:56px}
 
   /* ─── Hero mockup — large, centered ──────── */
   .hero-mockup-wrap{
@@ -1017,67 +1021,58 @@
 <main>
 
   <!-- ─── HERO ──────────────────────────────── -->
-  <section class="hero">
+  <section class="hero" id="sistema">
     <div class="container-narrow">
       <h1 class="reveal">La forma seria <br>de organizar <span class="em">tu día</span>.</h1>
-      <p class="subhead reveal">Un sistema operativo para tu productividad. Hoy empieza por <b>Focus</b>, el calendario inteligente con IA. <b>Echos</b> y <b>Spark</b> llegan después.</p>
+      <p class="subhead reveal">Un sistema operativo para tu productividad. <b>Cinco pasos</b>, una sola <b>Nova</b> al centro. Hoy empieza por <b>Focus</b> — Echos y Spark llegan después.</p>
       <div class="hero-ctas reveal">
         <a href="https://app.usefocus.me" class="btn btn-pill">Probar Focus</a>
-        <a href="#sistema" class="btn btn-text">Ver el sistema <span class="arrow">→</span></a>
+        <a href="#focus" class="btn btn-text">Ver Focus <span class="arrow">→</span></a>
       </div>
     </div>
 
-    <!-- Calendar mockup -->
-    <div class="hero-mockup-wrap reveal">
-      <div class="mockup" aria-hidden="true">
-        <div class="mockup-head">
-          <span class="mockup-title">Mi Día</span>
-          <span class="mockup-date">viernes · 25 de abril</span>
-        </div>
-        <div class="event">
-          <span class="event-time">09:00</span>
-          <span class="event-bar meet"></span>
-          <div class="event-body">
-            <div class="event-title">Reunión con equipo</div>
-            <div class="event-meta">45 min · Sala Mercurio</div>
-          </div>
-        </div>
-        <div class="event">
-          <span class="event-time">11:00</span>
-          <span class="event-bar focus"></span>
-          <div class="event-body">
-            <div class="event-title">Foco profundo</div>
-            <div class="event-meta">90 min · sin notificaciones</div>
-          </div>
-        </div>
-        <div class="event">
-          <span class="event-time">14:30</span>
-          <span class="event-bar work"></span>
-          <div class="event-body">
-            <div class="event-title">Llamada con cliente</div>
-            <div class="event-meta">30 min</div>
-          </div>
-        </div>
-        <div class="event">
-          <span class="event-time">19:00</span>
-          <span class="event-bar personal"></span>
-          <div class="event-body">
-            <div class="event-title">Gimnasio</div>
-            <div class="event-meta">60 min</div>
-          </div>
-        </div>
-        <div class="nova-prop">
-          <div class="nova-prop-head">
-            <span class="nova-prop-dot"></span>
-            <span>Nova propone</span>
-          </div>
-          <div class="nova-prop-body">Mover <b>Foco profundo</b> a las 10:00 — es tu mejor franja según las últimas dos semanas.</div>
-          <div class="nova-prop-actions">
-            <span class="mock-btn accept">Aceptar</span>
-            <span class="mock-btn later">No ahora</span>
-          </div>
-        </div>
+    <!-- Cycle of five steps — primary hero visual -->
+    <div class="container">
+      <div class="cycle-stage reveal" aria-label="Ciclo de cinco pasos con Nova al centro">
+        <svg class="cycle-orbit-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <path id="cycPath" d="M 400 80 a 320 320 0 1 1 0 640 a 320 320 0 1 1 0 -640" fill="none"/>
+          </defs>
+          <use href="#cycPath" class="ring"/>
+          <circle r="5" class="particle" fill="#a78bfa" opacity=".95">
+            <animateMotion dur="18s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#cycPath"/>
+            </animateMotion>
+          </circle>
+        </svg>
+
+        <div class="cycle-orb" aria-label="Nova"></div>
+
+        <article class="cycle-node n1">
+          <span class="cycle-node-num"><span class="num">01</span>Captura</span>
+          <p class="cycle-node-desc">Habla, escribe o pega. Ideas, tareas y pendientes entran al sistema antes que a tu cabeza.</p>
+        </article>
+        <article class="cycle-node n2">
+          <span class="cycle-node-num"><span class="num">02</span>Organiza</span>
+          <p class="cycle-node-desc">Nova interpreta cada input — tarea, evento, idea — y propone dónde debe vivir.</p>
+        </article>
+        <article class="cycle-node n3">
+          <span class="cycle-node-num"><span class="num">03</span>Ejecuta</span>
+          <p class="cycle-node-desc">Tu día aparece en bloques claros: prioridades, tiempo y energía alineados. Sin ruido.</p>
+        </article>
+        <article class="cycle-node n4">
+          <span class="cycle-node-num"><span class="num">04</span>Revisa</span>
+          <p class="cycle-node-desc">Al cerrar el día, Nova resume qué avanzaste, qué quedó pendiente y por qué.</p>
+        </article>
+        <article class="cycle-node n5">
+          <span class="cycle-node-num"><span class="num">05</span>Mejora</span>
+          <p class="cycle-node-desc">Lo aprendido alimenta mañana. Cada día propone mejor que el anterior.</p>
+        </article>
       </div>
+
+      <p class="cycle-caption reveal">
+        Cada paso alimenta al siguiente. <b>No es otra lista de tareas — es la capa que hace que tu día tenga memoria.</b>
+      </p>
     </div>
   </section>
 
@@ -1098,55 +1093,6 @@
     </div>
   </section>
 
-  <!-- ─── SISTEMA ───────────────────────────── -->
-  <section class="section sistema" id="sistema">
-    <div class="container">
-      <span class="eyebrow reveal">El sistema</span>
-      <h2 class="reveal">Cinco pasos. <br>Una sola Nova.</h2>
-      <p class="subhead reveal">Capturas, organizas, ejecutas, revisas, mejoras — y vuelves a empezar con lo aprendido.</p>
-
-      <div class="cycle-stage reveal" aria-label="Ciclo de cinco pasos con Nova al centro">
-        <svg class="cycle-orbit-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <defs>
-            <path id="cycPath" d="M 400 80 a 320 320 0 1 1 0 640 a 320 320 0 1 1 0 -640" fill="none"/>
-          </defs>
-          <use href="#cycPath" class="ring"/>
-          <circle r="5" class="particle" fill="#a78bfa" opacity=".95">
-            <animateMotion dur="18s" repeatCount="indefinite" rotate="auto">
-              <mpath href="#cycPath"/>
-            </animateMotion>
-          </circle>
-        </svg>
-
-        <div class="cycle-orb" aria-label="Nova"></div>
-
-        <article class="cycle-node n1">
-          <span class="cycle-node-num"><span class="num">01</span>Captura</span>
-          <p class="cycle-node-desc">Ideas, tareas y pendientes entran al sistema antes que a tu cabeza.</p>
-        </article>
-        <article class="cycle-node n2">
-          <span class="cycle-node-num"><span class="num">02</span>Organiza</span>
-          <p class="cycle-node-desc">Nova clasifica y propone dónde debe vivir cada pieza.</p>
-        </article>
-        <article class="cycle-node n3">
-          <span class="cycle-node-num"><span class="num">03</span>Ejecuta</span>
-          <p class="cycle-node-desc">Focus convierte el contexto en una vista clara de hoy.</p>
-        </article>
-        <article class="cycle-node n4">
-          <span class="cycle-node-num"><span class="num">04</span>Revisa</span>
-          <p class="cycle-node-desc">Cierras el día con perspectiva: qué ajustar mañana.</p>
-        </article>
-        <article class="cycle-node n5">
-          <span class="cycle-node-num"><span class="num">05</span>Mejora</span>
-          <p class="cycle-node-desc">Mañana arranca con memoria y mejores propuestas.</p>
-        </article>
-      </div>
-
-      <p class="cycle-caption reveal">
-        Cada paso alimenta al siguiente. <b>No es otra lista de tareas — es la capa que hace que tu día tenga memoria.</b>
-      </p>
-    </div>
-  </section>
 
   <!-- ─── FOCUS — DISPONIBLE HOY ─────────────── -->
   <section class="section apps" id="focus">
