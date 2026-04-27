@@ -526,27 +526,18 @@
     .focus-mini::after,.focus-mini-head .live-dot{animation:none}
   }
 
-  /* ─── Echos showcase ──────────────────────── */
+  /* ─── Kairos showcase (abstract viz) ──────── */
   .echos-showcase{
-    background:linear-gradient(180deg,#0e0c1c 0%,#0a0814 100%);
+    background:
+      radial-gradient(circle at 80% -10%,rgba(155,130,255,.16) 0%,transparent 55%),
+      radial-gradient(circle at 10% 120%,rgba(155,130,255,.08) 0%,transparent 60%),
+      linear-gradient(180deg,#0e0c1c 0%,#0a0814 100%);
     border:1px solid var(--border-2);
     border-radius:24px;
     padding:64px 56px;
     margin-bottom:24px;
     text-align:left;
     position:relative;overflow:hidden;
-  }
-  .echos-showcase::before{
-    content:'';position:absolute;
-    top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;
-    background:radial-gradient(circle,rgba(155,130,255,.18) 0%,transparent 65%);
-    pointer-events:none;
-  }
-  .echos-showcase::after{
-    content:'';position:absolute;
-    bottom:-220px;left:-180px;width:480px;height:480px;border-radius:50%;
-    background:radial-gradient(circle,rgba(155,130,255,.10) 0%,transparent 70%);
-    pointer-events:none;
   }
   .echos-showcase-header{
     max-width:640px;margin-bottom:48px;position:relative;z-index:1;
@@ -555,147 +546,239 @@
   .echos-showcase-header h3{font-size:clamp(28px,3vw,40px);margin-bottom:16px;letter-spacing:-.025em;line-height:1.1}
   .echos-showcase-header .body{font-size:17px;color:var(--text-2);max-width:none;line-height:1.55}
 
-  .echos-mockup{
+  /* The viz canvas */
+  .kviz{
     position:relative;z-index:1;
-    background:#0a0814;
-    border:1px solid #221f33;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 40px 80px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(155,130,255,.05);
-  }
-  .echos-chrome{
-    display:flex;align-items:center;gap:8px;
-    padding:11px 14px;
-    border-bottom:1px solid #1a1828;
-    background:#100e1a;
-  }
-  .echos-chrome .dot{width:10px;height:10px;border-radius:50%;background:#3a3656}
-  .echos-chrome .url{
-    margin-left:14px;
-    font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
-    color:#8a82a0;letter-spacing:.005em;
-    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  }
-  .echos-chrome .url b{color:#c0b9d5;font-weight:600}
-  .echos-pane{
-    display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
-  }
-  .echos-editor{padding:32px 36px}
-  .echos-editor-title{
-    font:600 20px/1.2 Inter,-apple-system,sans-serif;
-    letter-spacing:-.018em;color:var(--text);
-    margin-bottom:4px;
-  }
-  .echos-editor-meta{
-    font-size:11.5px;color:#6a627d;margin-bottom:24px;
-    letter-spacing:.005em;
-  }
-  .echos-editor-stack{display:flex;flex-direction:column;gap:8px}
-
-  .eblock{
-    position:relative;
-    padding:11px 14px 12px 18px;
-    background:rgba(255,255,255,.015);
-    border:1px solid #1a1828;
-    border-radius:8px;
-    transition:transform .25s ease,border-color .25s ease,background .25s ease,opacity .55s ease;
-    opacity:0;transform:translateY(14px);
-    transition-delay:calc(var(--i,0) * 90ms);
-  }
-  .echos-showcase.in .eblock{opacity:1;transform:translateY(0)}
-  .eblock:hover{
-    transform:translateY(-2px);
-    border-color:#2c2939;
-    background:rgba(255,255,255,.028);
-  }
-  .eblock::before{
-    content:'';position:absolute;
-    left:0;top:11px;bottom:11px;width:2px;border-radius:0 2px 2px 0;
-    background:var(--block-color,#9b82ff);
-  }
-  .eblock-tag{
-    display:inline-block;
-    font:600 9.5px/1 Inter,sans-serif;
-    letter-spacing:.14em;text-transform:uppercase;
-    color:var(--block-color,#9b82ff);
-    margin-bottom:6px;
-  }
-  .eblock-h{
-    font:600 13.5px/1.3 Inter,sans-serif;
-    color:var(--text);margin:2px 0 4px;
-    letter-spacing:-.005em;
-  }
-  .eblock-p{font:400 13px/1.55 Inter,sans-serif;color:#a8a1bd;margin:0}
-  .eblock-p b{color:var(--text);font-weight:500}
-
-  .echos-nova-pane{
-    padding:32px 28px;
-    border-left:1px solid #1a1828;
-    background:linear-gradient(180deg,rgba(155,130,255,.04) 0%,transparent 60%);
-  }
-  .echos-nova-head{
-    display:flex;align-items:center;gap:8px;
-    font:600 11px/1 Inter,sans-serif;
-    letter-spacing:.12em;text-transform:uppercase;
-    color:#b69bff;margin-bottom:18px;
-  }
-  .echos-nova-head::before{
-    content:'';width:6px;height:6px;border-radius:50%;
-    background:#b69bff;box-shadow:0 0 12px rgba(182,155,255,.6);
-  }
-  .ncard{
-    position:relative;
-    background:rgba(155,130,255,.06);
     border:1px solid rgba(155,130,255,.14);
-    border-radius:8px;
-    padding:11px 13px;
-    margin-bottom:10px;
-    opacity:0;transform:translateY(8px);
-    transition:opacity .55s ease,transform .55s ease,border-color .25s ease,background .25s ease;
-    transition-delay:calc(var(--i,0) * 100ms + 280ms);
+    border-radius:18px;
+    background:
+      radial-gradient(ellipse at 50% 0%,rgba(155,130,255,.07) 0%,transparent 60%),
+      linear-gradient(180deg,#0b0916 0%,#070512 100%);
+    padding:28px 32px 24px;
+    overflow:hidden;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.7);
   }
-  .echos-showcase.in .ncard{opacity:1;transform:translateY(0)}
-  .ncard-tag{
-    display:inline-flex;align-items:center;gap:6px;
-    font:600 9.5px/1 Inter,sans-serif;
-    letter-spacing:.14em;text-transform:uppercase;
-    color:#b69bff;margin-bottom:6px;
+  /* faint grid overlay for "lab" feel */
+  .kviz::before{
+    content:'';position:absolute;inset:0;pointer-events:none;opacity:.35;
+    background-image:
+      linear-gradient(rgba(155,130,255,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(155,130,255,.045) 1px,transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(ellipse at 50% 50%,#000 30%,transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 30%,transparent 80%);
   }
-  .ncard-p{font:400 12.5px/1.5 Inter,sans-serif;color:#cfc6e6;margin:0}
-  .ncard-p b{color:var(--text);font-weight:500}
-  .ncard-p em{font-style:italic;color:#a8a1bd}
 
-  .ncard.to-focus{
-    background:linear-gradient(135deg,rgba(155,130,255,.12),rgba(94,158,255,.10));
-    border-color:rgba(94,158,255,.24);
-    cursor:default;
+  .kviz-meta{
+    display:flex;align-items:center;justify-content:space-between;
+    font:500 11px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;
+    color:#7a7290;
+    padding-bottom:14px;margin-bottom:24px;
+    border-bottom:1px solid rgba(155,130,255,.10);
+    position:relative;z-index:2;
   }
-  .ncard.to-focus .ncard-tag{color:#8da4ff}
-  .ncard.to-focus .ncard-tag::after{
-    content:'→ Focus';
-    font:600 9px/1 Inter,sans-serif;
-    letter-spacing:.10em;
-    padding:3px 7px;border-radius:99px;
-    background:rgba(94,158,255,.16);
-    color:#8da4ff;
+  .kviz-meta-l{display:flex;align-items:center;gap:10px}
+  .kviz-meta-l .squig{
+    width:38px;height:8px;
+    background:repeating-linear-gradient(90deg,#3d365a 0,#3d365a 4px,transparent 4px,transparent 7px);
+    border-radius:1px;
   }
-  .ncard.to-focus::after{
-    content:'';position:absolute;
-    inset:-1px;border-radius:8px;
-    pointer-events:none;
-    box-shadow:0 0 0 0 rgba(94,158,255,0);
-    transition:box-shadow .35s ease;
+  .kviz-meta-r{display:flex;align-items:center;gap:8px;color:#b69bff}
+  .kviz-meta-r .pulse{
+    width:7px;height:7px;border-radius:50%;background:#b69bff;
+    box-shadow:0 0 0 0 rgba(182,155,255,.5);
+    animation:kvizPulse 2.2s ease-in-out infinite;
   }
-  .ncard.to-focus:hover{transform:translateY(-2px)}
-  .ncard.to-focus:hover::after{box-shadow:0 0 0 1px rgba(94,158,255,.5),0 0 32px -4px rgba(94,158,255,.42)}
-  .echos-showcase.in .ncard.to-focus{animation:focusPulse 4.5s ease-in-out 1.8s infinite}
-  @keyframes focusPulse{
-    0%,100%{box-shadow:0 0 0 0 rgba(94,158,255,0)}
-    50%{box-shadow:0 0 36px -8px rgba(94,158,255,.34)}
+  @keyframes kvizPulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(182,155,255,.55);transform:scale(1)}
+    50%{box-shadow:0 0 0 8px rgba(182,155,255,0);transform:scale(1.15)}
   }
+
+  /* main grid: source | spine | extracted */
+  .kviz-grid{
+    position:relative;z-index:2;
+    display:grid;
+    grid-template-columns:minmax(0,1.5fr) 28px minmax(0,1fr);
+    gap:0;align-items:stretch;
+  }
+
+  /* SOURCE — flowing class notes */
+  .kviz-source{
+    position:relative;padding:8px 4px 16px 0;
+  }
+  .kviz-source-label{
+    font:600 10px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;
+    color:#5e5773;margin-bottom:14px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .kviz-source-label::before{
+    content:'';width:14px;height:1px;background:#3d365a;
+  }
+  .kviz-source p{
+    font:400 14.5px/1.7 'Inter',sans-serif;
+    color:#9892ad;margin:0 0 12px;letter-spacing:.005em;
+  }
+  .kviz-source p:last-child{margin-bottom:0}
+
+  /* inline highlights (semantic chips inside text) */
+  .kw{
+    position:relative;
+    color:var(--kw-c,#b69bff);font-style:normal;font-weight:500;
+    padding:1px 5px;margin:0 1px;border-radius:4px;
+    background:color-mix(in srgb,var(--kw-c,#b69bff) 12%,transparent);
+    box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kw-c,#b69bff) 22%,transparent);
+    transition:background .3s ease,box-shadow .3s ease;
+  }
+  .echos-showcase.in .kw{
+    animation:kwShimmer 5.5s ease-in-out infinite;
+    animation-delay:calc(var(--i,0) * 700ms + 600ms);
+  }
+  @keyframes kwShimmer{
+    0%,88%,100%{
+      background:color-mix(in srgb,var(--kw-c,#b69bff) 12%,transparent);
+      box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kw-c,#b69bff) 22%,transparent);
+    }
+    92%{
+      background:color-mix(in srgb,var(--kw-c,#b69bff) 28%,transparent);
+      box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kw-c,#b69bff) 55%,transparent),
+                 0 0 18px -2px color-mix(in srgb,var(--kw-c,#b69bff) 50%,transparent);
+    }
+  }
+
+  /* SPINE — Nova beam between source and chips */
+  .kviz-spine{
+    position:relative;
+  }
+  .kviz-spine::before{
+    content:'';position:absolute;left:50%;top:8px;bottom:8px;width:1px;
+    transform:translateX(-50%);
+    background:linear-gradient(180deg,
+      transparent 0%,
+      rgba(155,130,255,.08) 8%,
+      rgba(155,130,255,.32) 50%,
+      rgba(155,130,255,.08) 92%,
+      transparent 100%);
+  }
+  .kviz-spine::after{
+    content:'';position:absolute;left:50%;top:0;width:7px;height:7px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:#d3c1ff;
+    box-shadow:0 0 14px 2px rgba(182,155,255,.7);
+    animation:kvizBeamTravel 4.5s linear infinite;
+  }
+  @keyframes kvizBeamTravel{
+    0%{top:0;opacity:0}
+    8%{opacity:1}
+    92%{opacity:1}
+    100%{top:100%;opacity:0}
+  }
+
+  /* EXTRACTED — chips that emerge from the beam */
+  .kviz-out{
+    padding:8px 0 8px 4px;
+    display:flex;flex-direction:column;gap:10px;
+    position:relative;
+  }
+  .kviz-out-label{
+    font:600 10px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;
+    color:#b69bff;margin-bottom:4px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .kviz-out-label::after{
+    content:'';flex:1;height:1px;
+    background:linear-gradient(90deg,rgba(182,155,255,.3),transparent);
+  }
+  .kchip{
+    position:relative;
+    background:linear-gradient(135deg,
+      color-mix(in srgb,var(--c,#b69bff) 10%,transparent) 0%,
+      color-mix(in srgb,var(--c,#b69bff) 4%,transparent) 100%);
+    border:1px solid color-mix(in srgb,var(--c,#b69bff) 22%,transparent);
+    border-radius:10px;
+    padding:11px 13px 12px;
+    opacity:0;transform:translateX(-12px) scale(.96);
+    transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.25,1);
+    transition-delay:calc(var(--i,0) * 180ms + 350ms);
+    backdrop-filter:blur(6px);
+  }
+  .echos-showcase.in .kchip{opacity:1;transform:translateX(0) scale(1)}
+  .kchip::before{
+    content:'';position:absolute;left:-1px;top:14px;bottom:14px;width:2px;
+    background:var(--c,#b69bff);
+    border-radius:0 2px 2px 0;
+    box-shadow:0 0 8px color-mix(in srgb,var(--c,#b69bff) 60%,transparent);
+  }
+  .kchip-tag{
+    display:flex;align-items:center;gap:6px;
+    font:600 9.5px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--c,#b69bff);margin-bottom:6px;
+  }
+  .kchip-tag::before{
+    content:'';width:5px;height:5px;border-radius:50%;
+    background:var(--c,#b69bff);
+    box-shadow:0 0 6px color-mix(in srgb,var(--c,#b69bff) 70%,transparent);
+  }
+  .kchip-text{
+    font:500 13px/1.4 Inter,sans-serif;color:#e2dcef;
+    display:block;letter-spacing:-.005em;
+  }
+  .kchip-sub{
+    font:400 11.5px/1.4 Inter,sans-serif;color:#8b85a0;
+    display:block;margin-top:3px;
+  }
+
+  /* ROUTES — what travels to other apps */
+  .kviz-routes{
+    position:relative;z-index:2;
+    margin-top:28px;padding-top:18px;
+    border-top:1px solid rgba(155,130,255,.10);
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  }
+  .kroute{
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;gap:12px;
+    padding:12px 14px;border-radius:10px;
+    background:linear-gradient(90deg,
+      color-mix(in srgb,var(--c,#5e9eff) 8%,transparent),
+      color-mix(in srgb,var(--c,#5e9eff) 2%,transparent));
+    border:1px solid color-mix(in srgb,var(--c,#5e9eff) 18%,transparent);
+  }
+  .kroute::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(90deg,
+      transparent 0%,
+      color-mix(in srgb,var(--c,#5e9eff) 22%,transparent) 50%,
+      transparent 100%);
+    transform:translateX(-100%);
+    animation:krouteSweep 5s ease-in-out infinite;
+    animation-delay:var(--delay,0s);
+  }
+  @keyframes krouteSweep{
+    0%,30%{transform:translateX(-100%)}
+    55%,100%{transform:translateX(100%)}
+  }
+  .kr-arrow{
+    flex:none;
+    width:24px;height:24px;border-radius:50%;
+    display:grid;place-items:center;
+    background:color-mix(in srgb,var(--c,#5e9eff) 22%,transparent);
+    color:var(--c,#5e9eff);font:600 13px/1 Inter,sans-serif;
+  }
+  .kr-name{
+    font:600 12px/1 Inter,sans-serif;color:var(--c,#5e9eff);
+    letter-spacing:.04em;
+  }
+  .kr-cargo{
+    font:400 12px/1.3 Inter,sans-serif;color:#9892ad;
+    flex:1;letter-spacing:.005em;
+  }
+
   @media (prefers-reduced-motion:reduce){
-    .eblock,.ncard{transition:none;opacity:1;transform:none}
-    .echos-showcase.in .ncard.to-focus{animation:none}
+    .kchip{opacity:1;transform:none;transition:none}
+    .echos-showcase.in .kw{animation:none}
+    .kviz-spine::after,.kviz-meta-r .pulse,.kroute::after{animation:none}
+    .kviz-spine::after{display:none}
   }
 
   /* ─── Spark teaser ────────────────────────── */
@@ -1007,8 +1090,10 @@
     }
     .echos-showcase{padding:48px 32px}
     .echos-showcase-header{margin-bottom:36px}
-    .echos-editor{padding:24px 22px}
-    .echos-nova-pane{padding:24px 22px}
+    .kviz{padding:24px 22px 22px}
+    .kviz-grid{grid-template-columns:1fr;gap:24px}
+    .kviz-spine{display:none}
+    .kviz-out{padding:0;border-top:1px dashed rgba(155,130,255,.18);padding-top:22px}
     .spark-teaser{grid-template-columns:1fr;padding:36px 28px;gap:28px}
     .cycle-stage{
       aspect-ratio:auto;max-width:520px;
@@ -1039,12 +1124,12 @@
     .focus-feature{padding:40px 24px;border-radius:18px}
     .focus-feature h3{font-size:26px}
     .echos-showcase{padding:36px 22px;border-radius:18px}
-    .echos-mockup{border-radius:12px}
-    .echos-chrome{padding:9px 12px}
-    .echos-chrome .url{font-size:10.5px}
-    .echos-pane{grid-template-columns:1fr}
-    .echos-editor{padding:22px 18px}
-    .echos-nova-pane{padding:22px 18px;border-left:none;border-top:1px solid #1a1828}
+    .kviz{padding:20px 18px;border-radius:14px}
+    .kviz-meta{font-size:10px;letter-spacing:.10em}
+    .kviz-meta-l .squig{display:none}
+    .kviz-source p{font-size:13.5px;line-height:1.65}
+    .kviz-routes{grid-template-columns:1fr;gap:8px}
+    .kr-cargo{font-size:11.5px}
     .spark-teaser{padding:28px 20px;border-radius:14px}
     .footer-inner{flex-direction:column;text-align:center;gap:14px}
     .final{padding:96px 0}
@@ -1319,50 +1404,67 @@
           <p class="body">La libreta académica con bloques semánticos: Concepto, Definición, Duda, Fecha, Tarea. Nova lee cada clase, extrae lo importante con cita literal y manda las fechas a Focus como sugerencia. Tu cuaderno sigue siendo tuyo.</p>
         </header>
 
-        <div class="echos-mockup" aria-hidden="true">
-          <div class="echos-chrome">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="url"><b>kairos.app</b> · Biología · Clase 8 — Mitosis y meiosis</span>
+        <div class="kviz" aria-hidden="true">
+          <div class="kviz-meta">
+            <span class="kviz-meta-l">
+              <span class="squig"></span>
+              Apuntes · Biología · 25 abr
+            </span>
+            <span class="kviz-meta-r">
+              <span class="pulse"></span>
+              Nova leyendo
+            </span>
           </div>
-          <div class="echos-pane">
-            <div class="echos-editor">
-              <div class="echos-editor-title">Clase 8 — Mitosis y meiosis</div>
-              <div class="echos-editor-meta">Biología · 25 abr · Analizada por Nova</div>
-              <div class="echos-editor-stack">
-                <div class="eblock" style="--block-color:#f4f1fb;--i:0">
-                  <span class="eblock-tag">Concepto</span>
-                  <p class="eblock-h">Mitosis</p>
-                  <p class="eblock-p">División celular que produce dos células hijas idénticas a la madre. Cuatro fases: profase, metafase, anafase, telofase.</p>
-                </div>
-                <div class="eblock" style="--block-color:#9b82ff;--i:1">
-                  <span class="eblock-tag">Definición</span>
-                  <p class="eblock-p">Cromosoma homólogo: par con la misma información genética.</p>
-                </div>
-                <div class="eblock" style="--block-color:#f4b454;--i:2">
-                  <span class="eblock-tag">Duda</span>
-                  <p class="eblock-p">¿Por qué la meiosis necesita dos divisiones?</p>
-                </div>
-                <div class="eblock" style="--block-color:#8da4ff;--i:3">
-                  <span class="eblock-tag">Fecha</span>
-                  <p class="eblock-p"><b>Examen parcial</b> — 30 abr</p>
-                </div>
+
+          <div class="kviz-grid">
+            <div class="kviz-source">
+              <div class="kviz-source-label">Texto en bruto</div>
+              <p>
+                Hoy vimos <em class="kw" style="--kw-c:#b69bff;--i:0">mitosis</em> — división celular que produce dos células hijas idénticas a la madre. Cuatro fases: profase, metafase, anafase, telofase.
+              </p>
+              <p>
+                Definimos <em class="kw" style="--kw-c:#7da2ff;--i:1">cromosoma homólogo</em> como par con la misma información genética. Quedó la duda: <em class="kw" style="--kw-c:#f4b454;--i:2">¿por qué la meiosis necesita dos divisiones?</em>
+              </p>
+              <p>
+                El profe avisó: <em class="kw" style="--kw-c:#ff8db4;--i:3">examen parcial el 30 de abril</em>.
+              </p>
+            </div>
+
+            <div class="kviz-spine"></div>
+
+            <div class="kviz-out">
+              <div class="kviz-out-label">Nova ordena</div>
+              <div class="kchip" style="--c:#b69bff;--i:0">
+                <span class="kchip-tag">Concepto</span>
+                <span class="kchip-text">Mitosis</span>
+                <span class="kchip-sub">División celular · 4 fases</span>
+              </div>
+              <div class="kchip" style="--c:#7da2ff;--i:1">
+                <span class="kchip-tag">Definición</span>
+                <span class="kchip-text">Cromosoma homólogo</span>
+              </div>
+              <div class="kchip" style="--c:#f4b454;--i:2">
+                <span class="kchip-tag">Duda abierta</span>
+                <span class="kchip-text">Meiosis · 2 divisiones</span>
+              </div>
+              <div class="kchip" style="--c:#ff8db4;--i:3">
+                <span class="kchip-tag">Fecha</span>
+                <span class="kchip-text">Examen · 30 abr</span>
               </div>
             </div>
-            <aside class="echos-nova-pane">
-              <div class="echos-nova-head">Nova encontró</div>
-              <div class="ncard" style="--i:0">
-                <span class="ncard-tag">Pregunta de examen</span>
-                <p class="ncard-p">¿Qué diferencia clave hay entre mitosis y meiosis?</p>
-              </div>
-              <div class="ncard" style="--i:1">
-                <span class="ncard-tag">Concepto · 93%</span>
-                <p class="ncard-p">Cita: <em>"División celular que produce dos células idénticas..."</em></p>
-              </div>
-              <div class="ncard to-focus" style="--i:2">
-                <span class="ncard-tag">Para Focus</span>
-                <p class="ncard-p"><b>Examen el 30 abr</b> — bloque de estudio sugerido el 28</p>
-              </div>
-            </aside>
+          </div>
+
+          <div class="kviz-routes">
+            <div class="kroute" style="--c:#5e9eff;--delay:0s">
+              <span class="kr-arrow">→</span>
+              <span class="kr-name">Focus</span>
+              <span class="kr-cargo">bloque de estudio sugerido · 28 abr</span>
+            </div>
+            <div class="kroute" style="--c:#F97316;--delay:1.6s">
+              <span class="kr-arrow">→</span>
+              <span class="kr-name">Spark</span>
+              <span class="kr-cargo">3 flashcards generadas</span>
+            </div>
           </div>
         </div>
       </article>
