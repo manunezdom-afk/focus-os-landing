@@ -7,7 +7,7 @@
 <meta name="color-scheme" content="dark">
 
 <title>FOCUS OS — La forma seria de organizar tu día</title>
-<meta name="description" content="Un sistema operativo para tu productividad. Hoy empieza por Focus, el calendario inteligente con IA. Kairos y Spark llegan después.">
+<meta name="description" content="Un sistema operativo para tu productividad. Focus, Kairos y Spark — tres apps, una sola Nova al centro. Las tres disponibles hoy.">
 
 <meta property="og:title" content="FOCUS OS — La forma seria de organizar tu día">
 <meta property="og:description" content="Un sistema operativo para tu productividad. Hoy empieza por Focus.">
@@ -159,9 +159,14 @@
     font-size:14px;font-weight:600;letter-spacing:-.015em;
   }
   .brand-mark{
-    width:26px;height:26px;border-radius:8px;
-    background:url("/icons/icon.svg") center/cover no-repeat;
-    box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 24px rgba(168,176,255,.34);
+    width:26px;height:26px;border-radius:50%;
+    background:conic-gradient(#9b82ff 0deg 120deg,#5e9eff 120deg 240deg,#F97316 240deg 360deg);
+    box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 20px rgba(167,139,250,.32);
+    position:relative;flex-shrink:0;
+  }
+  .brand-mark::after{
+    content:'';position:absolute;inset:30%;
+    background:#000;border-radius:50%;
   }
   .nav{display:flex;align-items:center;gap:30px;font-size:13.5px;color:var(--text-2);font-weight:400}
   .nav a{transition:color .15s}
@@ -1073,7 +1078,7 @@
     flex-wrap:wrap;gap:20px;
   }
   .footer-brand{display:flex;align-items:center;gap:10px;color:var(--text-2)}
-  .footer-brand .brand-mark{width:20px;height:20px;border-radius:6px}
+  .footer-brand .brand-mark{width:20px;height:20px;border-radius:50%}
   .footer-brand b{font-weight:600;color:var(--text-2);letter-spacing:-.01em}
   .footer-meta{font-size:12.5px;color:var(--text-3)}
   .footer-links{display:flex;gap:24px;font-size:12.5px}
@@ -1150,7 +1155,8 @@
     <nav class="nav">
       <a href="#sistema">Sistema</a>
       <a href="#focus">Focus</a>
-      <a href="#ecosistema">Ecosistema</a>
+      <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer">Kairos</a>
+      <a href="https://spark-sage-delta.vercel.app" target="_blank" rel="noopener noreferrer">Spark</a>
       <a href="#nova">Nova</a>
     </nav>
     <a href="https://usefocus.me" class="header-cta">
@@ -1165,10 +1171,11 @@
   <section class="hero" id="sistema">
     <div class="container-narrow">
       <h1 class="reveal">La forma seria <br>de organizar <span class="em">tu día</span>.</h1>
-      <p class="subhead reveal">Un sistema operativo para tu productividad. <b>Cinco pasos</b>, una sola <b>Nova</b> al centro. Hoy empieza por <b>Focus</b> — Kairos y Spark llegan después.</p>
+      <p class="subhead reveal">Un sistema operativo para tu productividad. <b>Cinco pasos</b>, una sola <b>Nova</b> al centro. <b>Focus</b>, <b>Kairos</b> y <b>Spark</b> — las tres disponibles hoy.</p>
       <div class="hero-ctas reveal">
         <a href="https://usefocus.me" class="btn btn-pill">Probar Focus</a>
-        <a href="#focus" class="btn btn-text">Ver Focus <span class="arrow">→</span></a>
+        <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="btn btn-text">Kairos <span class="arrow">→</span></a>
+        <a href="https://spark-sage-delta.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-text" style="color:#F97316">Spark <span class="arrow">→</span></a>
       </div>
     </div>
 
@@ -1227,7 +1234,7 @@
         <span class="sep">·</span>
         <span>funciona <b>offline</b></span>
         <span class="sep">·</span>
-        <span><b>sin cuenta</b> para empezar</span>
+        <span><b>3 apps</b> disponibles</span>
         <span class="sep">·</span>
         <span><b>gratis</b> en beta</span>
       </div>
@@ -1274,7 +1281,7 @@
       <!-- Family flow stage -->
       <div class="ecosystem-stage-wrap reveal">
         <div class="eco-stage">
-          <article class="eco-card echos">
+          <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="eco-card echos" style="cursor:pointer;text-decoration:none">
             <div class="eco-card-head">
               <span class="eco-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#9b82ff" stroke-width="1.7" stroke-linecap="round">
@@ -1292,8 +1299,8 @@
               <span class="eco-pill">Concepto · Mitosis</span>
               <span class="eco-pill">Fecha · 30 abr</span>
             </div>
-            <span class="eco-status">Próximamente</span>
-          </article>
+            <span class="eco-status live">Disponible</span>
+          </a>
 
           <article class="eco-card focus">
             <div class="eco-card-head">
@@ -1314,7 +1321,7 @@
             <span class="eco-status live">Disponible</span>
           </article>
 
-          <article class="eco-card spark">
+          <a href="https://spark-sage-delta.vercel.app" target="_blank" rel="noopener noreferrer" class="eco-card spark" style="cursor:pointer;text-decoration:none">
             <div class="eco-card-head">
               <span class="eco-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="#F97316" stroke="#F97316" stroke-width="1.2" stroke-linejoin="round">
@@ -1328,8 +1335,8 @@
               <span class="eco-pill">12 flashcards listas</span>
               <span class="eco-pill">Próximo · jueves</span>
             </div>
-            <span class="eco-status">Próximamente</span>
-          </article>
+            <span class="eco-status live">Disponible</span>
+          </a>
         </div>
 
         <div class="eco-flow" aria-hidden="true">
@@ -1399,9 +1406,10 @@
       <!-- Echos showcase -->
       <article class="echos-showcase reveal" style="margin-top:48px" aria-labelledby="echos-h">
         <header class="echos-showcase-header">
-          <span class="eyebrow echos">Kairos · Próximamente</span>
+          <span class="eyebrow echos">Kairos · Disponible</span>
           <h3 id="echos-h">El cuaderno que <br>ordena lo que aprendes.</h3>
           <p class="body">La libreta académica con bloques semánticos: Concepto, Definición, Duda, Fecha, Tarea. Nova lee cada clase, extrae lo importante con cita literal y manda las fechas a Focus como sugerencia. Tu cuaderno sigue siendo tuyo.</p>
+          <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="btn btn-text" style="padding-left:0;color:#9b82ff">Abrir Kairos <span class="arrow">→</span></a>
         </header>
 
         <div class="kviz" aria-hidden="true">
@@ -1472,10 +1480,11 @@
       <!-- Spark teaser -->
       <article class="spark-teaser reveal" aria-labelledby="spark-h">
         <div>
-          <span class="eyebrow spark">Spark · Próximamente</span>
+          <span class="eyebrow spark">Spark · Disponible</span>
           <h3 id="spark-h">El repaso que se queda.</h3>
           <p class="tagline">De los apuntes de Kairos al examen de Focus.</p>
           <p class="body">Las preguntas que Nova encuentra en tus apuntes se vuelven flashcards de repaso espaciado. Cuando Focus tiene un examen agendado, Spark prepara el material y bloquea las sesiones para que llegues listo.</p>
+          <a href="https://spark-sage-delta.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-text" style="padding-left:0;color:#F97316">Abrir Spark <span class="arrow">→</span></a>
         </div>
         <div class="spark-cards" aria-hidden="true">
           <div class="spark-card">
@@ -1537,15 +1546,17 @@
   <section class="final" id="empezar">
     <div class="container-narrow">
       <span class="eyebrow live reveal">Empieza hoy</span>
-      <h2 class="reveal">El sistema arranca <br>por el calendario.</h2>
-      <p class="subhead reveal">Focus es la primera puerta. Pruébalo y te llevas la experiencia completa de Nova. Kairos y Spark llegan cuando estén listas.</p>
-      <a href="https://usefocus.me" class="btn btn-pill reveal" style="font-size:16px;padding:15px 32px">
-        Probar Focus
-      </a>
+      <h2 class="reveal">Tres apps. <br>Un solo sistema.</h2>
+      <p class="subhead reveal">Focus para tu día. Kairos para tus clases. Spark para lo que quieres recordar. Las tres conectadas por Nova — disponibles hoy.</p>
+      <div class="hero-ctas reveal">
+        <a href="https://usefocus.me" class="btn btn-pill" style="font-size:16px;padding:15px 32px">Probar Focus</a>
+        <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="btn btn-text">Kairos <span class="arrow">→</span></a>
+        <a href="https://spark-sage-delta.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-text" style="color:#F97316">Spark <span class="arrow">→</span></a>
+      </div>
       <div class="final-meta reveal">
         <span>gratis en beta</span>
         <span class="sep">·</span>
-        <span>sin cuenta</span>
+        <span>3 apps disponibles</span>
         <span class="sep">·</span>
         <span>sin tracking</span>
         <span class="sep">·</span>
@@ -1562,10 +1573,12 @@
     <div class="footer-brand">
       <span class="brand-mark" aria-hidden="true"></span>
       <b>FOCUS&nbsp;OS</b>
-      <span style="color:var(--text-3)">— Sistema en construcción</span>
+      <span style="color:var(--text-3)">— Focus · Kairos · Spark</span>
     </div>
     <div class="footer-links">
-      <a href="https://usefocus.me">Probar Focus</a>
+      <a href="https://usefocus.me">Focus</a>
+      <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer">Kairos</a>
+      <a href="https://spark-sage-delta.vercel.app" target="_blank" rel="noopener noreferrer">Spark</a>
       <a href="#sistema">Sistema</a>
       <a href="#nova">Nova</a>
     </div>
