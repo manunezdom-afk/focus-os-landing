@@ -1,20 +1,69 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <defs>
-    <linearGradient id="focus-bg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#131620"></stop>
-      <stop offset="100%" stop-color="#07080B"></stop>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c0a16"/>
+      <stop offset="100%" stop-color="#000000"/>
     </linearGradient>
-    <radialGradient id="focus-ring" cx="50%" cy="50%" r="50%">
-      <stop offset="60%" stop-color="#A8B0FF" stop-opacity="0"></stop>
-      <stop offset="100%" stop-color="#6B75E8" stop-opacity="0.3"></stop>
+
+    <!-- Outer halo glow -->
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="50%" stop-color="#a78bfa" stop-opacity="0"/>
+      <stop offset="80%" stop-color="#a78bfa" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Sphere base — purple/pink nebula -->
+    <radialGradient id="orb" cx="38%" cy="34%" r="65%">
+      <stop offset="0%" stop-color="#fdf4ff"/>
+      <stop offset="14%" stop-color="#e9d5ff"/>
+      <stop offset="36%" stop-color="#c4b5fd"/>
+      <stop offset="58%" stop-color="#a855f7"/>
+      <stop offset="80%" stop-color="#6b21a8"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </radialGradient>
+
+    <!-- Specular highlight -->
+    <radialGradient id="highlight" cx="32%" cy="28%" r="22%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Pink/orange edge wash -->
+    <radialGradient id="warmEdge" cx="78%" cy="80%" r="42%">
+      <stop offset="0%" stop-color="#f0abfc" stop-opacity="0"/>
+      <stop offset="60%" stop-color="#f0abfc" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fb923c" stop-opacity="0.2"/>
+    </radialGradient>
+
+    <!-- Inner shadow / depth -->
+    <radialGradient id="depth" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/>
     </radialGradient>
   </defs>
-  <rect x="0" y="0" width="128" height="128" rx="28" fill="url(#focus-bg)"></rect>
-  <rect x="0" y="0" width="128" height="128" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"></rect>
 
-  <circle cx="64" cy="64" r="38" fill="none" stroke="#6B75E8" stroke-opacity="0.35" stroke-width="1"></circle>
-  <circle cx="64" cy="64" r="26" fill="none" stroke="#A8B0FF" stroke-opacity="0.55" stroke-width="1"></circle>
-  <circle cx="64" cy="64" r="14" fill="none" stroke="#E8EAFF" stroke-opacity="0.85" stroke-width="1.25"></circle>
-  <circle cx="64" cy="64" r="4" fill="#E8EAFF"></circle>
-  <circle cx="64" cy="64" r="50" fill="url(#focus-ring)"></circle>
+  <!-- Rounded square background -->
+  <rect x="0" y="0" width="128" height="128" rx="28" fill="url(#bg)"/>
+  <rect x="0" y="0" width="128" height="128" rx="28" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+
+  <!-- Outer halo -->
+  <circle cx="64" cy="64" r="56" fill="url(#halo)"/>
+
+  <!-- Main orb -->
+  <circle cx="64" cy="64" r="38" fill="url(#orb)"/>
+  <!-- Warm edge -->
+  <circle cx="64" cy="64" r="38" fill="url(#warmEdge)"/>
+  <!-- Depth shadow -->
+  <circle cx="64" cy="64" r="38" fill="url(#depth)"/>
+  <!-- Specular highlight -->
+  <circle cx="64" cy="64" r="38" fill="url(#highlight)"/>
+
+  <!-- Outer rim -->
+  <circle cx="64" cy="64" r="38" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="0.8"/>
+
+  <!-- Three orbital accent dots (the 3 apps: Kairos / Focus / Spark) -->
+  <circle cx="64" cy="14" r="2" fill="#9b82ff" opacity="0.95"/>
+  <circle cx="20" cy="98" r="2" fill="#5e9eff" opacity="0.95"/>
+  <circle cx="108" cy="98" r="2" fill="#fb923c" opacity="0.95"/>
 </svg>
