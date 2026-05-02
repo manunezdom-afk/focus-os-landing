@@ -3,21 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#06080f">
 <meta name="color-scheme" content="dark">
 
-<title>FOCUS OS — La forma seria de organizar tu día</title>
-<meta name="description" content="Un sistema operativo para tu productividad. Focus, Kairos y Spark — tres apps, una sola Nova al centro. Las tres disponibles hoy.">
+<title>Focus — El día que tu agenda no podía darte</title>
+<meta name="description" content="Focus es la app de productividad con Nova, una IA que organiza tu día, anticipa lo que viene y nunca toca tu calendario sin tu aprobación. Parte del ecosistema Focus OS.">
 
-<meta property="og:title" content="FOCUS OS — La forma seria de organizar tu día">
-<meta property="og:description" content="Un sistema operativo para tu productividad. Hoy empieza por Focus.">
+<meta property="og:title" content="Focus — El día que tu agenda no podía darte">
+<meta property="og:description" content="Productividad con Nova, una IA que propone, anticipa y nunca actúa sola. Empieza por Focus.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://usefocus.me">
 <meta property="og:image" content="/icons/icon.svg">
+<meta property="og:locale" content="es_ES">
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FOCUS OS — La forma seria de organizar tu día">
-<meta name="twitter:description" content="Un sistema operativo para tu productividad. Hoy empieza por Focus.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Focus — El día que tu agenda no podía darte">
+<meta name="twitter:description" content="Productividad con Nova, una IA que propone, anticipa y nunca actúa sola.">
 <meta name="twitter:image" content="/icons/icon.svg">
 
 <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
@@ -25,1580 +26,1717 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
 
 <style>
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{
-    margin:0;
-    background:#000;
-    color:#f5f5f7;
-    font:400 17px/1.5 Inter,-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",sans-serif;
-    overflow-x:hidden;
-    text-rendering:optimizeLegibility;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    font-feature-settings:"cv11","ss01","ss03";
+  /* ─── Reset / base ───────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: #06080f;
+    color: #f5f5f7;
+    font: 400 17px/1.55 Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv11", "ss01", "ss03";
   }
-  h1,h2,h3,h4{margin:0;letter-spacing:-.025em;font-weight:600;font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif}
-  p{margin:0}
-  a{color:inherit;text-decoration:none}
-  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
-  img,svg{max-width:100%;display:block}
-  ::selection{background:rgba(167,139,250,.32);color:#fff}
+  h1, h2, h3, h4, h5 {
+    margin: 0; letter-spacing: -.025em; font-weight: 600;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  img, svg { max-width: 100%; display: block; }
+  ::selection { background: rgba(167, 139, 250, .32); color: #fff; }
 
   /* ─── Tokens ─────────────────────────────── */
-  :root{
-    --bg: #000000;
-    --bg-2: #0a0a0c;
-    --bg-3: #111114;
-    --surface: #16161a;
-    --surface-2: #1c1c20;
-    --border: #1f1f24;
-    --border-2: #2c2c32;
-    --text: #f5f5f7;
-    --text-2: #a1a1a6;
-    --text-3: #6e6e73;
-    --text-4: #424248;
-    --accent: #a78bfa;
-    --accent-2: #8b5cf6;
-    --accent-3: #c4b5fd;
-    --accent-soft: rgba(167,139,250,.12);
-    --accent-line: rgba(167,139,250,.28);
-    --pink: #f0abfc;
-    --blue: #818cf8;
-    --orange: #fb923c;
-    --live: #30d158;
-    /* glass surfaces */
-    --glass: rgba(20,20,24,.55);
-    --glass-2: rgba(28,28,34,.65);
-    --glass-line: rgba(255,255,255,.08);
-    --glass-line-2: rgba(255,255,255,.12);
-    --space-1: 8px;
-    --space-2: 16px;
-    --space-3: 24px;
-    --space-4: 40px;
-    --space-5: 64px;
-    --space-6: 96px;
-    --space-7: 144px;
-    /* spotlight cursor coords (px from viewport) */
-    --mx: 50%;
-    --my: 30%;
+  :root {
+    --bg:           #06080f;
+    --bg-2:         #0a0c14;
+    --bg-3:         #10131c;
+    --surface:      #14171f;
+    --surface-2:    #1a1d27;
+    --border:       #1c1f2a;
+    --border-2:     #262934;
+    --text:         #f5f6f8;
+    --text-2:       #b1b5c4;
+    --text-3:       #7a8094;
+    --text-4:       #4a4f63;
+    --accent:       #a78bfa;
+    --accent-2:     #8b5cf6;
+    --accent-3:     #c4b5fd;
+    --accent-deep:  #6e3aff;
+    --pink:         #f0abfc;
+    --blue:         #818cf8;
+    --orange:       #fb923c;
+    --live:         #30d158;
+    --nova-core:    #E8EAFF;
+    --nova-mid:     #A8B0FF;
+    --nova-glow:    #6B75E8;
+    /* Glass */
+    --glass:        rgba(20, 22, 30, .55);
+    --glass-2:      rgba(28, 30, 40, .65);
+    --glass-line:   rgba(255, 255, 255, .08);
+    --glass-line-2: rgba(255, 255, 255, .14);
+    /* Spacing */
+    --space-1: 8px;  --space-2: 16px; --space-3: 24px;
+    --space-4: 40px; --space-5: 64px; --space-6: 96px; --space-7: 144px;
+    /* Cursor spotlight */
+    --mx: 50%; --my: 30%;
+    /* Easing */
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
   }
 
-  /* ─── Modern utilities ─────────────────── */
-  .glass{
-    background:var(--glass);
-    backdrop-filter:saturate(160%) blur(18px);
-    -webkit-backdrop-filter:saturate(160%) blur(18px);
-    border:1px solid var(--glass-line);
+  /* ─── Typography utilities ───────────────── */
+  .container       { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .container-narrow{ max-width: 920px;  margin: 0 auto; padding: 0 32px; }
+  .container-wide  { max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+  .section { padding: 144px 0; position: relative; }
+  .center  { text-align: center; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 500 12.5px/1 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent);
+    padding: 6px 12px;
+    background: rgba(167, 139, 250, .07);
+    border: 1px solid rgba(167, 139, 250, .18);
+    border-radius: 980px;
+    margin-bottom: 28px;
   }
-  .gradient-text{
-    background:linear-gradient(135deg,#fff 0%,#e9d5ff 35%,#a78bfa 70%,#818cf8 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
+  .eyebrow.live    { color: var(--live); background: rgba(48, 209, 88, .08); border-color: rgba(48, 209, 88, .22); }
+  .eyebrow.muted   { color: var(--text-3); background: rgba(255, 255, 255, .03); border-color: var(--border); }
+  .eyebrow.echos   { color: #b69bff; background: rgba(155, 130, 255, .08); border-color: rgba(155, 130, 255, .22); }
+  .eyebrow.spark   { color: var(--orange); background: rgba(251, 146, 60, .08); border-color: rgba(251, 146, 60, .22); }
+  .eyebrow .dot    {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor; box-shadow: 0 0 8px currentColor;
   }
-  .gradient-text-warm{
-    background:linear-gradient(135deg,#fff 0%,#fed7aa 50%,#fb923c 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
+  .eyebrow.live .dot { animation: livePulse 2s ease-out infinite; }
+  @keyframes livePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(48,209,88,.55); }
+    70%  { box-shadow: 0 0 0 7px rgba(48,209,88,0); }
+    100% { box-shadow: 0 0 0 0 rgba(48,209,88,0); }
   }
 
-  /* ─── Layout ─────────────────────────────── */
-  .container{max-width:1180px;margin:0 auto;padding:0 32px}
-  .container-narrow{max-width:880px;margin:0 auto;padding:0 32px}
-  .section{padding:144px 0}
-
-  /* ─── Type ───────────────────────────────── */
-  .eyebrow{
-    display:inline-block;
-    font-size:13px;font-weight:500;letter-spacing:.005em;
-    color:var(--accent);
-    margin-bottom:20px;
+  h1 {
+    font-size: clamp(48px, 8vw, 104px);
+    line-height: 1.0; letter-spacing: -.04em; font-weight: 600;
   }
-  .eyebrow.live{color:var(--live)}
-  .eyebrow.muted{color:var(--text-3)}
-  .eyebrow.echos{color:#9b82ff}
-  .eyebrow.spark{color:#F97316}
-
-  h1{
-    font-size:clamp(44px,7.5vw,96px);
-    line-height:1.04;letter-spacing:-.035em;font-weight:600;
+  h2 {
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.06; letter-spacing: -.03em; font-weight: 600;
   }
-  h2{
-    font-size:clamp(34px,5vw,64px);
-    line-height:1.06;letter-spacing:-.03em;font-weight:600;
-  }
-  h3{font-size:clamp(22px,2.4vw,28px);font-weight:600;letter-spacing:-.02em;line-height:1.18}
-  h4{font-size:19px;font-weight:600;letter-spacing:-.015em;line-height:1.3}
+  h3 { font-size: clamp(22px, 2.4vw, 28px); font-weight: 600; letter-spacing: -.02em; line-height: 1.18; }
+  h4 { font-size: 19px; font-weight: 600; letter-spacing: -.015em; line-height: 1.3; }
 
-  .subhead{
-    font-size:clamp(18px,1.7vw,22px);
-    line-height:1.45;color:var(--text-2);
-    max-width:620px;font-weight:400;
-    letter-spacing:-.01em;
+  .subhead {
+    font-size: clamp(17px, 1.6vw, 21px);
+    line-height: 1.5; color: var(--text-2);
+    max-width: 640px; font-weight: 400; letter-spacing: -.005em;
   }
-  .subhead b,.subhead strong{color:var(--text);font-weight:500}
+  .subhead b, .subhead strong { color: var(--text); font-weight: 500; }
+  .center .subhead { margin-left: auto; margin-right: auto; }
 
-  .body{
-    font-size:16px;line-height:1.55;color:var(--text-2);
-    max-width:540px;
+  .body {
+    font-size: 16px; line-height: 1.6; color: var(--text-2); max-width: 540px;
   }
-  .body b,.body strong{color:var(--text);font-weight:500}
+  .body b, .body strong { color: var(--text); font-weight: 500; }
 
-  .center{text-align:center}
-  .center .subhead{margin-left:auto;margin-right:auto}
+  /* Gradient text — Nova-toned */
+  .grad-text {
+    background: linear-gradient(135deg, #fff 0%, #e9d5ff 30%, #a78bfa 60%, #818cf8 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .grad-text-warm {
+    background: linear-gradient(135deg, #fff 0%, #fed7aa 50%, #fb923c 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .grad-text-blue {
+    background: linear-gradient(135deg, #fff 0%, #c7d2fe 35%, #6366f1 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .serif-em {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic; font-weight: 400;
+    letter-spacing: -.015em;
+  }
 
   /* ─── Buttons ────────────────────────────── */
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:6px;
-    font-size:15px;font-weight:500;letter-spacing:-.01em;
-    transition:transform .2s cubic-bezier(.4,0,.2,1),background .2s,color .2s,opacity .2s;
-    white-space:nowrap;
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-size: 15px; font-weight: 500; letter-spacing: -.01em;
+    transition: transform .25s var(--ease-out), background .25s, color .2s, box-shadow .3s;
+    white-space: nowrap; position: relative;
   }
-  .btn-pill{
-    background:var(--accent);color:#fff;
-    padding:13px 26px;
-    border-radius:980px;
+  .btn-pill {
+    background: linear-gradient(180deg, #b89dff 0%, #8b5cf6 100%);
+    color: #fff; padding: 14px 28px; border-radius: 980px;
+    font-weight: 600;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .18),
+      0 14px 36px -12px rgba(167, 139, 250, .65),
+      0 0 60px -22px rgba(167, 139, 250, .55);
+    overflow: hidden;
   }
-  .btn-pill:hover{background:var(--accent-2);transform:scale(1.02)}
-  .btn-text{
-    color:var(--accent);
-    padding:13px 8px;
+  .btn-pill::after {
+    content: ''; position: absolute; inset: 0; border-radius: 980px;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .22) 50%, transparent 70%);
+    opacity: 0; transition: opacity .35s; pointer-events: none;
   }
-  .btn-text:hover{color:var(--text)}
-  .btn-text .arrow{transition:transform .2s}
-  .btn-text:hover .arrow{transform:translateX(3px)}
-  .arrow{font-size:13px;line-height:1;transform:translateY(-1px)}
+  .btn-pill:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .25),
+      0 18px 44px -12px rgba(167, 139, 250, .8),
+      0 0 70px -16px rgba(167, 139, 250, .7);
+  }
+  .btn-pill:hover::after { opacity: 1; }
+  .btn-ghost {
+    color: var(--text); padding: 13px 22px;
+    border: 1px solid var(--glass-line);
+    background: var(--glass);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border-radius: 980px;
+  }
+  .btn-ghost:hover {
+    background: var(--glass-2);
+    border-color: var(--glass-line-2);
+    transform: translateY(-1px);
+  }
+  .btn-text {
+    color: var(--accent); padding: 12px 6px;
+  }
+  .btn-text:hover { color: var(--text); }
+  .btn-text .arrow { transition: transform .2s; }
+  .btn-text:hover .arrow { transform: translateX(3px); }
+  .arrow { font-size: 13px; line-height: 1; transform: translateY(-1px); display: inline-block; }
 
-  /* ─── Floating glass pill nav ────────────── */
-  .site-header{
-    position:fixed;top:18px;left:50%;
-    transform:translateX(-50%);
-    z-index:50;
-    width:min(96%,920px);
-    border-radius:980px;
-    background:rgba(10,10,12,.6);
-    backdrop-filter:saturate(180%) blur(22px);
-    -webkit-backdrop-filter:saturate(180%) blur(22px);
-    border:1px solid rgba(255,255,255,.08);
+  /* ─── Floating header ────────────────────── */
+  .site-header {
+    position: fixed; top: 16px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    width: min(96%, 920px);
+    border-radius: 980px;
+    background: rgba(10, 12, 20, .58);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid var(--glass-line);
     box-shadow:
-      0 1px 0 rgba(255,255,255,.04) inset,
-      0 18px 50px -20px rgba(0,0,0,.6),
-      0 0 0 1px rgba(167,139,250,.04);
-    transition:transform .3s ease,box-shadow .3s ease;
+      inset 0 1px 0 rgba(255, 255, 255, .04),
+      0 18px 50px -20px rgba(0, 0, 0, .6),
+      0 0 0 1px rgba(167, 139, 250, .04);
+    transition: box-shadow .3s ease, background .3s ease;
   }
-  .site-header.scrolled{
+  .site-header.scrolled {
+    background: rgba(10, 12, 20, .82);
     box-shadow:
-      0 1px 0 rgba(255,255,255,.05) inset,
-      0 24px 60px -20px rgba(0,0,0,.7),
-      0 0 0 1px rgba(167,139,250,.08);
+      inset 0 1px 0 rgba(255, 255, 255, .06),
+      0 24px 60px -20px rgba(0, 0, 0, .75),
+      0 0 0 1px rgba(167, 139, 250, .1);
   }
-  .site-header-inner{
-    padding:8px 8px 8px 18px;
-    display:flex;align-items:center;justify-content:space-between;gap:18px;
+  .site-header-inner {
+    padding: 8px 8px 8px 18px;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
   }
-  .brand{
-    display:flex;align-items:center;gap:9px;
-    font-size:13.5px;font-weight:600;letter-spacing:-.015em;
-    color:var(--text);
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font: 600 13.5px/1 Inter, sans-serif; letter-spacing: -.015em;
+    color: var(--text);
   }
-  .brand-mark{
-    width:26px;height:26px;border-radius:50%;
-    position:relative;flex-shrink:0;
+  .brand-mark {
+    width: 26px; height: 26px; border-radius: 50%;
+    position: relative; flex-shrink: 0;
     background:
-      radial-gradient(circle at 32% 28%,#fdf4ff 0%,#e9d5ff 14%,#c4b5fd 36%,#a855f7 60%,#5b21b6 85%,#1e1b4b 100%);
+      radial-gradient(circle at 32% 28%, #fdf4ff 0%, #e9d5ff 14%, #c4b5fd 36%, #a855f7 60%, #5b21b6 85%, #1e1b4b 100%);
     box-shadow:
-      0 0 0 1px rgba(167,139,250,.35) inset,
-      0 0 0 1px rgba(255,255,255,.12),
-      0 0 18px rgba(167,139,250,.5),
-      0 0 32px rgba(167,139,250,.22),
-      inset -2px -2px 5px rgba(0,0,0,.35);
+      inset 0 0 0 1px rgba(167, 139, 250, .35),
+      0 0 0 1px rgba(255, 255, 255, .12),
+      0 0 18px rgba(167, 139, 250, .5),
+      0 0 32px rgba(167, 139, 250, .22),
+      inset -2px -2px 5px rgba(0, 0, 0, .35);
+    animation: brandBreath 5s ease-in-out infinite;
   }
-  /* Specular highlight on the orb */
-  .brand-mark::before{
-    content:'';position:absolute;
-    left:18%;top:14%;width:34%;height:30%;
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(255,255,255,.85) 0%,rgba(255,255,255,.15) 50%,transparent 80%);
-    filter:blur(1px);
-    pointer-events:none;
+  .brand-mark::before {
+    content: ''; position: absolute;
+    left: 18%; top: 14%; width: 34%; height: 30%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, .85) 0%, rgba(255, 255, 255, .15) 50%, transparent 80%);
+    filter: blur(1px); pointer-events: none;
   }
-  /* Warm pink/orange edge wash — hint of the 3-app ecosystem */
-  .brand-mark::after{
-    content:'';position:absolute;inset:0;border-radius:50%;
-    background:radial-gradient(circle at 78% 82%,rgba(240,171,252,.35) 0%,rgba(251,146,60,.18) 50%,transparent 70%);
-    pointer-events:none;
+  .brand-mark::after {
+    content: ''; position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 78% 82%, rgba(240, 171, 252, .35) 0%, rgba(251, 146, 60, .18) 50%, transparent 70%);
+    pointer-events: none;
   }
-  .nav{
-    display:flex;align-items:center;gap:4px;
-    font-size:13px;color:var(--text-2);font-weight:500;
+  @keyframes brandBreath {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.04); }
   }
-  .nav a{
-    padding:7px 12px;border-radius:980px;
-    transition:color .15s,background .15s;
+  .brand-os {
+    font: 500 9px/1 'JetBrains Mono', monospace;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--text-3); margin-left: 2px;
   }
-  .nav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
-  .header-cta{
-    display:inline-flex;align-items:center;gap:6px;
-    font-size:13px;font-weight:600;color:#fff;
-    padding:9px 16px;border-radius:980px;
-    background:linear-gradient(180deg,#a78bfa 0%,#8b5cf6 100%);
+  .nav {
+    display: flex; align-items: center; gap: 4px;
+    font: 500 13px/1 Inter, sans-serif; color: var(--text-2);
+  }
+  .nav a {
+    padding: 8px 14px; border-radius: 980px;
+    transition: color .15s, background .15s;
+  }
+  .nav a:hover { color: var(--text); background: rgba(255, 255, 255, .04); }
+  .header-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font: 600 13px/1 Inter, sans-serif; color: #fff;
+    padding: 10px 18px; border-radius: 980px;
+    background: linear-gradient(180deg, #b89dff 0%, #8b5cf6 100%);
     box-shadow:
-      0 0 0 1px rgba(255,255,255,.1) inset,
-      0 8px 22px -8px rgba(167,139,250,.6);
-    transition:transform .2s,box-shadow .2s;
+      inset 0 1px 0 rgba(255, 255, 255, .12),
+      0 8px 22px -8px rgba(167, 139, 250, .6);
+    transition: transform .2s, box-shadow .2s;
   }
-  .header-cta:hover{
-    transform:translateY(-1px);
+  .header-cta:hover {
+    transform: translateY(-1px);
     box-shadow:
-      0 0 0 1px rgba(255,255,255,.12) inset,
-      0 12px 30px -10px rgba(167,139,250,.8);
+      inset 0 1px 0 rgba(255, 255, 255, .18),
+      0 12px 30px -10px rgba(167, 139, 250, .85);
+  }
+
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0;
+    height: 2px; width: 0%;
+    background: linear-gradient(90deg, var(--nova-glow), var(--accent), var(--pink));
+    z-index: 60;
+    box-shadow: 0 0 12px rgba(167, 139, 250, .6);
+    transition: width .12s linear;
   }
 
   /* ─── Reveal animations ──────────────────── */
-  .reveal{
-    opacity:0;transform:translateY(24px);
-    transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1);
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
   }
-  .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none}
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-stagger > * {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+  }
+  .reveal-stagger.in > *               { opacity: 1; transform: none; }
+  .reveal-stagger.in > *:nth-child(1)  { transition-delay: 0s; }
+  .reveal-stagger.in > *:nth-child(2)  { transition-delay: .08s; }
+  .reveal-stagger.in > *:nth-child(3)  { transition-delay: .16s; }
+  .reveal-stagger.in > *:nth-child(4)  { transition-delay: .24s; }
+  .reveal-stagger.in > *:nth-child(5)  { transition-delay: .32s; }
+  .reveal-stagger.in > *:nth-child(6)  { transition-delay: .40s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
   }
 
-  /* ─── Hero — aurora mesh + spotlight ─────── */
-  .hero{
-    padding:160px 0 96px;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-    background:#000;
+  /* ─── HERO ───────────────────────────────── */
+  .hero {
+    padding: 168px 0 72px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
   }
   /* Aurora mesh — multiple animated radial gradients */
-  .hero::before{
-    content:'';position:absolute;inset:-10% -5% -10% -5%;
+  .hero::before {
+    content: ''; position: absolute; inset: -10% -5% -10% -5%;
     background:
-      radial-gradient(ellipse 50% 35% at 25% 18%, rgba(167,139,250,.22), transparent 60%),
-      radial-gradient(ellipse 40% 30% at 78% 22%, rgba(129,140,248,.20), transparent 60%),
-      radial-gradient(ellipse 55% 35% at 50% 60%, rgba(155,82,255,.16), transparent 65%),
-      radial-gradient(ellipse 45% 30% at 12% 75%, rgba(240,171,252,.10), transparent 60%),
-      radial-gradient(ellipse 35% 25% at 90% 80%, rgba(94,158,255,.10), transparent 60%);
-    filter:blur(20px);
-    animation:auroraDrift 22s ease-in-out infinite alternate;
-    pointer-events:none;z-index:0;
+      radial-gradient(ellipse 50% 35% at 22% 16%, rgba(167, 139, 250, .26), transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 22%, rgba(99, 102, 241, .22), transparent 60%),
+      radial-gradient(ellipse 55% 38% at 50% 62%, rgba(155, 82, 255, .18), transparent 65%),
+      radial-gradient(ellipse 45% 30% at 12% 78%, rgba(240, 171, 252, .10), transparent 60%),
+      radial-gradient(ellipse 35% 25% at 92% 78%, rgba(94, 158, 255, .12), transparent 60%);
+    filter: blur(24px);
+    animation: auroraDrift 22s ease-in-out infinite alternate;
+    pointer-events: none; z-index: 0;
   }
-  /* Spotlight — follows cursor on hero */
-  .hero::after{
-    content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-    background:radial-gradient(circle 380px at var(--mx) var(--my),rgba(167,139,250,.16),transparent 60%);
-    transition:background .12s;
+  /* Cursor spotlight */
+  .hero::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(circle 420px at var(--mx) var(--my), rgba(167, 139, 250, .14), transparent 60%);
+    transition: background .12s;
   }
-  /* Soft grain noise for depth */
-  .hero-noise{
-    position:absolute;inset:0;pointer-events:none;z-index:0;
-    opacity:.4;mix-blend-mode:overlay;
+  /* Constellation — subtle stars on top */
+  .hero-stars {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background-image:
-      radial-gradient(circle at 20% 30%,rgba(255,255,255,.02) 0,transparent 1px),
-      radial-gradient(circle at 70% 60%,rgba(255,255,255,.02) 0,transparent 1px),
-      radial-gradient(circle at 40% 80%,rgba(255,255,255,.02) 0,transparent 1px);
-    background-size:3px 3px;
+      radial-gradient(1.5px 1.5px at 18% 22%, rgba(255,255,255,.6), transparent 50%),
+      radial-gradient(1px 1px at 78% 18%, rgba(199, 210, 254, .5), transparent 50%),
+      radial-gradient(1.5px 1.5px at 32% 68%, rgba(255,255,255,.4), transparent 50%),
+      radial-gradient(1px 1px at 88% 70%, rgba(199, 210, 254, .55), transparent 50%),
+      radial-gradient(1.5px 1.5px at 12% 88%, rgba(255,255,255,.35), transparent 50%),
+      radial-gradient(1px 1px at 56% 12%, rgba(199, 210, 254, .5), transparent 50%),
+      radial-gradient(1px 1px at 65% 88%, rgba(255,255,255,.4), transparent 50%);
+    animation: starsTwinkle 6s ease-in-out infinite;
+    opacity: .8;
   }
-  @keyframes auroraDrift{
-    0%{transform:translate3d(0,0,0) scale(1)}
-    50%{transform:translate3d(-2%,1%,0) scale(1.03)}
-    100%{transform:translate3d(2%,-1%,0) scale(1.02)}
+  @keyframes auroraDrift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(-2%, 1%, 0) scale(1.04); }
+    100% { transform: translate3d(2%, -1%, 0) scale(1.02); }
   }
-  @media (prefers-reduced-motion:reduce){
-    .hero::before{animation:none}
+  @keyframes starsTwinkle {
+    0%, 100% { opacity: .6; }
+    50%      { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero::before, .hero-stars { animation: none; }
   }
 
+  .hero > .container,
   .hero > .container-narrow,
-  .hero > .container{position:relative;z-index:1}
+  .hero > .container-wide { position: relative; z-index: 2; }
 
-  /* Live status pill above headline */
-  .hero-pill{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:6px 14px 6px 10px;border-radius:980px;
-    background:rgba(20,20,24,.55);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    font:500 12.5px/1 Inter,sans-serif;
-    color:var(--text-2);letter-spacing:-.005em;
-    margin-bottom:32px;
-    box-shadow:0 8px 24px -8px rgba(0,0,0,.5);
+  /* Live status pill */
+  .hero-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px 6px 10px; border-radius: 980px;
+    background: rgba(20, 22, 30, .55);
+    border: 1px solid var(--glass-line);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    font: 500 12.5px/1 Inter, sans-serif;
+    color: var(--text-2); letter-spacing: -.005em;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, .5);
   }
-  .hero-pill .dot{
-    width:7px;height:7px;border-radius:50%;
-    background:var(--live);
-    box-shadow:0 0 0 0 rgba(48,209,88,.6);
-    animation:livePulse 2s ease-out infinite;
+  .hero-pill .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--live);
+    box-shadow: 0 0 0 0 rgba(48, 209, 88, .6);
+    animation: livePulse 2s ease-out infinite;
   }
-  .hero-pill b{color:var(--text);font-weight:600}
-  .hero-pill .sep{color:var(--text-4);margin:0 2px}
-  @keyframes livePulse{
-    0%{box-shadow:0 0 0 0 rgba(48,209,88,.6)}
-    70%{box-shadow:0 0 0 8px rgba(48,209,88,0)}
-    100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}
-  }
+  .hero-pill b { color: var(--text); font-weight: 600; }
+  .hero-pill .sep { color: var(--text-4); margin: 0 2px; }
 
-  .hero h1{
-    margin:0 auto 32px;max-width:13ch;
-    font-size:clamp(48px,8vw,108px);
-    line-height:1.0;letter-spacing:-.04em;font-weight:600;
+  .hero-content { text-align: center; max-width: 920px; margin: 0 auto; }
+  .hero h1 {
+    margin: 0 auto 28px; max-width: 14ch;
+    font-size: clamp(48px, 8.4vw, 110px);
+    line-height: .98; letter-spacing: -.045em; font-weight: 600;
   }
-  .hero h1 .em{
-    display:inline-block;
-    background:linear-gradient(135deg,#fff 0%,#e9d5ff 30%,#a78bfa 60%,#818cf8 90%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
+  .hero h1 .em {
+    background: linear-gradient(135deg, #fff 0%, #e9d5ff 28%, #a78bfa 58%, #818cf8 95%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    display: inline-block;
   }
-  .hero h1 .blur{
-    color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.18);
-    font-style:italic;
+  .hero .subhead {
+    margin: 0 auto 40px; max-width: 580px;
+    font-size: clamp(17px, 1.6vw, 20px);
   }
-  .hero .subhead{margin:0 auto 44px;max-width:580px;font-size:clamp(17px,1.6vw,21px)}
-  .hero-ctas{
-    display:flex;align-items:center;justify-content:center;
-    gap:14px;flex-wrap:wrap;margin-bottom:96px;
+  .hero-ctas {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; flex-wrap: wrap; margin-bottom: 24px;
   }
-  .hero .cycle-stage{margin-top:8px}
-  .hero .cycle-caption{margin-top:56px}
+  .hero-meta {
+    display: inline-flex; align-items: center; gap: 14px;
+    font: 500 12.5px/1 Inter, sans-serif; color: var(--text-3);
+    flex-wrap: wrap; justify-content: center;
+  }
+  .hero-meta b { color: var(--text-2); font-weight: 500; }
+  .hero-meta .sep { color: var(--text-4); }
 
-  /* Hero CTA upgrade — glow on primary */
-  .hero .btn-pill{
-    background:linear-gradient(180deg,#a78bfa 0%,#8b5cf6 100%);
-    padding:14px 28px;font-weight:600;
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.12) inset,
-      0 14px 36px -12px rgba(167,139,250,.7),
-      0 0 60px -20px rgba(167,139,250,.5);
-    position:relative;
-  }
-  .hero .btn-pill::after{
-    content:'';position:absolute;inset:0;border-radius:980px;
-    background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);
-    opacity:0;transition:opacity .35s;
-    pointer-events:none;
-  }
-  .hero .btn-pill:hover::after{opacity:1}
-  .hero .btn-pill:hover{
-    transform:translateY(-1px);
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.18) inset,
-      0 18px 44px -12px rgba(167,139,250,.85),
-      0 0 70px -16px rgba(167,139,250,.65);
-  }
+  /* Hero CTA — glow primary */
+  .hero .btn-pill { padding: 16px 32px; font-size: 16px; }
 
-  /* ─── Hero mockup — large, centered ──────── */
-  .hero-mockup-wrap{
-    max-width:760px;margin:0 auto;
-    position:relative;
-    padding:0 32px;
+  /* HERO MOCKUP — interactive Mi Día */
+  .hero-stage {
+    position: relative; margin: 96px auto 0;
+    max-width: 1080px;
+    perspective: 1800px;
+    padding: 0 24px;
   }
-  .hero-mockup-wrap::before{
-    content:'';position:absolute;inset:-40px -20px;
-    background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(167,139,250,.18), transparent 70%);
-    pointer-events:none;z-index:-1;
-  }
-  .mockup{
-    position:relative;
-    background:linear-gradient(180deg,#16161a 0%,#0e0e10 100%);
-    border:1px solid var(--border-2);
-    border-radius:18px;
-    padding:24px;
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.025) inset,
-      0 50px 100px -20px rgba(0,0,0,.65),
-      0 30px 60px -30px rgba(167,139,250,.18);
-  }
-  .mockup-head{
-    display:flex;align-items:center;justify-content:space-between;
-    padding-bottom:18px;margin-bottom:14px;
-    border-bottom:1px solid rgba(255,255,255,.06);
-  }
-  .mockup-title{font-weight:600;font-size:15px;letter-spacing:-.01em}
-  .mockup-date{font-size:12px;color:var(--text-3);letter-spacing:0}
-  .event{
-    display:grid;grid-template-columns:48px auto 1fr;
-    gap:14px;padding:11px 12px;border-radius:10px;
-    margin-bottom:4px;align-items:flex-start;
-    transition:background .15s;
-  }
-  .event:hover{background:rgba(255,255,255,.03)}
-  .event-time{
-    font-size:12.5px;color:var(--text-3);
-    padding-top:3px;letter-spacing:0;font-variant-numeric:tabular-nums;
-  }
-  .event-bar{
-    width:3px;border-radius:2px;align-self:stretch;
-  }
-  .event-bar.work{background:#5e9eff}
-  .event-bar.focus{background:#a78bfa}
-  .event-bar.personal{background:#ffd60a}
-  .event-bar.meet{background:#30d158}
-  .event-body{min-width:0}
-  .event-title{font-size:14.5px;font-weight:500;color:var(--text);line-height:1.3}
-  .event-meta{font-size:12.5px;color:var(--text-3);margin-top:2px}
-
-  .nova-prop{
-    margin-top:14px;padding:14px 16px;
-    background:linear-gradient(180deg,rgba(167,139,250,.08),rgba(167,139,250,.03));
-    border:1px solid var(--accent-line);
-    border-radius:12px;
-  }
-  .nova-prop-head{
-    display:flex;align-items:center;gap:8px;
-    font-size:12px;font-weight:500;color:var(--accent);
-    margin-bottom:6px;letter-spacing:-.005em;
-  }
-  .nova-prop-dot{
-    width:8px;height:8px;border-radius:50%;
-    background:radial-gradient(circle at 32% 30%,#e9d5ff,#a78bfa);
-    box-shadow:0 0 8px rgba(167,139,250,.6);
-  }
-  .nova-prop-body{font-size:13.5px;line-height:1.5;color:var(--text-2)}
-  .nova-prop-body b{color:var(--text);font-weight:500}
-  .nova-prop-actions{display:flex;gap:8px;margin-top:12px}
-  .mock-btn{
-    font-size:12px;font-weight:500;
-    padding:6px 14px;border-radius:980px;
-    border:1px solid transparent;cursor:default;
-    transition:background .15s;
-  }
-  .mock-btn.accept{background:var(--text);color:#000}
-  .mock-btn.later{border-color:var(--border-2);color:var(--text-2)}
-
-  /* ─── Trust strip ────────────────────────── */
-  .strip{
-    padding:36px 0;
-    background:var(--bg);
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-  }
-  .strip-row{
-    display:flex;justify-content:center;align-items:center;
-    gap:36px;flex-wrap:wrap;
-    font-size:13px;color:var(--text-3);font-weight:400;
-  }
-  .strip-row b{color:var(--text-2);font-weight:500}
-  .strip-row .sep{color:var(--text-4)}
-
-  /* ─── Sistema (cycle, redesigned) ─────────── */
-  .sistema{background:var(--bg-2);text-align:center;position:relative;overflow:hidden}
-  .sistema::before{
-    content:'';position:absolute;inset:0;
-    background:radial-gradient(circle at 50% 56%,rgba(167,139,250,.10),transparent 42%);
-    pointer-events:none;
-  }
-  .sistema .container{position:relative;z-index:1}
-  .sistema h2{margin:0 auto 24px;max-width:18ch}
-  .sistema .subhead{margin:0 auto 72px;max-width:42ch}
-
-  .cycle-stage{
-    position:relative;
-    width:100%;
-    max-width:780px;
-    aspect-ratio:1 / 1;
-    margin:0 auto;
-    text-align:left;
-  }
-  .cycle-orbit-svg{
-    position:absolute;inset:0;width:100%;height:100%;
-    pointer-events:none;
-    z-index:1;
-    overflow:visible;
-  }
-  .cycle-orbit-svg .ring{
-    stroke:rgba(167,139,250,.26);
-    stroke-width:1.2;
-    stroke-dasharray:3 7;
-    fill:none;
-  }
-  .cycle-orbit-svg .particle{filter:drop-shadow(0 0 10px rgba(167,139,250,.85))}
-
-  .cycle-orb{
-    position:absolute;left:50%;top:50%;
-    width:128px;height:128px;border-radius:50%;
+  .hero-stage::before {
+    content: ''; position: absolute; inset: -60px -40px -40px;
     background:
-      radial-gradient(circle at 32% 28%,rgba(255,255,255,.55) 0%,transparent 30%),
-      conic-gradient(from 200deg at 50% 50%,#6e3aff 0%,#a84dff 40%,#ff8fb1 70%,#6e3aff 100%);
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(167, 139, 250, .22), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(99, 102, 241, .14), transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .device-frame {
+    position: relative; z-index: 1;
+    background: linear-gradient(180deg, #16181f 0%, #0c0e15 100%);
+    border: 1px solid var(--border-2);
+    border-radius: 24px;
+    padding: 14px;
     box-shadow:
-      0 0 0 1px rgba(167,139,250,.35) inset,
-      0 0 100px -10px rgba(167,139,250,.6),
-      0 0 32px -8px rgba(255,255,255,.18);
-    z-index:2;
-    animation:cycleOrbBreath 6s ease-in-out infinite;
+      inset 0 1px 0 rgba(255, 255, 255, .04),
+      0 1px 0 rgba(255, 255, 255, .03),
+      0 60px 120px -30px rgba(0, 0, 0, .75),
+      0 30px 80px -30px rgba(167, 139, 250, .25);
+    transform-style: preserve-3d;
+    transform: rotateX(2deg);
   }
-  .cycle-orb::after{
-    content:'NOVA';
-    position:absolute;left:50%;top:calc(100% + 18px);transform:translateX(-50%);
-    font:600 10.5px/1 Inter,sans-serif;
-    letter-spacing:.22em;text-transform:uppercase;
-    color:#cab8ff;white-space:nowrap;
+  .device-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px 12px; border-bottom: 1px solid rgba(255, 255, 255, .05);
+    margin-bottom: 14px;
   }
-  @keyframes cycleOrbBreath{
-    0%,100%{transform:translate(-50%,-50%) scale(1)}
-    50%{transform:translate(-50%,-50%) scale(1.04)}
+  .device-bar .traffic {
+    display: flex; gap: 6px;
   }
-  @media (prefers-reduced-motion:reduce){
-    .cycle-orb{animation:none}
-    .cycle-orbit-svg .particle{display:none}
+  .device-bar .traffic span {
+    width: 11px; height: 11px; border-radius: 50%;
   }
-
-  .cycle-node{
-    position:absolute;
-    width:188px;
-    padding:14px 16px 16px;
-    background:linear-gradient(180deg,#15151a 0%,#0d0d11 100%);
-    border:1px solid var(--border-2);
-    border-radius:12px;
-    z-index:3;
-    transform:translate(-50%,-50%);
-    transition:border-color .25s ease,box-shadow .25s ease;
+  .device-bar .traffic span:nth-child(1) { background: #ff5f57; }
+  .device-bar .traffic span:nth-child(2) { background: #febc2e; }
+  .device-bar .traffic span:nth-child(3) { background: #28c840; }
+  .device-bar .url {
+    flex: 1; max-width: 320px; margin: 0 auto;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid var(--border);
+    border-radius: 6px; padding: 5px 12px;
+    font: 500 11.5px/1 'JetBrains Mono', monospace;
+    color: var(--text-3); text-align: center;
+    letter-spacing: .02em;
   }
-  .cycle-node:hover{
-    border-color:rgba(167,139,250,.34);
-    box-shadow:0 18px 44px -16px rgba(167,139,250,.32);
-    z-index:4;
-  }
-  .cycle-node-num{
-    display:inline-flex;align-items:center;gap:8px;
-    font:600 9.5px/1 Inter,sans-serif;
-    letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:8px;
-  }
-  .cycle-node-num .num{
-    color:#7a6ea8;font-variant-numeric:tabular-nums;
-    letter-spacing:.08em;
-  }
-  .cycle-node-desc{
-    font:400 12.5px/1.5 Inter,sans-serif;
-    color:var(--text-2);margin:0;
-    letter-spacing:-.005em;
+  .device-bar .url .lock {
+    color: var(--live); margin-right: 6px;
   }
 
-  /* Pentagon vertices on r=320 circle (precise to ±0.05%) */
-  .cycle-node.n1{left:50%;top:10%}
-  .cycle-node.n2{left:88%;top:37.6%}
-  .cycle-node.n3{left:73.5%;top:82.4%}
-  .cycle-node.n4{left:26.5%;top:82.4%}
-  .cycle-node.n5{left:12%;top:37.6%}
-
-  .cycle-caption{
-    max-width:580px;margin:64px auto 0;
-    text-align:center;
-    font:400 16px/1.65 Inter,sans-serif;
-    color:var(--text-2);
-    letter-spacing:-.005em;
-  }
-  .cycle-caption b{color:var(--text);font-weight:500}
-
-  /* ─── Apps section ───────────────────────── */
-  .apps{background:var(--bg);text-align:center}
-  .apps h2{margin:0 auto 24px;max-width:20ch}
-  .apps .subhead{margin-bottom:72px}
-
-  .focus-feature{
-    background:linear-gradient(180deg,#16161a 0%,#0e0e10 100%);
-    border:1px solid var(--border-2);
-    border-radius:24px;
-    padding:64px 56px;
-    margin-bottom:24px;
-    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-    gap:64px;align-items:center;text-align:left;
-    position:relative;overflow:hidden;
-  }
-  .focus-feature::before{
-    content:'';position:absolute;
-    top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;
-    background:radial-gradient(circle,rgba(167,139,250,.12) 0%,transparent 70%);
-    pointer-events:none;
-  }
-  .focus-feature .eyebrow{margin-bottom:16px}
-  .focus-feature h3{font-size:clamp(28px,3vw,40px);margin-bottom:16px;letter-spacing:-.025em}
-  .focus-feature .body{margin-bottom:28px;font-size:17px;max-width:none}
-  .focus-feature .feature-cta{
-    display:inline-flex;align-items:center;gap:6px;
-    color:var(--accent);font-size:15px;font-weight:500;
-    transition:color .15s;
-  }
-  .focus-feature .feature-cta:hover{color:var(--text)}
-
-  .focus-mini{
-    background:rgba(0,0,0,.4);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:18px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
-    position:relative;overflow:hidden;
-  }
-  .focus-mini::after{
-    content:'';position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(115deg,transparent 30%,rgba(167,139,250,.08) 50%,transparent 70%);
-    transform:translateX(-100%);
-  }
-  .focus-feature.in .focus-mini::after{
-    animation:focusMiniSheen 1.6s cubic-bezier(.4,0,.2,1) .2s forwards;
-  }
-  @keyframes focusMiniSheen{
-    to{transform:translateX(100%)}
-  }
-  .focus-mini-head{
-    display:flex;justify-content:space-between;align-items:center;
-    padding-bottom:12px;margin-bottom:10px;
-    border-bottom:1px solid rgba(255,255,255,.05);
-    font-size:13px;font-weight:600;
-  }
-  .focus-mini-head .d{color:var(--text-3);font-weight:400;font-size:11.5px}
-  .focus-mini-head .live-dot{
-    display:inline-block;width:6px;height:6px;border-radius:50%;
-    background:#30d158;margin-right:7px;vertical-align:middle;
-    box-shadow:0 0 0 0 rgba(48,209,88,.55);
-    animation:focusMiniDot 2.2s ease-out infinite;
-  }
-  @keyframes focusMiniDot{
-    0%{box-shadow:0 0 0 0 rgba(48,209,88,.55)}
-    70%{box-shadow:0 0 0 8px rgba(48,209,88,0)}
-    100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}
-  }
-  .focus-mini-row{
-    display:grid;grid-template-columns:42px 4px 1fr;
-    gap:10px;align-items:center;padding:7px 6px;border-radius:6px;
-    position:relative;
-    opacity:0;transform:translateX(-10px);
-    transition:opacity .55s cubic-bezier(.4,0,.2,1),
-               transform .55s cubic-bezier(.4,0,.2,1),
-               background-color .35s ease;
-  }
-  .focus-feature.in .focus-mini-row{opacity:1;transform:none}
-  .focus-feature.in .focus-mini-row:nth-of-type(1){transition-delay:.15s}
-  .focus-feature.in .focus-mini-row:nth-of-type(2){transition-delay:.28s}
-  .focus-feature.in .focus-mini-row:nth-of-type(3){transition-delay:.41s}
-  .focus-feature.in .focus-mini-row:nth-of-type(4){transition-delay:.54s}
-  .focus-feature.in .focus-mini-row:nth-of-type(5){transition-delay:.67s}
-  .focus-mini-row:hover{background:rgba(255,255,255,.025)}
-  .focus-mini-row .t{font-size:11.5px;color:var(--text-3);font-variant-numeric:tabular-nums;transition:color .3s ease}
-  .focus-mini-row .b{
-    height:20px;border-radius:2px;align-self:stretch;
-    transform:scaleY(.15);transform-origin:center;
-    transition:transform .55s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
-  }
-  .focus-feature.in .focus-mini-row .b{transform:scaleY(1)}
-  .focus-feature.in .focus-mini-row:nth-of-type(1) .b{transition-delay:.35s}
-  .focus-feature.in .focus-mini-row:nth-of-type(2) .b{transition-delay:.48s}
-  .focus-feature.in .focus-mini-row:nth-of-type(3) .b{transition-delay:.61s}
-  .focus-feature.in .focus-mini-row:nth-of-type(4) .b{transition-delay:.74s}
-  .focus-feature.in .focus-mini-row:nth-of-type(5) .b{transition-delay:.87s}
-  .focus-mini-row .b.a{background:#5e9eff}
-  .focus-mini-row .b.b{background:#a78bfa}
-  .focus-mini-row .b.c{background:#30d158}
-  .focus-mini-row .b.d{background:#ffd60a}
-  .focus-mini-row .l{font-size:13px;color:var(--text);font-weight:500;transition:color .3s ease}
-  .focus-mini-row.now{background:rgba(167,139,250,.09)}
-  .focus-mini-row.now .t{color:var(--text)}
-  .focus-mini-row.now .l{color:#fff}
-  .focus-mini-row.now .b.a{box-shadow:0 0 14px rgba(94,158,255,.7)}
-  .focus-mini-row.now .b.b{box-shadow:0 0 14px rgba(167,139,250,.75)}
-  .focus-mini-row.now .b.c{box-shadow:0 0 14px rgba(48,209,88,.7)}
-  .focus-mini-row.now .b.d{box-shadow:0 0 14px rgba(255,214,10,.7)}
-  @media (prefers-reduced-motion:reduce){
-    .focus-mini-row,.focus-mini-row .b{opacity:1;transform:none;transition:none}
-    .focus-mini::after,.focus-mini-head .live-dot{animation:none}
+  .device-content {
+    display: grid; grid-template-columns: 200px 1fr 320px;
+    gap: 14px; min-height: 480px;
   }
 
-  /* ─── Kairos showcase (abstract viz) ──────── */
-  .echos-showcase{
+  /* Sidebar in mockup */
+  .mock-side {
+    background: rgba(255, 255, 255, .015);
+    border: 1px solid rgba(255, 255, 255, .04);
+    border-radius: 14px;
+    padding: 16px 12px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .mock-side-h {
+    font: 600 10.5px/1 'JetBrains Mono', monospace;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--text-3); padding: 4px 10px 12px;
+  }
+  .mock-side-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 8px;
+    font: 500 13px/1 Inter, sans-serif; color: var(--text-2);
+    transition: background .15s;
+  }
+  .mock-side-item.active {
+    background: rgba(167, 139, 250, .12);
+    color: var(--text);
+  }
+  .mock-side-item .ic {
+    width: 14px; height: 14px;
+    color: var(--accent); flex-shrink: 0;
+  }
+  .mock-side-divider {
+    height: 1px; background: rgba(255, 255, 255, .04);
+    margin: 12px 8px;
+  }
+  .mock-side-foot {
+    margin-top: auto; padding: 10px;
+    display: flex; align-items: center; gap: 10px;
+    border-top: 1px solid rgba(255, 255, 255, .04);
+  }
+  .mock-avatar {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #a78bfa);
+    flex-shrink: 0;
+  }
+  .mock-avatar-txt {
+    font: 500 12px/1.2 Inter, sans-serif;
+    color: var(--text-2);
+  }
+  .mock-avatar-txt span { display: block; font-size: 10.5px; color: var(--text-3); margin-top: 2px; }
+
+  /* Day column */
+  .mock-day {
+    background: rgba(255, 255, 255, .02);
+    border: 1px solid rgba(255, 255, 255, .04);
+    border-radius: 14px;
+    padding: 18px 18px 14px;
+    overflow: hidden;
+  }
+  .mock-day-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 14px; margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+  }
+  .mock-day-title {
+    display: flex; align-items: center; gap: 10px;
+    font: 600 15px/1 Inter, sans-serif; letter-spacing: -.012em;
+  }
+  .mock-day-title .live-d {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--live); box-shadow: 0 0 0 0 rgba(48, 209, 88, .6);
+    animation: livePulse 2.2s ease-out infinite;
+  }
+  .mock-day-date {
+    font: 500 11.5px/1 'JetBrains Mono', monospace;
+    color: var(--text-3); letter-spacing: .04em;
+  }
+
+  .mock-events { display: flex; flex-direction: column; gap: 4px; }
+  .mock-event {
+    display: grid;
+    grid-template-columns: 52px 4px 1fr;
+    gap: 12px; align-items: flex-start;
+    padding: 10px 10px; border-radius: 10px;
+    transition: background .2s;
+    opacity: 0; transform: translateX(-12px);
+  }
+  .device-frame.in .mock-event {
+    animation: eventIn .65s var(--ease-out) forwards;
+  }
+  .device-frame.in .mock-event:nth-child(1) { animation-delay: .25s; }
+  .device-frame.in .mock-event:nth-child(2) { animation-delay: .42s; }
+  .device-frame.in .mock-event:nth-child(3) { animation-delay: .59s; }
+  .device-frame.in .mock-event:nth-child(4) { animation-delay: .76s; }
+  .device-frame.in .mock-event:nth-child(5) { animation-delay: .93s; }
+  @keyframes eventIn {
+    0%   { opacity: 0; transform: translateX(-12px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  .mock-event:hover { background: rgba(255, 255, 255, .025); }
+  .mock-event .t {
+    font: 500 12.5px/1.4 'JetBrains Mono', monospace;
+    color: var(--text-3); padding-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .mock-event .b {
+    width: 4px; align-self: stretch; border-radius: 3px;
+    background: var(--text-3);
+  }
+  .mock-event .b.work    { background: #5e9eff; box-shadow: 0 0 12px rgba(94, 158, 255, .5); }
+  .mock-event .b.focus   { background: #a78bfa; box-shadow: 0 0 12px rgba(167, 139, 250, .55); }
+  .mock-event .b.meet    { background: #30d158; box-shadow: 0 0 12px rgba(48, 209, 88, .5); }
+  .mock-event .b.personal{ background: #ffd60a; box-shadow: 0 0 12px rgba(255, 214, 10, .5); }
+  .mock-event-body { min-width: 0; }
+  .mock-event-title {
+    font: 500 13.5px/1.3 Inter, sans-serif;
+    color: var(--text); letter-spacing: -.005em;
+  }
+  .mock-event-meta {
+    font: 400 11.5px/1.4 Inter, sans-serif;
+    color: var(--text-3); margin-top: 2px;
+  }
+  .mock-event.now {
+    background: linear-gradient(90deg, rgba(167, 139, 250, .12), rgba(167, 139, 250, .04));
+  }
+  .mock-event.now .mock-event-title { color: #fff; }
+  .mock-event.now .t { color: var(--text-2); }
+  .mock-event.now::after {
+    content: 'AHORA'; position: absolute;
+    font: 600 9px/1 'JetBrains Mono', monospace;
+    letter-spacing: .14em; color: var(--accent);
+    margin-left: auto;
+    padding: 3px 7px;
+    background: rgba(167, 139, 250, .18);
+    border-radius: 999px;
+    align-self: center; justify-self: end;
+  }
+  .mock-event {
+    position: relative;
+  }
+
+  /* Nova panel — right sidebar in mockup */
+  .mock-nova {
     background:
-      radial-gradient(circle at 80% -10%,rgba(155,130,255,.16) 0%,transparent 55%),
-      radial-gradient(circle at 10% 120%,rgba(155,130,255,.08) 0%,transparent 60%),
-      linear-gradient(180deg,#0e0c1c 0%,#0a0814 100%);
-    border:1px solid var(--border-2);
-    border-radius:24px;
-    padding:64px 56px;
-    margin-bottom:24px;
-    text-align:left;
-    position:relative;overflow:hidden;
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(167, 139, 250, .12), transparent 70%),
+      rgba(255, 255, 255, .02);
+    border: 1px solid rgba(167, 139, 250, .14);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 14px;
   }
-  .echos-showcase-header{
-    max-width:640px;margin-bottom:48px;position:relative;z-index:1;
+  .mock-nova-head {
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, .05);
   }
-  .echos-showcase-header .eyebrow{margin-bottom:16px}
-  .echos-showcase-header h3{font-size:clamp(28px,3vw,40px);margin-bottom:16px;letter-spacing:-.025em;line-height:1.1}
-  .echos-showcase-header .body{font-size:17px;color:var(--text-2);max-width:none;line-height:1.55}
-
-  /* The viz canvas */
-  .kviz{
-    position:relative;z-index:1;
-    border:1px solid rgba(155,130,255,.14);
-    border-radius:18px;
+  .mock-nova-orb {
+    width: 22px; height: 22px; border-radius: 50%;
     background:
-      radial-gradient(ellipse at 50% 0%,rgba(155,130,255,.07) 0%,transparent 60%),
-      linear-gradient(180deg,#0b0916 0%,#070512 100%);
-    padding:28px 32px 24px;
-    overflow:hidden;
-    box-shadow:0 40px 80px -30px rgba(0,0,0,.7);
-  }
-  /* faint grid overlay for "lab" feel */
-  .kviz::before{
-    content:'';position:absolute;inset:0;pointer-events:none;opacity:.35;
-    background-image:
-      linear-gradient(rgba(155,130,255,.045) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(155,130,255,.045) 1px,transparent 1px);
-    background-size:48px 48px;
-    mask-image:radial-gradient(ellipse at 50% 50%,#000 30%,transparent 80%);
-    -webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 30%,transparent 80%);
-  }
-
-  .kviz-meta{
-    display:flex;align-items:center;justify-content:space-between;
-    font:500 11px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;
-    color:#7a7290;
-    padding-bottom:14px;margin-bottom:24px;
-    border-bottom:1px solid rgba(155,130,255,.10);
-    position:relative;z-index:2;
-  }
-  .kviz-meta-l{display:flex;align-items:center;gap:10px}
-  .kviz-meta-l .squig{
-    width:38px;height:8px;
-    background:repeating-linear-gradient(90deg,#3d365a 0,#3d365a 4px,transparent 4px,transparent 7px);
-    border-radius:1px;
-  }
-  .kviz-meta-r{display:flex;align-items:center;gap:8px;color:#b69bff}
-  .kviz-meta-r .pulse{
-    width:7px;height:7px;border-radius:50%;background:#b69bff;
-    box-shadow:0 0 0 0 rgba(182,155,255,.5);
-    animation:kvizPulse 2.2s ease-in-out infinite;
-  }
-  @keyframes kvizPulse{
-    0%,100%{box-shadow:0 0 0 0 rgba(182,155,255,.55);transform:scale(1)}
-    50%{box-shadow:0 0 0 8px rgba(182,155,255,0);transform:scale(1.15)}
-  }
-
-  /* main grid: source | spine | extracted */
-  .kviz-grid{
-    position:relative;z-index:2;
-    display:grid;
-    grid-template-columns:minmax(0,1.5fr) 28px minmax(0,1fr);
-    gap:0;align-items:stretch;
-  }
-
-  /* SOURCE — flowing class notes */
-  .kviz-source{
-    position:relative;padding:8px 4px 16px 0;
-  }
-  .kviz-source-label{
-    font:600 10px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;
-    color:#5e5773;margin-bottom:14px;
-    display:flex;align-items:center;gap:8px;
-  }
-  .kviz-source-label::before{
-    content:'';width:14px;height:1px;background:#3d365a;
-  }
-  .kviz-source p{
-    font:400 14.5px/1.7 'Inter',sans-serif;
-    color:#9892ad;margin:0 0 12px;letter-spacing:.005em;
-  }
-  .kviz-source p:last-child{margin-bottom:0}
-
-  /* inline highlights (semantic chips inside text) */
-  .kw{
-    position:relative;
-    color:var(--kw-c,#b69bff);font-style:normal;font-weight:500;
-    padding:1px 5px;margin:0 1px;border-radius:4px;
-    background:color-mix(in srgb,var(--kw-c,#b69bff) 12%,transparent);
-    box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kw-c,#b69bff) 22%,transparent);
-    transition:background .3s ease,box-shadow .3s ease;
-  }
-  .echos-showcase.in .kw{
-    animation:kwShimmer 5.5s ease-in-out infinite;
-    animation-delay:calc(var(--i,0) * 700ms + 600ms);
-  }
-  @keyframes kwShimmer{
-    0%,88%,100%{
-      background:color-mix(in srgb,var(--kw-c,#b69bff) 12%,transparent);
-      box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kw-c,#b69bff) 22%,transparent);
-    }
-    92%{
-      background:color-mix(in srgb,var(--kw-c,#b69bff) 28%,transparent);
-      box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kw-c,#b69bff) 55%,transparent),
-                 0 0 18px -2px color-mix(in srgb,var(--kw-c,#b69bff) 50%,transparent);
-    }
-  }
-
-  /* SPINE — Nova beam between source and chips */
-  .kviz-spine{
-    position:relative;
-  }
-  .kviz-spine::before{
-    content:'';position:absolute;left:50%;top:8px;bottom:8px;width:1px;
-    transform:translateX(-50%);
-    background:linear-gradient(180deg,
-      transparent 0%,
-      rgba(155,130,255,.08) 8%,
-      rgba(155,130,255,.32) 50%,
-      rgba(155,130,255,.08) 92%,
-      transparent 100%);
-  }
-  .kviz-spine::after{
-    content:'';position:absolute;left:50%;top:0;width:7px;height:7px;
-    transform:translateX(-50%);
-    border-radius:50%;
-    background:#d3c1ff;
-    box-shadow:0 0 14px 2px rgba(182,155,255,.7);
-    animation:kvizBeamTravel 4.5s linear infinite;
-  }
-  @keyframes kvizBeamTravel{
-    0%{top:0;opacity:0}
-    8%{opacity:1}
-    92%{opacity:1}
-    100%{top:100%;opacity:0}
-  }
-
-  /* EXTRACTED — chips that emerge from the beam */
-  .kviz-out{
-    padding:8px 0 8px 4px;
-    display:flex;flex-direction:column;gap:10px;
-    position:relative;
-  }
-  .kviz-out-label{
-    font:600 10px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;
-    color:#b69bff;margin-bottom:4px;
-    display:flex;align-items:center;gap:8px;
-  }
-  .kviz-out-label::after{
-    content:'';flex:1;height:1px;
-    background:linear-gradient(90deg,rgba(182,155,255,.3),transparent);
-  }
-  .kchip{
-    position:relative;
-    background:linear-gradient(135deg,
-      color-mix(in srgb,var(--c,#b69bff) 10%,transparent) 0%,
-      color-mix(in srgb,var(--c,#b69bff) 4%,transparent) 100%);
-    border:1px solid color-mix(in srgb,var(--c,#b69bff) 22%,transparent);
-    border-radius:10px;
-    padding:11px 13px 12px;
-    opacity:0;transform:translateX(-12px) scale(.96);
-    transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.25,1);
-    transition-delay:calc(var(--i,0) * 180ms + 350ms);
-    backdrop-filter:blur(6px);
-  }
-  .echos-showcase.in .kchip{opacity:1;transform:translateX(0) scale(1)}
-  .kchip::before{
-    content:'';position:absolute;left:-1px;top:14px;bottom:14px;width:2px;
-    background:var(--c,#b69bff);
-    border-radius:0 2px 2px 0;
-    box-shadow:0 0 8px color-mix(in srgb,var(--c,#b69bff) 60%,transparent);
-  }
-  .kchip-tag{
-    display:flex;align-items:center;gap:6px;
-    font:600 9.5px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--c,#b69bff);margin-bottom:6px;
-  }
-  .kchip-tag::before{
-    content:'';width:5px;height:5px;border-radius:50%;
-    background:var(--c,#b69bff);
-    box-shadow:0 0 6px color-mix(in srgb,var(--c,#b69bff) 70%,transparent);
-  }
-  .kchip-text{
-    font:500 13px/1.4 Inter,sans-serif;color:#e2dcef;
-    display:block;letter-spacing:-.005em;
-  }
-  .kchip-sub{
-    font:400 11.5px/1.4 Inter,sans-serif;color:#8b85a0;
-    display:block;margin-top:3px;
-  }
-
-  /* ROUTES — what travels to other apps */
-  .kviz-routes{
-    position:relative;z-index:2;
-    margin-top:28px;padding-top:18px;
-    border-top:1px solid rgba(155,130,255,.10);
-    display:grid;grid-template-columns:1fr 1fr;gap:14px;
-  }
-  .kroute{
-    position:relative;overflow:hidden;
-    display:flex;align-items:center;gap:12px;
-    padding:12px 14px;border-radius:10px;
-    background:linear-gradient(90deg,
-      color-mix(in srgb,var(--c,#5e9eff) 8%,transparent),
-      color-mix(in srgb,var(--c,#5e9eff) 2%,transparent));
-    border:1px solid color-mix(in srgb,var(--c,#5e9eff) 18%,transparent);
-  }
-  .kroute::after{
-    content:'';position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(90deg,
-      transparent 0%,
-      color-mix(in srgb,var(--c,#5e9eff) 22%,transparent) 50%,
-      transparent 100%);
-    transform:translateX(-100%);
-    animation:krouteSweep 5s ease-in-out infinite;
-    animation-delay:var(--delay,0s);
-  }
-  @keyframes krouteSweep{
-    0%,30%{transform:translateX(-100%)}
-    55%,100%{transform:translateX(100%)}
-  }
-  .kr-arrow{
-    flex:none;
-    width:24px;height:24px;border-radius:50%;
-    display:grid;place-items:center;
-    background:color-mix(in srgb,var(--c,#5e9eff) 22%,transparent);
-    color:var(--c,#5e9eff);font:600 13px/1 Inter,sans-serif;
-  }
-  .kr-name{
-    font:600 12px/1 Inter,sans-serif;color:var(--c,#5e9eff);
-    letter-spacing:.04em;
-  }
-  .kr-cargo{
-    font:400 12px/1.3 Inter,sans-serif;color:#9892ad;
-    flex:1;letter-spacing:.005em;
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    .kchip{opacity:1;transform:none;transition:none}
-    .echos-showcase.in .kw{animation:none}
-    .kviz-spine::after,.kviz-meta-r .pulse,.kroute::after{animation:none}
-    .kviz-spine::after{display:none}
-  }
-
-  /* ─── Spark teaser ────────────────────────── */
-  .spark-teaser{
-    background:linear-gradient(180deg,#16140e 0%,#100e0a 100%);
-    border:1px solid var(--border-2);
-    border-radius:18px;
-    padding:44px 48px;
-    display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
-    gap:48px;align-items:center;text-align:left;
-    position:relative;overflow:hidden;
-  }
-  .spark-teaser::before{
-    content:'';position:absolute;
-    top:-130px;right:-110px;width:360px;height:360px;border-radius:50%;
-    background:radial-gradient(circle,rgba(249,115,22,.13) 0%,transparent 70%);
-    pointer-events:none;
-  }
-  .spark-teaser .eyebrow{margin-bottom:14px}
-  .spark-teaser h3{font-size:28px;margin-bottom:10px;letter-spacing:-.025em}
-  .spark-teaser .tagline{font-size:16px;font-weight:500;color:var(--text-2);margin-bottom:12px;letter-spacing:-.01em}
-  .spark-teaser .body{font-size:14.5px;color:var(--text-3);max-width:none;line-height:1.6}
-  .spark-cards{
-    position:relative;z-index:1;
-    display:flex;flex-direction:column;gap:8px;
-  }
-  .spark-card{
-    background:rgba(255,255,255,.018);
-    border:1px solid #221d18;
-    border-radius:8px;padding:11px 13px;
-  }
-  .spark-card .lbl{
-    font:600 9.5px/1 Inter,sans-serif;
-    letter-spacing:.14em;text-transform:uppercase;
-    color:#F97316;
-  }
-  .spark-card .q{
-    margin-top:7px;
-    font:500 12.5px/1.45 Inter,sans-serif;color:var(--text);
-  }
-  .spark-card .meta{margin-top:4px;font-size:11.5px;color:var(--text-3)}
-  .spark-card.flip{
-    background:linear-gradient(135deg,rgba(249,115,22,.10),rgba(249,115,22,.04));
-    border-color:rgba(249,115,22,.22);
-  }
-
-  /* ─── Ecosistema (family flow) ────────────── */
-  .ecosystem-stage-wrap{
-    position:relative;
-    margin:64px auto 80px;
-    max-width:1020px;
-  }
-  .eco-stage{
-    position:relative;
-    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:28px;
-    text-align:left;
-    z-index:2;
-  }
-  .eco-card{
-    --eco-c:#9b82ff;
-    --eco-c-rgb:155,130,255;
-    position:relative;
-    background:linear-gradient(180deg,#15151a 0%,#0d0d11 100%);
-    border:1px solid var(--border-2);
-    border-radius:16px;
-    padding:20px 22px 22px;
-    transition:transform .35s ease,border-color .3s ease,box-shadow .35s ease;
-  }
-  .eco-card::after{
-    content:'';position:absolute;
-    inset:0;border-radius:16px;
-    pointer-events:none;
-    box-shadow:0 0 0 0 rgba(var(--eco-c-rgb),0);
-    transition:box-shadow .35s ease;
-  }
-  .eco-card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(var(--eco-c-rgb),.32);
-  }
-  .eco-card:hover::after{
-    box-shadow:0 24px 60px -22px rgba(var(--eco-c-rgb),.34);
-  }
-  .eco-card.echos{--eco-c:#9b82ff;--eco-c-rgb:155,130,255}
-  .eco-card.focus{--eco-c:#5e9eff;--eco-c-rgb:94,158,255}
-  .eco-card.spark{--eco-c:#F97316;--eco-c-rgb:249,115,22}
-
-  .eco-card-head{
-    display:flex;align-items:center;gap:10px;margin-bottom:18px;
-  }
-  .eco-icon{
-    width:30px;height:30px;border-radius:7px;
-    background:#0a0a0c;border:1px solid var(--border);
-    display:grid;place-items:center;flex-shrink:0;
-  }
-  .eco-icon svg{width:16px;height:16px}
-  .eco-card h3{
-    font:600 17px/1 Inter,sans-serif;
-    letter-spacing:-.018em;color:var(--text);margin:0;
-  }
-  .eco-role{
-    margin-left:auto;
-    font:600 9.5px/1 Inter,sans-serif;
-    letter-spacing:.14em;text-transform:uppercase;
-    color:var(--eco-c);
-  }
-  .eco-content{display:flex;flex-direction:column;gap:6px}
-  .eco-pill{
-    display:flex;align-items:center;gap:8px;
-    padding:8px 10px;border-radius:7px;
-    background:rgba(255,255,255,.018);
-    border:1px solid #1a1a1f;
-    font:500 12px/1.3 Inter,sans-serif;
-    color:var(--text);
-  }
-  .eco-pill::before{
-    content:'';width:5px;height:5px;border-radius:50%;
-    background:var(--eco-c);flex-shrink:0;
-    box-shadow:0 0 8px rgba(var(--eco-c-rgb),.5);
-  }
-  .eco-pill .meta{margin-left:auto;color:var(--text-3);font-weight:400;font-size:11px}
-  .eco-status{
-    display:inline-flex;align-items:center;gap:6px;margin-top:14px;
-    font:600 10px/1 Inter,sans-serif;
-    letter-spacing:.12em;text-transform:uppercase;
-    color:var(--text-3);
-  }
-  .eco-status.live{color:var(--live)}
-  .eco-status.live::before{
-    content:'';width:6px;height:6px;border-radius:50%;
-    background:var(--live);box-shadow:0 0 10px rgba(48,209,88,.6);
-  }
-
-  /* SVG flow layer */
-  .eco-flow{
-    position:absolute;
-    left:0;right:0;
-    top:calc(100% - 8px);
-    height:148px;
-    pointer-events:none;
-    z-index:1;
-  }
-  .eco-flow svg{width:100%;height:100%;display:block;overflow:visible}
-
-  /* Nova hub at convergence */
-  .eco-hub{
-    position:absolute;
-    left:50%;
-    top:calc(100% + 110px);
-    transform:translate(-50%,-50%);
-    z-index:3;
-  }
-  .eco-hub-orb{
-    width:64px;height:64px;border-radius:50%;
-    background:
-      radial-gradient(circle at 32% 30%,rgba(255,255,255,.45) 0%,transparent 30%),
-      conic-gradient(from 200deg at 50% 50%,#6e3aff 0%,#a84dff 40%,#ff8fb1 70%,#6e3aff 100%);
+      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .85) 0%, transparent 30%),
+      radial-gradient(circle at 50% 50%, var(--nova-core) 0%, var(--nova-mid) 50%, var(--nova-glow) 100%);
     box-shadow:
-      0 0 0 1px rgba(167,139,250,.35) inset,
-      0 0 60px -8px rgba(167,139,250,.65),
-      0 0 22px -4px rgba(255,255,255,.18);
-    animation:hubBreath 5s ease-in-out infinite;
+      0 0 0 1px rgba(167, 139, 250, .35) inset,
+      0 0 18px rgba(167, 139, 250, .55);
+    flex-shrink: 0;
+    animation: novaMicroBreath 4s ease-in-out infinite;
   }
-  @keyframes hubBreath{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.06)}
+  @keyframes novaMicroBreath {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
   }
-  .eco-hub-label{
-    position:absolute;left:50%;top:calc(100% + 18px);transform:translateX(-50%);
-    font:600 11px/1 Inter,sans-serif;
-    letter-spacing:.16em;text-transform:uppercase;
-    color:#cab8ff;white-space:nowrap;
+  .mock-nova-name {
+    font: 600 13px/1 Inter, sans-serif;
+    color: var(--text); letter-spacing: -.005em;
   }
-  @media (prefers-reduced-motion:reduce){
-    .eco-hub-orb{animation:none}
-    .eco-flow .particle{display:none}
+  .mock-nova-status {
+    font: 500 10px/1 'JetBrains Mono', monospace;
+    color: var(--text-3); letter-spacing: .12em;
+    text-transform: uppercase; margin-top: 4px;
   }
+  .mock-nova-msg {
+    background: linear-gradient(180deg, rgba(167, 139, 250, .08) 0%, rgba(167, 139, 250, .02) 100%);
+    border: 1px solid rgba(167, 139, 250, .18);
+    border-left-width: 3px; border-left-color: var(--accent);
+    border-radius: 10px;
+    padding: 12px 14px;
+    opacity: 0; transform: translateY(8px);
+  }
+  .device-frame.in .mock-nova-msg {
+    animation: msgIn .7s var(--ease-out) forwards;
+    animation-delay: 1.4s;
+  }
+  @keyframes msgIn {
+    0%   { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .mock-nova-msg-tag {
+    font: 600 9.5px/1 'JetBrains Mono', monospace;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .mock-nova-msg-body {
+    font: 400 13px/1.5 Inter, sans-serif;
+    color: var(--text-2); letter-spacing: -.005em;
+  }
+  .mock-nova-msg-body b { color: var(--text); font-weight: 500; }
+  .mock-nova-msg-actions {
+    display: flex; gap: 8px; margin-top: 12px;
+  }
+  .mock-mb {
+    font: 500 11.5px/1 Inter, sans-serif;
+    padding: 6px 12px; border-radius: 980px;
+    cursor: pointer; transition: all .15s;
+  }
+  .mock-mb.accept { background: var(--text); color: #000; }
+  .mock-mb.accept:hover { transform: scale(1.04); }
+  .mock-mb.later { border: 1px solid var(--border-2); color: var(--text-2); }
+  .mock-mb.later:hover { background: rgba(255, 255, 255, .04); }
 
-  .eco-caption{
-    max-width:600px;margin:220px auto 0;
-    text-align:center;
-    font:400 16px/1.65 Inter,sans-serif;
-    color:var(--text-2);
-    letter-spacing:-.005em;
+  .mock-nova-suggestions {
+    display: flex; flex-direction: column; gap: 8px;
   }
-  .eco-caption b{color:var(--text);font-weight:500}
-  .eco-caption .c-echos{color:#b69bff;font-weight:500}
-  .eco-caption .c-focus{color:#7eb3ff;font-weight:500}
-  .eco-caption .c-spark{color:#fb923c;font-weight:500}
+  .mock-sug {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 8px;
+    background: rgba(255, 255, 255, .02);
+    border: 1px solid rgba(255, 255, 255, .04);
+    font: 500 12px/1.3 Inter, sans-serif;
+    color: var(--text-2);
+    transition: all .2s;
+    opacity: 0; transform: translateY(6px);
+  }
+  .device-frame.in .mock-sug { animation: msgIn .55s var(--ease-out) forwards; }
+  .device-frame.in .mock-sug:nth-of-type(1) { animation-delay: 1.7s; }
+  .device-frame.in .mock-sug:nth-of-type(2) { animation-delay: 1.85s; }
+  .mock-sug:hover { border-color: rgba(167, 139, 250, .25); transform: translateX(2px); }
+  .mock-sug-ic {
+    width: 14px; height: 14px; color: var(--accent); flex-shrink: 0;
+  }
+  .mock-sug b { color: var(--text); font-weight: 500; }
 
-  @media (max-width:980px){
-    .ecosystem-stage-wrap{margin:48px auto 60px}
-    .eco-stage{grid-template-columns:1fr;gap:14px}
-    .eco-flow{display:none}
-    .eco-hub{position:relative;top:auto;left:auto;transform:none;display:flex;justify-content:center;margin:32px 0 28px}
-    .eco-hub-label{position:relative;top:auto;left:auto;transform:none;text-align:center;margin-top:14px}
-    .eco-caption{margin-top:40px}
+  /* ─── SECTION: Cycle / Sistema ──────────── */
+  .sistema {
+    background: var(--bg-2);
+    text-align: center; position: relative; overflow: hidden;
   }
+  .sistema::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 56%, rgba(167, 139, 250, .12), transparent 42%);
+    pointer-events: none;
+  }
+  .sistema .container { position: relative; z-index: 1; }
+  .sistema h2 { margin: 0 auto 24px; max-width: 18ch; }
+  .sistema .subhead { margin: 0 auto 72px; max-width: 44ch; }
 
-  /* ─── Nova ───────────────────────────────── */
-  .nova{background:var(--bg-2);text-align:center;position:relative;overflow:hidden}
-  .nova::before{
-    content:'';position:absolute;
-    top:30%;left:50%;width:600px;height:600px;
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle,rgba(167,139,250,.10) 0%,transparent 60%);
-    pointer-events:none;
+  .cycle-stage {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    text-align: left;
   }
-  .nova-inner{position:relative;z-index:1}
-  .nova h2{margin:0 auto 28px;max-width:18ch}
-  .nova .subhead{margin-bottom:80px}
+  .cycle-orbit-svg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1; overflow: visible;
+  }
+  .cycle-orbit-svg .ring {
+    stroke: rgba(167, 139, 250, .26);
+    stroke-width: 1.2; stroke-dasharray: 3 7; fill: none;
+  }
+  .cycle-orbit-svg .ring-glow {
+    stroke: rgba(167, 139, 250, .15);
+    stroke-width: 6; fill: none; filter: blur(8px);
+  }
+  .cycle-orbit-svg .particle { filter: drop-shadow(0 0 10px rgba(167, 139, 250, .85)); }
+  .cycle-orbit-svg .particle-2 { filter: drop-shadow(0 0 8px rgba(99, 102, 241, .7)); }
 
-  .nova-orb{
-    width:280px;height:280px;border-radius:50%;
-    margin:0 auto 80px;
-    position:relative;
-    background:radial-gradient(circle at 30% 26%,#f3e8ff 0%,#a78bfa 30%,#5b21b6 65%,#1e1b4b 95%);
-    box-shadow:
-      0 0 120px rgba(167,139,250,.4),
-      0 0 0 1px rgba(167,139,250,.18),
-      inset -32px -32px 80px rgba(0,0,0,.55),
-      inset 22px 22px 50px rgba(255,255,255,.07);
-    animation:novaBreath 6s ease-in-out infinite;
-  }
-  .nova-orb::before{
-    content:'';position:absolute;inset:-60px;border-radius:50%;
-    background:conic-gradient(from 0deg,transparent 0deg,rgba(167,139,250,.18) 90deg,transparent 180deg,rgba(99,102,241,.18) 270deg,transparent 360deg);
-    filter:blur(30px);
-    animation:novaSpin 18s linear infinite;
-    z-index:-1;
-  }
-  @keyframes novaBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-  @keyframes novaSpin{to{transform:rotate(360deg)}}
-  @media (prefers-reduced-motion:reduce){.nova-orb,.nova-orb::before{animation:none}}
-
-  .nova-demo{
-    max-width:480px;margin:0 auto 80px;
-    background:linear-gradient(180deg,#16161a 0%,#0e0e10 100%);
-    border:1px solid var(--border-2);
-    border-radius:16px;
-    padding:24px;text-align:left;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
-  }
-  .nova-demo-head{
-    display:flex;align-items:center;gap:8px;
-    font-size:13px;font-weight:500;color:var(--accent);
-    margin-bottom:12px;
-  }
-  .nova-demo-body{
-    font-size:16px;line-height:1.5;color:var(--text-2);margin-bottom:18px;
-  }
-  .nova-demo-body b{color:var(--text);font-weight:500}
-  .nova-demo-actions{display:flex;gap:10px}
-  .nova-demo-actions .mock-btn{font-size:13px;padding:8px 18px}
-
-  .principles{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:48px;
-    max-width:1000px;margin:0 auto;text-align:left;
-  }
-  .principle .label{
-    font-size:12.5px;font-weight:500;color:var(--accent);
-    margin-bottom:12px;display:block;
-  }
-  .principle h4{margin-bottom:8px;color:var(--text);font-size:18px}
-  .principle p{font-size:14.5px;line-height:1.55;color:var(--text-2)}
-
-  /* ─── Capacidades — bento grid futurista ─── */
-  .caps{
-    padding:144px 0;
-    background:var(--bg);
-    text-align:center;
-    position:relative;overflow:hidden;
-  }
-  .caps::before{
-    content:'';position:absolute;
-    top:-200px;left:50%;transform:translateX(-50%);
-    width:1200px;height:700px;
+  /* The orb — preserved with enhancement */
+  .cycle-orb {
+    position: absolute; left: 50%; top: 50%;
+    width: 132px; height: 132px; border-radius: 50%;
     background:
-      radial-gradient(ellipse 50% 35% at 30% 30%,rgba(167,139,250,.16),transparent 60%),
-      radial-gradient(ellipse 45% 30% at 75% 50%,rgba(240,171,252,.10),transparent 60%);
-    pointer-events:none;
-    filter:blur(20px);
+      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .55) 0%, transparent 30%),
+      conic-gradient(from 200deg at 50% 50%, #6e3aff 0%, #a84dff 40%, #ff8fb1 70%, #6e3aff 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(167, 139, 250, .35),
+      0 0 100px -10px rgba(167, 139, 250, .6),
+      0 0 32px -8px rgba(255, 255, 255, .18);
+    z-index: 2;
+    animation: cycleOrbBreath 6s ease-in-out infinite, cycleOrbSpin 32s linear infinite;
   }
-  .caps-inner{position:relative;z-index:1}
-  .caps h2{margin:0 auto 20px;max-width:18ch}
-  .caps .subhead{margin:0 auto 80px}
+  .cycle-orb::before {
+    content: ''; position: absolute; inset: -28px; border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(167, 139, 250, .25) 110deg, transparent 220deg, rgba(99, 102, 241, .18) 330deg, transparent 360deg);
+    filter: blur(18px);
+    animation: cycleOrbHaloSpin 14s linear infinite;
+    z-index: -1;
+  }
+  .cycle-orb::after {
+    content: 'NOVA';
+    position: absolute; left: 50%; top: calc(100% + 22px);
+    transform: translateX(-50%);
+    font: 600 10.5px/1 'JetBrains Mono', monospace;
+    letter-spacing: .26em; text-transform: uppercase;
+    color: #cab8ff; white-space: nowrap;
+    animation: novaLabelGlow 3s ease-in-out infinite;
+  }
+  @keyframes cycleOrbBreath {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50%      { transform: translate(-50%, -50%) scale(1.04); }
+  }
+  @keyframes cycleOrbSpin {
+    to { background-position: 360deg; }
+  }
+  @keyframes cycleOrbHaloSpin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes novaLabelGlow {
+    0%, 100% { text-shadow: 0 0 8px rgba(202, 184, 255, .3); }
+    50%      { text-shadow: 0 0 16px rgba(202, 184, 255, .6); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cycle-orb, .cycle-orb::before, .cycle-orb::after { animation: none; }
+    .cycle-orbit-svg .particle, .cycle-orbit-svg .particle-2 { display: none; }
+  }
 
-  .caps-grid{
-    max-width:1080px;margin:0 auto;
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    grid-auto-rows:minmax(180px,auto);
-    gap:16px;
-    text-align:left;
+  .cycle-node {
+    position: absolute;
+    width: 196px;
+    padding: 16px 18px 18px;
+    background: linear-gradient(180deg, rgba(22, 22, 30, .85) 0%, rgba(13, 13, 17, .9) 100%);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid var(--border-2);
+    border-radius: 14px;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    transition: border-color .3s, box-shadow .3s, transform .3s var(--ease-out);
   }
-  .cap{
-    position:relative;overflow:hidden;
-    border-radius:20px;
-    background:linear-gradient(180deg,rgba(22,22,28,.75),rgba(10,10,14,.85));
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    border:1px solid var(--glass-line);
-    padding:24px 26px;
-    transition:transform .35s cubic-bezier(.4,0,.2,1),border-color .3s,box-shadow .35s;
+  .cycle-node::before {
+    content: ''; position: absolute; inset: -1px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(167, 139, 250, .3), transparent);
+    opacity: 0; transition: opacity .3s;
+    pointer-events: none; z-index: -1;
+    -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+    mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+    -webkit-mask-composite: xor; mask-composite: exclude;
   }
-  .cap:hover{
-    transform:translateY(-3px);
-    border-color:rgba(167,139,250,.32);
-    box-shadow:0 24px 60px -24px rgba(167,139,250,.32);
+  .cycle-node:hover {
+    border-color: rgba(167, 139, 250, .42);
+    box-shadow: 0 22px 50px -16px rgba(167, 139, 250, .38);
+    transform: translate(-50%, -52%);
+    z-index: 4;
   }
-  .cap-tag{
-    display:inline-flex;align-items:center;gap:6px;
-    font:600 10.5px/1 Inter,sans-serif;
-    letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:14px;
+  .cycle-node:hover::before { opacity: 1; }
+  .cycle-node-num {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 600 9.5px/1 'JetBrains Mono', monospace;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px;
   }
-  .cap-tag::before{
-    content:'';width:5px;height:5px;border-radius:50%;
-    background:var(--accent);
-    box-shadow:0 0 8px rgba(167,139,250,.6);
+  .cycle-node-num .num {
+    color: #7a6ea8; font-variant-numeric: tabular-nums;
+    letter-spacing: .08em;
   }
-  .cap h3{
-    font:600 22px/1.18 Inter,sans-serif;
-    letter-spacing:-.02em;color:var(--text);
-    margin:0 0 10px;
+  .cycle-node-desc {
+    font: 400 12.5px/1.55 Inter, sans-serif;
+    color: var(--text-2); margin: 0;
+    letter-spacing: -.005em;
   }
-  .cap p{
-    font:400 14px/1.55 Inter,sans-serif;color:var(--text-2);
-    margin:0;letter-spacing:-.005em;
+
+  /* Pentagon vertices on r=320 circle */
+  .cycle-node.n1 { left: 50%;   top: 10%; }
+  .cycle-node.n2 { left: 88%;   top: 37.6%; }
+  .cycle-node.n3 { left: 73.5%; top: 82.4%; }
+  .cycle-node.n4 { left: 26.5%; top: 82.4%; }
+  .cycle-node.n5 { left: 12%;   top: 37.6%; }
+
+  .cycle-caption {
+    max-width: 600px; margin: 64px auto 0;
+    text-align: center;
+    font: 400 16px/1.65 Inter, sans-serif;
+    color: var(--text-2); letter-spacing: -.005em;
+  }
+  .cycle-caption b { color: var(--text); font-weight: 500; }
+
+  /* ─── SECTION: Nova ──────────────────────── */
+  .nova {
+    background: var(--bg);
+    position: relative; overflow: hidden;
+  }
+  .nova::before {
+    content: ''; position: absolute;
+    top: 20%; left: 50%; width: 720px; height: 720px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(107, 117, 232, .12) 0%, transparent 60%);
+    pointer-events: none; filter: blur(40px);
+  }
+  .nova .container { position: relative; z-index: 1; text-align: center; }
+  .nova h2 { margin: 0 auto 24px; max-width: 18ch; }
+  .nova .subhead { margin: 0 auto 80px; }
+
+  /* Nova canvas: stack of conversation cards */
+  .nova-canvas {
+    max-width: 900px; margin: 0 auto 96px;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 24px;
+    text-align: left;
+  }
+  .nova-stage {
+    position: relative;
+    background: linear-gradient(180deg, rgba(22, 22, 30, .9) 0%, rgba(10, 12, 18, .95) 100%);
+    border: 1px solid var(--border-2);
+    border-radius: 18px;
+    padding: 28px;
+    overflow: hidden;
+    min-height: 460px;
+  }
+  .nova-stage::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167, 139, 250, .4), transparent);
+  }
+  .nova-stage::after {
+    content: ''; position: absolute;
+    inset: -100px -50px;
+    background: radial-gradient(ellipse 50% 30% at 30% 20%, rgba(167, 139, 250, .12), transparent 60%);
+    pointer-events: none;
+  }
+  .nova-stage-meta {
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 12px;
+    padding-bottom: 16px; margin-bottom: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+  }
+  .nova-bubble {
+    width: 32px; height: 32px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .85) 0%, transparent 30%),
+      radial-gradient(circle at 50% 50%, var(--nova-core) 0%, var(--nova-mid) 50%, var(--nova-glow) 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(167, 139, 250, .35),
+      0 0 24px rgba(107, 117, 232, .65);
+    flex-shrink: 0;
+    animation: novaMicroBreath 4s ease-in-out infinite;
+  }
+  .nova-stage-name {
+    font: 600 14px/1 Inter, sans-serif;
+    color: var(--text); letter-spacing: -.005em;
+  }
+  .nova-stage-status {
+    font: 500 10px/1 'JetBrains Mono', monospace;
+    color: var(--text-3); letter-spacing: .14em;
+    text-transform: uppercase; margin-top: 4px;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .nova-stage-status .live-d {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--live); box-shadow: 0 0 0 0 rgba(48, 209, 88, .5);
+    animation: livePulse 2s ease-out infinite;
+  }
+
+  .nova-thread {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .nova-msg {
+    background: linear-gradient(180deg, rgba(167, 139, 250, .08) 0%, rgba(167, 139, 250, .02) 100%);
+    border: 1px solid rgba(167, 139, 250, .18);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .nova-msg-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font: 600 9.5px/1 'JetBrains Mono', monospace;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .nova-msg-body {
+    font: 400 14.5px/1.5 Inter, sans-serif;
+    color: var(--text); letter-spacing: -.005em;
+  }
+  .nova-msg-body b { color: var(--text); font-weight: 600; }
+  .nova-msg-body span.h { color: var(--accent); font-weight: 500; }
+  .nova-msg-actions {
+    display: flex; gap: 8px; margin-top: 14px;
+  }
+  .nova-thinking {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 500 12px/1 Inter, sans-serif;
+    color: var(--text-3); padding: 6px 0;
+  }
+  .nova-thinking .dots {
+    display: inline-flex; gap: 3px;
+  }
+  .nova-thinking .dots span {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--accent);
+    animation: thinkPulse 1.4s ease-in-out infinite;
+  }
+  .nova-thinking .dots span:nth-child(2) { animation-delay: .15s; }
+  .nova-thinking .dots span:nth-child(3) { animation-delay: .3s; }
+  @keyframes thinkPulse {
+    0%, 100% { opacity: .3; transform: scale(.8); }
+    50%      { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* User reply bubble */
+  .nova-user {
+    align-self: flex-end;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-right: 3px solid #5e9eff;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font: 400 13.5px/1.45 Inter, sans-serif;
+    color: var(--text-2);
+    max-width: 80%;
+  }
+  .nova-user b { color: var(--text); font-weight: 500; }
+
+  /* Right column: principles with vertical timeline */
+  .nova-side {
+    display: flex; flex-direction: column; gap: 0;
+    position: relative;
+  }
+  .nova-side::before {
+    content: ''; position: absolute;
+    left: 11px; top: 24px; bottom: 24px; width: 1px;
+    background: linear-gradient(180deg,
+      rgba(167, 139, 250, .35) 0%,
+      rgba(167, 139, 250, .12) 50%,
+      rgba(167, 139, 250, .35) 100%);
+  }
+  .nova-pri {
+    display: grid; grid-template-columns: 24px 1fr;
+    gap: 14px;
+    padding: 14px 4px 18px;
+    position: relative;
+  }
+  .nova-pri-marker {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--bg);
+    border: 1.5px solid rgba(167, 139, 250, .4);
+    display: grid; place-items: center;
+    color: var(--accent);
+    font: 600 10px/1 'JetBrains Mono', monospace;
+    z-index: 2; flex-shrink: 0;
+    transition: all .3s var(--ease-out);
+  }
+  .nova-pri:hover .nova-pri-marker {
+    background: rgba(167, 139, 250, .15);
+    border-color: var(--accent);
+    box-shadow: 0 0 16px rgba(167, 139, 250, .4);
+  }
+  .nova-pri h4 {
+    font: 600 15px/1.3 Inter, sans-serif;
+    color: var(--text); margin-bottom: 6px;
+    letter-spacing: -.012em;
+  }
+  .nova-pri p {
+    font: 400 13px/1.5 Inter, sans-serif;
+    color: var(--text-2); letter-spacing: -.005em;
+  }
+
+  /* ─── SECTION: Capabilities (bento) ───── */
+  .caps {
+    padding: 144px 0;
+    background: var(--bg-2);
+    position: relative; overflow: hidden;
+  }
+  .caps::before {
+    content: ''; position: absolute;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 1200px; height: 700px;
+    background:
+      radial-gradient(ellipse 50% 35% at 30% 30%, rgba(167, 139, 250, .14), transparent 60%),
+      radial-gradient(ellipse 45% 30% at 75% 50%, rgba(240, 171, 252, .08), transparent 60%);
+    pointer-events: none; filter: blur(20px);
+  }
+  .caps .container { position: relative; z-index: 1; text-align: center; }
+  .caps h2 { margin: 0 auto 20px; max-width: 18ch; }
+  .caps .subhead { margin: 0 auto 80px; }
+
+  .caps-grid {
+    max-width: 1180px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(190px, auto);
+    gap: 16px;
+    text-align: left;
+  }
+  .cap {
+    position: relative; overflow: hidden;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(22, 22, 30, .85), rgba(12, 12, 18, .9));
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-line);
+    padding: 24px 26px;
+    transition: transform .35s var(--ease-out), border-color .3s, box-shadow .35s;
+    --cap-mx: 50%; --cap-my: 50%;
+  }
+  .cap::before {
+    content: ''; position: absolute; inset: 0; border-radius: 20px;
+    pointer-events: none; opacity: 0;
+    background: radial-gradient(circle 240px at var(--cap-mx) var(--cap-my), rgba(167, 139, 250, .15), transparent 60%);
+    transition: opacity .25s;
+  }
+  .cap:hover {
+    transform: translateY(-3px);
+    border-color: rgba(167, 139, 250, .32);
+    box-shadow: 0 28px 60px -24px rgba(167, 139, 250, .32);
+  }
+  .cap:hover::before { opacity: 1; }
+
+  .cap-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font: 600 10.5px/1 'JetBrains Mono', monospace;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+  }
+  .cap-tag::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(167, 139, 250, .6);
+  }
+  .cap h3 {
+    font: 600 22px/1.18 Inter, sans-serif;
+    letter-spacing: -.02em; color: var(--text);
+    margin: 0 0 10px;
+  }
+  .cap p {
+    font: 400 14px/1.55 Inter, sans-serif; color: var(--text-2);
+    margin: 0; letter-spacing: -.005em;
   }
 
   /* Bento grid placement */
-  .cap.c1{grid-column:span 4;grid-row:span 2}      /* hero card — modo invitado */
-  .cap.c2{grid-column:span 2;grid-row:span 1}      /* memoria */
-  .cap.c3{grid-column:span 2;grid-row:span 1}      /* multimodal */
-  .cap.c4{grid-column:span 2;grid-row:span 1}      /* sincronizado */
-  .cap.c5{grid-column:span 2;grid-row:span 1}      /* privado */
-  .cap.c6{grid-column:span 2;grid-row:span 1}      /* predicción */
+  .cap.c1 { grid-column: span 4; grid-row: span 2; }
+  .cap.c2 { grid-column: span 2; grid-row: span 1; }
+  .cap.c3 { grid-column: span 2; grid-row: span 1; }
+  .cap.c4 { grid-column: span 2; grid-row: span 1; }
+  .cap.c5 { grid-column: span 2; grid-row: span 1; }
+  .cap.c6 { grid-column: span 2; grid-row: span 1; }
 
-  /* Hero card — modo invitado */
-  .cap.c1{
-    padding:32px 36px;
+  /* C1 — hero: anticipación */
+  .cap.c1 {
+    padding: 32px 36px;
     background:
-      radial-gradient(ellipse 60% 55% at 80% 30%,rgba(167,139,250,.18),transparent 60%),
-      linear-gradient(180deg,rgba(22,22,28,.85),rgba(10,10,14,.95));
-    display:flex;flex-direction:column;justify-content:space-between;
+      radial-gradient(ellipse 60% 55% at 80% 30%, rgba(167, 139, 250, .18), transparent 60%),
+      linear-gradient(180deg, rgba(22, 22, 30, .9), rgba(10, 12, 18, .95));
+    display: flex; flex-direction: column; justify-content: space-between;
   }
-  .cap.c1 h3{
-    font-size:clamp(28px,3vw,40px);line-height:1.05;letter-spacing:-.025em;
-    max-width:14ch;
+  .cap.c1 h3 {
+    font-size: clamp(28px, 3vw, 40px); line-height: 1.05; letter-spacing: -.025em;
+    max-width: 14ch; margin-bottom: 16px;
   }
-  .cap.c1 h3 .em{
-    background:linear-gradient(135deg,#fff,#e9d5ff 40%,#a78bfa 80%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
+  .cap.c1 h3 .em {
+    background: linear-gradient(135deg, #fff, #e9d5ff 40%, #a78bfa 80%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .cap.c1 p{font-size:15px;max-width:34ch;margin-top:6px}
+  .cap.c1 p { font-size: 15.5px; max-width: 38ch; }
 
-  /* Mini app preview row inside hero card */
-  .cap-apps{
-    display:flex;gap:10px;margin-top:24px;
-    flex-wrap:wrap;
+  /* Forecast viz inside c1 */
+  .cap-forecast {
+    margin-top: 28px;
+    display: flex; flex-direction: column; gap: 8px;
   }
-  .cap-app{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:9px 14px 9px 11px;border-radius:980px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    font:500 12.5px/1 Inter,sans-serif;color:var(--text);
-    text-decoration:none;
-    transition:background .2s,border-color .2s,transform .2s;
+  .cap-fc-row {
+    display: grid; grid-template-columns: 36px 80px 1fr 56px;
+    gap: 14px; align-items: center;
+    padding: 11px 14px;
+    background: linear-gradient(90deg, rgba(167, 139, 250, .08), rgba(167, 139, 250, .02));
+    border: 1px solid rgba(167, 139, 250, .14);
+    border-radius: 10px;
+    transition: all .2s;
   }
-  .cap-app:hover{
-    background:rgba(255,255,255,.08);
-    border-color:rgba(167,139,250,.4);
-    transform:translateY(-1px);
+  .cap-fc-row:hover { border-color: rgba(167, 139, 250, .3); transform: translateX(2px); }
+  .cap-fc-day {
+    font: 600 11px/1 'JetBrains Mono', monospace;
+    color: var(--accent); letter-spacing: .12em;
   }
-  .cap-app .d{
-    width:8px;height:8px;border-radius:50%;
-    box-shadow:0 0 8px currentColor;
+  .cap-fc-time {
+    font: 500 12px/1 'JetBrains Mono', monospace;
+    color: var(--text-3);
   }
-  .cap-app.k .d{background:#9b82ff;color:#9b82ff}
-  .cap-app.f .d{background:#5e9eff;color:#5e9eff}
-  .cap-app.s .d{background:#fb923c;color:#fb923c}
-  .cap-app .arr{font-size:11px;opacity:.6;transition:transform .2s,opacity .2s}
-  .cap-app:hover .arr{transform:translateX(2px);opacity:1}
+  .cap-fc-what {
+    font: 500 13.5px/1.3 Inter, sans-serif;
+    color: var(--text); letter-spacing: -.005em;
+  }
+  .cap-fc-tag {
+    text-align: right;
+    font: 600 10px/1 'JetBrains Mono', monospace;
+    color: var(--text-3); letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .cap-fc-tag.nova { color: var(--accent); }
 
-  /* Animated icon container — common */
-  .cap-vis{
-    margin-top:auto;padding-top:20px;
-    height:64px;position:relative;
+  /* C2 — Captura multimodal */
+  .cap.c2 .cap-vis {
+    margin-top: auto; padding-top: 22px;
+    display: flex; align-items: center; gap: 10px;
   }
+  .cap-modal {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: linear-gradient(180deg, rgba(167, 139, 250, .14), rgba(167, 139, 250, .04));
+    border: 1px solid rgba(167, 139, 250, .22);
+    color: #c4b5fd;
+    transition: transform .35s var(--ease-out), border-color .3s, box-shadow .3s;
+  }
+  .cap-modal svg { width: 19px; height: 19px; }
+  .cap.c2:hover .cap-modal {
+    border-color: rgba(167, 139, 250, .5);
+    box-shadow: 0 0 16px rgba(167, 139, 250, .25);
+  }
+  .cap.c2:hover .cap-modal:nth-child(1) { transform: translateY(-3px) rotate(-5deg); }
+  .cap.c2:hover .cap-modal:nth-child(2) { transform: translateY(-5px); }
+  .cap.c2:hover .cap-modal:nth-child(3) { transform: translateY(-3px) rotate(5deg); }
 
-  /* c2 — Memoria: typing indicator that "remembers" */
-  .cap.c2 .cap-vis{display:flex;align-items:center;gap:6px}
-  .cap.c2 .cap-vis .bar{
-    height:3px;border-radius:2px;flex:0 0 auto;
-    background:linear-gradient(90deg,#a78bfa,#818cf8);
-    transform-origin:left;
-    animation:capMemBar 3s ease-in-out infinite;
+  /* C3 — Memoria del ritmo */
+  .cap.c3 .cap-vis {
+    margin-top: auto; padding-top: 22px; height: 64px;
+    display: flex; align-items: flex-end; gap: 5px;
   }
-  .cap.c2 .cap-vis .bar:nth-child(1){width:60%;animation-delay:0s}
-  .cap.c2 .cap-vis .bar:nth-child(2){width:35%;animation-delay:.2s;background:linear-gradient(90deg,#818cf8,#5e9eff)}
-  .cap.c2 .cap-vis .bar:nth-child(3){width:80%;animation-delay:.4s;background:linear-gradient(90deg,#c4b5fd,#a78bfa)}
-  @keyframes capMemBar{
-    0%,100%{transform:scaleX(.3);opacity:.4}
-    50%{transform:scaleX(1);opacity:1}
+  .cap.c3 .cap-vis .bar {
+    flex: 1; border-radius: 3px;
+    background: linear-gradient(180deg, var(--accent), rgba(167, 139, 250, .3));
+    transform-origin: bottom;
+    animation: rhythmBar 2.4s ease-in-out infinite;
   }
-
-  /* c3 — Multimodal: 3 modal icons rotating */
-  .cap.c3 .cap-vis{display:flex;align-items:center;gap:10px}
-  .cap-modal{
-    width:42px;height:42px;border-radius:12px;
-    display:grid;place-items:center;
-    background:linear-gradient(180deg,rgba(167,139,250,.12),rgba(167,139,250,.04));
-    border:1px solid rgba(167,139,250,.22);
-    color:#c4b5fd;
-    transition:transform .3s,border-color .3s;
-  }
-  .cap-modal svg{width:18px;height:18px}
-  .cap.c3:hover .cap-modal{border-color:rgba(167,139,250,.5)}
-  .cap.c3:hover .cap-modal:nth-child(1){transform:translateY(-2px) rotate(-4deg)}
-  .cap.c3:hover .cap-modal:nth-child(2){transform:translateY(-2px)}
-  .cap.c3:hover .cap-modal:nth-child(3){transform:translateY(-2px) rotate(4deg)}
-
-  /* c4 — Sincronizado: 3 dots pulsing in waterfall */
-  .cap.c4 .cap-vis{
-    display:flex;align-items:center;justify-content:flex-start;gap:8px;
-    padding-left:4px;
-  }
-  .cap.c4 .cap-vis .dot{
-    width:10px;height:10px;border-radius:50%;
-    animation:capSyncPulse 2.4s ease-in-out infinite;
-  }
-  .cap.c4 .cap-vis .dot:nth-child(1){background:#9b82ff;animation-delay:0s;box-shadow:0 0 10px rgba(155,130,255,.7)}
-  .cap.c4 .cap-vis .dot:nth-child(2){background:#5e9eff;animation-delay:.4s;box-shadow:0 0 10px rgba(94,158,255,.7)}
-  .cap.c4 .cap-vis .dot:nth-child(3){background:#fb923c;animation-delay:.8s;box-shadow:0 0 10px rgba(251,146,60,.7)}
-  .cap.c4 .cap-vis .line{
-    flex:1;height:1px;
-    background:linear-gradient(90deg,rgba(155,130,255,.4),rgba(94,158,255,.4),rgba(251,146,60,.4));
-    opacity:.5;
-  }
-  @keyframes capSyncPulse{
-    0%,100%{transform:scale(.85);opacity:.6}
-    50%{transform:scale(1.15);opacity:1}
+  .cap.c3 .cap-vis .bar:nth-child(1) { height: 30%; animation-delay: 0s; }
+  .cap.c3 .cap-vis .bar:nth-child(2) { height: 60%; animation-delay: .15s; }
+  .cap.c3 .cap-vis .bar:nth-child(3) { height: 80%; animation-delay: .3s; background: linear-gradient(180deg, #818cf8, rgba(129, 140, 248, .3)); }
+  .cap.c3 .cap-vis .bar:nth-child(4) { height: 100%; animation-delay: .45s; background: linear-gradient(180deg, #f0abfc, rgba(240, 171, 252, .3)); }
+  .cap.c3 .cap-vis .bar:nth-child(5) { height: 70%; animation-delay: .6s; }
+  .cap.c3 .cap-vis .bar:nth-child(6) { height: 45%; animation-delay: .75s; }
+  .cap.c3 .cap-vis .bar:nth-child(7) { height: 25%; animation-delay: .9s; }
+  @keyframes rhythmBar {
+    0%, 100% { transform: scaleY(.4); opacity: .5; }
+    50%      { transform: scaleY(1);  opacity: 1; }
   }
 
-  /* c5 — Privacidad: lock with shield outline */
-  .cap.c5 .cap-vis{
-    display:flex;align-items:center;justify-content:flex-start;gap:14px;
+  /* C4 — Sincronía multi-dispositivo */
+  .cap.c4 .cap-vis {
+    margin-top: auto; padding-top: 22px;
+    display: flex; align-items: center; gap: 10px;
   }
-  .cap-shield{
-    width:48px;height:48px;border-radius:14px;
-    display:grid;place-items:center;
-    background:radial-gradient(circle at 35% 35%,rgba(48,209,88,.18),rgba(48,209,88,.05));
-    border:1px solid rgba(48,209,88,.3);
-    color:#5dd2a8;
+  .cap-device {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: grid; place-items: center;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255, 255, 255, .08);
+    color: var(--text-2);
+    transition: all .25s var(--ease-out);
   }
-  .cap.c5 .cap-vis .lbls{display:flex;flex-direction:column;gap:3px}
-  .cap.c5 .cap-vis .lbls span{
-    font:500 11px/1.3 Inter,sans-serif;color:var(--text-3);letter-spacing:.005em;
+  .cap.c4:hover .cap-device { color: var(--accent); border-color: rgba(167, 139, 250, .3); }
+  .cap-sync-line {
+    flex: 1; height: 1.5px;
+    background: linear-gradient(90deg,
+      rgba(167, 139, 250, .15) 0%,
+      rgba(167, 139, 250, .55) 50%,
+      rgba(167, 139, 250, .15) 100%);
+    background-size: 200% 100%;
+    animation: syncLineMove 2.5s linear infinite;
+    border-radius: 2px;
   }
-  .cap.c5 .cap-vis .lbls span b{color:var(--text);font-weight:600}
-
-  /* c6 — Predicción: forecast pills */
-  .cap.c6 .cap-vis{display:flex;flex-direction:column;gap:6px}
-  .cap-fcast{
-    display:flex;align-items:center;gap:10px;
-    padding:8px 11px;border-radius:8px;
-    background:linear-gradient(90deg,rgba(167,139,250,.10),rgba(167,139,250,.02));
-    border:1px solid rgba(167,139,250,.18);
-    font:500 11.5px/1 Inter,sans-serif;color:var(--text-2);
-  }
-  .cap-fcast .day{color:var(--accent);font-weight:600;letter-spacing:.04em;font-size:10px}
-  .cap-fcast .what{color:var(--text);font-size:12px}
-  .cap-fcast .pct{
-    margin-left:auto;font:600 10px/1 Inter;
-    color:var(--text-3);letter-spacing:.04em;
+  @keyframes syncLineMove {
+    0%   { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
   }
 
-  @media (max-width:880px){
-    .caps-grid{grid-template-columns:1fr;grid-auto-rows:auto}
-    .cap.c1,.cap.c2,.cap.c3,.cap.c4,.cap.c5,.cap.c6{
-      grid-column:span 1;grid-row:auto;
+  /* C5 — Privacidad */
+  .cap.c5 .cap-vis {
+    margin-top: auto; padding-top: 22px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .cap-shield {
+    width: 50px; height: 50px; border-radius: 14px;
+    display: grid; place-items: center;
+    background: radial-gradient(circle at 35% 35%, rgba(48, 209, 88, .22), rgba(48, 209, 88, .06));
+    border: 1px solid rgba(48, 209, 88, .35);
+    color: #5dd2a8;
+    transition: all .3s var(--ease-out);
+  }
+  .cap.c5:hover .cap-shield {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(48, 209, 88, .25);
+  }
+  .cap.c5 .cap-vis .lbls { display: flex; flex-direction: column; gap: 5px; }
+  .cap.c5 .cap-vis .lbls span {
+    font: 500 11.5px/1.3 Inter, sans-serif; color: var(--text-3);
+    letter-spacing: .005em;
+  }
+  .cap.c5 .cap-vis .lbls span b {
+    color: var(--text); font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* C6 — Lenguaje natural */
+  .cap.c6 .cap-vis {
+    margin-top: auto; padding-top: 22px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .cap-nl {
+    display: flex; align-items: center; gap: 8px;
+    padding: 9px 12px; border-radius: 8px;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .06);
+    font: 500 12px/1.3 Inter, sans-serif;
+    color: var(--text-2); letter-spacing: -.005em;
+    transition: all .2s;
+  }
+  .cap.c6:hover .cap-nl {
+    border-color: rgba(167, 139, 250, .25);
+    transform: translateX(2px);
+  }
+  .cap-nl::before {
+    content: '›'; color: var(--accent); font-weight: 600; font-size: 14px;
+  }
+  .cap-nl b { color: var(--text); font-weight: 500; }
+
+  @media (max-width: 880px) {
+    .caps-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .cap.c1, .cap.c2, .cap.c3, .cap.c4, .cap.c5, .cap.c6 {
+      grid-column: span 1; grid-row: auto;
     }
-    .cap.c1{padding:28px 24px}
+    .cap.c1 { padding: 28px 24px; }
   }
 
-  /* ─── Final CTA — big glow ─────────────── */
-  .final{
-    text-align:center;padding:180px 0 160px;
-    position:relative;overflow:hidden;
-    background:var(--bg);
+  /* ─── SECTION: Ecosistema ──────────────── */
+  .eco {
+    background: var(--bg);
+    position: relative; overflow: hidden;
   }
-  .final::before{
-    content:'';position:absolute;left:50%;top:50%;
-    width:1100px;height:1100px;
-    transform:translate(-50%,-50%);
+  .eco::before {
+    content: ''; position: absolute;
+    top: 50%; left: 50%; width: 900px; height: 600px;
+    transform: translate(-50%, -50%);
     background:
-      radial-gradient(circle at 50% 50%,rgba(167,139,250,.22) 0%,transparent 35%),
-      radial-gradient(ellipse 70% 50% at 50% 60%,rgba(155,82,255,.14),transparent 70%);
-    pointer-events:none;
-    animation:auroraDrift 18s ease-in-out infinite alternate;
+      radial-gradient(ellipse 50% 50% at 50% 50%, rgba(167, 139, 250, .08), transparent 60%);
+    pointer-events: none;
   }
-  .final::after{
-    content:'';position:absolute;left:50%;top:55%;
-    width:520px;height:520px;
-    transform:translate(-50%,-50%);
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(167,139,250,.20) 0%,rgba(167,139,250,.04) 45%,transparent 70%);
-    pointer-events:none;
-    filter:blur(20px);
-    animation:novaBreath 6s ease-in-out infinite;
-  }
-  .final .container-narrow{position:relative;z-index:1}
-  .final h2{
-    margin:24px auto 22px;max-width:14ch;
-    font-size:clamp(40px,6vw,80px);
-    line-height:1.02;letter-spacing:-.035em;
-  }
-  .final .subhead{margin:0 auto 44px}
-  .final .btn-pill{
-    background:linear-gradient(180deg,#a78bfa 0%,#8b5cf6 100%);
-    padding:16px 34px;font-size:16px;font-weight:600;
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.14) inset,
-      0 18px 44px -12px rgba(167,139,250,.7),
-      0 0 80px -16px rgba(167,139,250,.65);
-  }
-  .final .btn-pill:hover{
-    transform:translateY(-2px);
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.2) inset,
-      0 24px 56px -14px rgba(167,139,250,.85),
-      0 0 100px -16px rgba(167,139,250,.8);
-  }
-  .final-meta{
-    margin-top:36px;
-    font-size:13px;color:var(--text-3);
-    display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
-  }
-  .final-meta .sep{color:var(--text-4)}
+  .eco .container { position: relative; z-index: 1; text-align: center; }
+  .eco h2 { margin: 0 auto 24px; max-width: 22ch; }
+  .eco .subhead { margin: 0 auto 80px; max-width: 48ch; }
 
-  /* ─── Footer ─────────────────────────────── */
-  footer{
-    border-top:1px solid var(--border);
-    padding:48px 0 60px;color:var(--text-3);font-size:13px;
-    background:#000;
+  .ecosystem-stage-wrap {
+    position: relative;
+    margin: 0 auto 96px;
+    max-width: 1020px;
   }
-  .footer-inner{
-    max-width:1180px;margin:0 auto;padding:0 32px;
-    display:flex;justify-content:space-between;align-items:center;
-    flex-wrap:wrap;gap:20px;
+  .eco-stage {
+    position: relative;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    text-align: left;
+    z-index: 2;
   }
-  .footer-brand{display:flex;align-items:center;gap:10px;color:var(--text-2)}
-  .footer-brand .brand-mark{width:20px;height:20px;border-radius:50%}
-  .footer-brand b{font-weight:600;color:var(--text-2);letter-spacing:-.01em}
-  .footer-meta{font-size:12.5px;color:var(--text-3)}
-  .footer-links{display:flex;gap:24px;font-size:12.5px}
-  .footer-links a{color:var(--text-3);transition:color .15s}
-  .footer-links a:hover{color:var(--text-2)}
+  .eco-card {
+    --eco-c: #9b82ff;
+    --eco-c-rgb: 155, 130, 255;
+    position: relative;
+    background: linear-gradient(180deg, rgba(22, 22, 30, .85) 0%, rgba(12, 12, 18, .9) 100%);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border-2);
+    border-radius: 18px;
+    padding: 22px 24px 24px;
+    transition: transform .4s var(--ease-out), border-color .3s, box-shadow .35s;
+  }
+  .eco-card::after {
+    content: ''; position: absolute;
+    inset: 0; border-radius: 18px; pointer-events: none;
+    box-shadow: 0 0 0 0 rgba(var(--eco-c-rgb), 0);
+    transition: box-shadow .4s ease;
+  }
+  .eco-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(var(--eco-c-rgb), .38);
+  }
+  .eco-card:hover::after {
+    box-shadow: 0 28px 60px -22px rgba(var(--eco-c-rgb), .38);
+  }
+  .eco-card.echos { --eco-c: #9b82ff; --eco-c-rgb: 155, 130, 255; }
+  .eco-card.focus { --eco-c: #5e9eff; --eco-c-rgb: 94, 158, 255; }
+  .eco-card.spark { --eco-c: #fb923c; --eco-c-rgb: 251, 146, 60; }
 
-  /* ─── Responsive ─────────────────────────── */
-  @media (max-width:980px){
-    .section{padding:96px 0}
-    .hero{padding:80px 0 64px}
-    .focus-feature{
-      grid-template-columns:1fr;gap:40px;
-      padding:48px 32px;
-    }
-    .echos-showcase{padding:48px 32px}
-    .echos-showcase-header{margin-bottom:36px}
-    .kviz{padding:24px 22px 22px}
-    .kviz-grid{grid-template-columns:1fr;gap:24px}
-    .kviz-spine{display:none}
-    .kviz-out{padding:0;border-top:1px dashed rgba(155,130,255,.18);padding-top:22px}
-    .spark-teaser{grid-template-columns:1fr;padding:36px 28px;gap:28px}
-    .cycle-stage{
-      aspect-ratio:auto;max-width:520px;
-    }
-    .cycle-orbit-svg,.cycle-orb{display:none}
-    .cycle-node{
-      position:relative;left:auto;top:auto;
-      width:100%;transform:none;
-      margin-bottom:10px;
-    }
-    .cycle-caption{margin-top:36px}
-    .principles{grid-template-columns:1fr;gap:32px;text-align:left}
-    .nova-orb{width:220px;height:220px;margin-bottom:56px}
+  .eco-card.this {
+    background: linear-gradient(180deg, rgba(94, 158, 255, .08) 0%, rgba(12, 12, 18, .92) 100%);
+    border-color: rgba(94, 158, 255, .35);
   }
-  @media (max-width:640px){
-    .container,.container-narrow{padding:0 22px}
-    .nav{display:none}
-    .site-header{top:12px;width:calc(100% - 20px)}
-    .site-header-inner{padding:6px 6px 6px 16px}
-    .header-cta{padding:8px 14px;font-size:12.5px}
-    .hero{padding:140px 0 56px}
-    .hero h1{margin-bottom:24px}
-    .hero-pill{font-size:11.5px;padding:5px 12px 5px 9px}
-    .vs{padding:80px 0}
-    .hero{padding:64px 0 48px}
-    .hero h1{margin-bottom:22px}
-    .hero-mockup-wrap{padding:0 16px}
-    .mockup{padding:18px;border-radius:14px}
-    .strip-row{gap:16px;font-size:12.5px}
-    .strip-row .sep{display:none}
-    .cycle-stage{max-width:100%}
-    .cycle-node{padding:13px 14px 14px}
-    .focus-feature{padding:40px 24px;border-radius:18px}
-    .focus-feature h3{font-size:26px}
-    .echos-showcase{padding:36px 22px;border-radius:18px}
-    .kviz{padding:20px 18px;border-radius:14px}
-    .kviz-meta{font-size:10px;letter-spacing:.10em}
-    .kviz-meta-l .squig{display:none}
-    .kviz-source p{font-size:13.5px;line-height:1.65}
-    .kviz-routes{grid-template-columns:1fr;gap:8px}
-    .kr-cargo{font-size:11.5px}
-    .spark-teaser{padding:28px 20px;border-radius:14px}
-    .footer-inner{flex-direction:column;text-align:center;gap:14px}
-    .final{padding:96px 0}
-    .final-meta{gap:14px}
-    .final-meta .sep{display:none}
+  .eco-card.this::before {
+    content: 'TÚ ESTÁS AQUÍ';
+    position: absolute; top: -10px; right: 16px;
+    font: 600 9px/1 'JetBrains Mono', monospace;
+    letter-spacing: .14em;
+    background: var(--bg);
+    color: #5e9eff;
+    padding: 5px 10px; border-radius: 999px;
+    border: 1px solid rgba(94, 158, 255, .4);
+  }
+
+  .eco-card-head {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+  }
+  .eco-icon {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: rgba(0, 0, 0, .35);
+    border: 1px solid var(--border);
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .eco-icon svg { width: 18px; height: 18px; }
+  .eco-card h3 {
+    font: 600 17px/1 Inter, sans-serif;
+    letter-spacing: -.018em; color: var(--text); margin: 0;
+  }
+  .eco-role {
+    margin-left: auto;
+    font: 600 9.5px/1 'JetBrains Mono', monospace;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--eco-c);
+  }
+  .eco-content { display: flex; flex-direction: column; gap: 6px; }
+  .eco-pill {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 11px; border-radius: 8px;
+    background: rgba(255, 255, 255, .025);
+    border: 1px solid var(--border);
+    font: 500 12px/1.3 Inter, sans-serif;
+    color: var(--text);
+  }
+  .eco-pill::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--eco-c); flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(var(--eco-c-rgb), .55);
+  }
+  .eco-pill .meta { margin-left: auto; color: var(--text-3); font-weight: 400; font-size: 11px; }
+  .eco-status {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+    font: 600 10px/1 'JetBrains Mono', monospace;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .eco-status.live { color: var(--live); }
+  .eco-status.live::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--live); box-shadow: 0 0 10px rgba(48, 209, 88, .6);
+  }
+
+  /* SVG flow layer */
+  .eco-flow {
+    position: absolute; left: 0; right: 0;
+    top: calc(100% - 8px); height: 156px;
+    pointer-events: none; z-index: 1;
+  }
+  .eco-flow svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+  /* Nova hub at convergence — preserved orb #2 */
+  .eco-hub {
+    position: absolute;
+    left: 50%; top: calc(100% + 116px);
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  .eco-hub-orb {
+    width: 72px; height: 72px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 30%, rgba(255, 255, 255, .5) 0%, transparent 30%),
+      conic-gradient(from 200deg at 50% 50%, #6e3aff 0%, #a84dff 40%, #ff8fb1 70%, #6e3aff 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(167, 139, 250, .35),
+      0 0 60px -8px rgba(167, 139, 250, .65),
+      0 0 22px -4px rgba(255, 255, 255, .18);
+    animation: hubBreath 5s ease-in-out infinite, hubSpin 22s linear infinite;
+    position: relative;
+  }
+  .eco-hub-orb::before {
+    content: ''; position: absolute; inset: -22px; border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(167, 139, 250, .25) 110deg, transparent 220deg, rgba(99, 102, 241, .15) 330deg, transparent 360deg);
+    filter: blur(14px);
+    animation: hubHaloSpin 12s linear infinite;
+    z-index: -1;
+  }
+  @keyframes hubBreath {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.06); }
+  }
+  @keyframes hubSpin { to { background-position: 360deg; } }
+  @keyframes hubHaloSpin { to { transform: rotate(360deg); } }
+  .eco-hub-label {
+    position: absolute; left: 50%; top: calc(100% + 18px);
+    transform: translateX(-50%);
+    font: 600 11px/1 'JetBrains Mono', monospace;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: #cab8ff; white-space: nowrap;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .eco-hub-orb, .eco-hub-orb::before { animation: none; }
+    .eco-flow .particle { display: none; }
+  }
+
+  .eco-caption {
+    max-width: 620px; margin: 220px auto 0;
+    text-align: center;
+    font: 400 16px/1.65 Inter, sans-serif;
+    color: var(--text-2); letter-spacing: -.005em;
+  }
+  .eco-caption b { color: var(--text); font-weight: 500; }
+  .eco-caption .c-echos { color: #b69bff; font-weight: 500; }
+  .eco-caption .c-focus { color: #7eb3ff; font-weight: 500; }
+  .eco-caption .c-spark { color: #fb923c; font-weight: 500; }
+
+  @media (max-width: 980px) {
+    .ecosystem-stage-wrap { margin: 0 auto 64px; }
+    .eco-stage { grid-template-columns: 1fr; gap: 14px; }
+    .eco-flow { display: none; }
+    .eco-hub { position: relative; top: auto; left: auto; transform: none; display: flex; justify-content: center; margin: 28px 0 32px; }
+    .eco-hub-label { position: relative; top: auto; left: auto; transform: none; text-align: center; margin-top: 14px; }
+    .eco-caption { margin-top: 32px; }
+  }
+
+  /* ─── SECTION: Stats / counters ─────── */
+  .stats {
+    padding: 96px 0;
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .stat {
+    padding: 28px 16px;
+    border-radius: 14px;
+    transition: transform .3s var(--ease-out);
+  }
+  .stat:hover { transform: translateY(-2px); }
+  .stat-num {
+    font: 600 clamp(34px, 4vw, 52px) / 1 Inter, sans-serif;
+    letter-spacing: -.025em;
+    background: linear-gradient(135deg, #fff 0%, #c4b5fd 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font: 500 12.5px/1.4 'JetBrains Mono', monospace;
+    color: var(--text-3); letter-spacing: .08em; text-transform: uppercase;
+  }
+  @media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ─── SECTION: Final CTA ─────────────── */
+  .final {
+    text-align: center; padding: 180px 0 160px;
+    position: relative; overflow: hidden;
+    background: var(--bg);
+  }
+  .final::before {
+    content: ''; position: absolute; left: 50%; top: 50%;
+    width: 1100px; height: 1100px;
+    transform: translate(-50%, -50%);
+    background:
+      radial-gradient(circle at 50% 50%, rgba(167, 139, 250, .22) 0%, transparent 35%),
+      radial-gradient(ellipse 70% 50% at 50% 60%, rgba(155, 82, 255, .14), transparent 70%);
+    pointer-events: none;
+    animation: auroraDrift 18s ease-in-out infinite alternate;
+  }
+  .final::after {
+    content: ''; position: absolute; left: 50%; top: 56%;
+    width: 540px; height: 540px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(167, 139, 250, .22) 0%, rgba(167, 139, 250, .04) 45%, transparent 70%);
+    pointer-events: none; filter: blur(20px);
+    animation: cycleOrbBreath 6s ease-in-out infinite;
+  }
+  .final .container-narrow { position: relative; z-index: 1; }
+  .final h2 {
+    margin: 24px auto 22px; max-width: 14ch;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1.02; letter-spacing: -.035em;
+  }
+  .final .subhead { margin: 0 auto 44px; }
+  .final .btn-pill {
+    background: linear-gradient(180deg, #b89dff 0%, #8b5cf6 100%);
+    padding: 18px 36px; font-size: 16px; font-weight: 600;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .14),
+      0 18px 44px -12px rgba(167, 139, 250, .7),
+      0 0 80px -16px rgba(167, 139, 250, .65);
+  }
+  .final .btn-pill:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .2),
+      0 24px 56px -14px rgba(167, 139, 250, .85),
+      0 0 100px -16px rgba(167, 139, 250, .8);
+  }
+  .final-meta {
+    margin-top: 36px;
+    font-size: 13px; color: var(--text-3);
+    display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;
+  }
+  .final-meta b { color: var(--text-2); font-weight: 500; }
+  .final-meta .sep { color: var(--text-4); }
+
+  /* ─── Footer ─────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 56px 0 64px; color: var(--text-3);
+    font-size: 13px; background: var(--bg);
+  }
+  .footer-inner {
+    max-width: 1180px; margin: 0 auto; padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 32px; align-items: center;
+  }
+  .footer-brand {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--text-2);
+  }
+  .footer-brand .brand-mark { width: 22px; height: 22px; border-radius: 50%; }
+  .footer-brand b { font-weight: 600; color: var(--text); letter-spacing: -.01em; font-size: 14px; }
+  .footer-brand .footer-sep { color: var(--text-4); margin: 0 8px; }
+  .footer-brand .footer-os {
+    font: 500 10px/1 'JetBrains Mono', monospace;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .footer-links {
+    display: flex; gap: 24px;
+    font-size: 13px;
+  }
+  .footer-links a {
+    color: var(--text-3); transition: color .15s;
+  }
+  .footer-links a:hover { color: var(--text-2); }
+  .footer-meta { font-size: 12.5px; color: var(--text-3); }
+
+  @media (max-width: 720px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      text-align: center; gap: 18px;
+      justify-items: center;
+    }
+  }
+
+  /* ─── Responsive ─────────────────────── */
+  @media (max-width: 1024px) {
+    .device-content { grid-template-columns: 180px 1fr 280px; }
+  }
+  @media (max-width: 980px) {
+    .section { padding: 96px 0; }
+    .hero { padding: 132px 0 64px; }
+    .hero-stage { margin-top: 64px; }
+    .device-content {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 12px;
+    }
+    .mock-side { display: none; }
+    .device-frame { padding: 10px; border-radius: 18px; }
+    .nova-canvas { grid-template-columns: 1fr; }
+    .cycle-stage { aspect-ratio: auto; max-width: 520px; min-height: 0; }
+    .cycle-orbit-svg, .cycle-orb { display: none; }
+    .cycle-node,
+    .cycle-node.n1,
+    .cycle-node.n2,
+    .cycle-node.n3,
+    .cycle-node.n4,
+    .cycle-node.n5 {
+      position: relative; left: auto; top: auto;
+      width: 100%; transform: none;
+      margin-bottom: 10px;
+    }
+    .cycle-caption { margin-top: 36px; }
+  }
+  @media (max-width: 640px) {
+    .container, .container-narrow { padding: 0 22px; }
+    .nav { display: none; }
+    .site-header { top: 12px; width: calc(100% - 20px); }
+    .site-header-inner { padding: 6px 6px 6px 16px; }
+    .header-cta { padding: 9px 15px; font-size: 12.5px; }
+    .hero { padding: 120px 0 48px; }
+    .hero-pill { font-size: 11.5px; padding: 5px 12px 5px 9px; }
+    .hero-stage { padding: 0 12px; }
+    .device-bar { padding: 4px 8px 10px; }
+    .device-bar .url { max-width: 200px; font-size: 10px; padding: 4px 8px; }
+    .stat { padding: 20px 8px; }
+    .footer-inner { padding: 0 22px; }
+    .final { padding: 120px 0 100px; }
+  }
+
+  /* GPU hint for animated elements */
+  .hero::before, .hero::after, .cycle-orb, .eco-hub-orb,
+  .nova-bubble, .mock-nova-orb, .brand-mark, .device-frame,
+  .cap, .stat, .nova-stage, .nova-side {
+    will-change: transform;
   }
 </style>
 </head>
 <body id="top">
+
+<!-- Scroll progress indicator -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <!-- ─── FLOATING HEADER ─────────────────────── -->
 <header class="site-header" id="siteHeader">
   <div class="site-header-inner">
     <a href="#top" class="brand">
       <span class="brand-mark" aria-hidden="true"></span>
-      <span>FOCUS&nbsp;OS</span>
+      <span>Focus</span>
+      <span class="brand-os">· Focus OS</span>
     </a>
     <nav class="nav">
-      <a href="#sistema">Sistema</a>
-      <a href="#apps">Apps</a>
+      <a href="#producto">Producto</a>
       <a href="#nova">Nova</a>
-      <a href="#vs">Por qué</a>
+      <a href="#capacidades">Capacidades</a>
+      <a href="#ecosistema">Ecosistema</a>
     </nav>
-    <a href="https://usefocus.me" class="header-cta">
-      Probar <span class="arrow">→</span>
+    <a href="https://usefocus.me" class="header-cta" id="headerCTA">
+      Probar gratis <span class="arrow">→</span>
     </a>
   </div>
 </header>
@@ -1606,36 +1744,212 @@
 <main>
 
   <!-- ─── HERO ──────────────────────────────── -->
-  <section class="hero" id="sistema">
-    <div class="hero-noise" aria-hidden="true"></div>
-    <div class="container-narrow">
+  <section class="hero" id="producto">
+    <div class="hero-stars" aria-hidden="true"></div>
+
+    <div class="container hero-content">
       <span class="hero-pill reveal" aria-label="Estado del producto">
         <span class="dot" aria-hidden="true"></span>
         <b>v1.0</b> en producción
         <span class="sep">·</span>
-        3 apps disponibles
-        <span class="sep">·</span>
         gratis en beta
       </span>
-      <h1 class="reveal">El sistema operativo<br>para <span class="em">tu día</span>.</h1>
-      <p class="subhead reveal">Tres apps que se hablan entre sí. Una sola <b>Nova</b> al centro. <b>Focus</b> agenda, <b>Kairos</b> ordena lo que aprendes y <b>Spark</b> repasa contigo — todo conectado.</p>
+      <h1 class="reveal">El día que tu agenda<br><span class="em">no podía darte.</span></h1>
+      <p class="subhead reveal">
+        Focus organiza, anticipa y aprende de cómo trabajas. Con <b>Nova</b> al volante — la IA que propone, no impone.
+      </p>
       <div class="hero-ctas reveal">
-        <a href="https://usefocus.me" class="btn btn-pill">Probar Focus</a>
-        <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="btn btn-text">Kairos <span class="arrow">→</span></a>
-        <a href="https://sparkstudio.me" target="_blank" rel="noopener noreferrer" class="btn btn-text" style="color:#fb923c">Spark <span class="arrow">→</span></a>
+        <a href="https://usefocus.me" class="btn btn-pill" id="heroCTA">
+          Probar Focus <span class="arrow">→</span>
+        </a>
+        <a href="#nova" class="btn btn-ghost">
+          Ver cómo funciona Nova
+        </a>
+      </div>
+      <div class="hero-meta reveal">
+        <span><b>Sin tarjeta</b></span>
+        <span class="sep">·</span>
+        <span><b>0 kb</b> de tracking</span>
+        <span class="sep">·</span>
+        <span>Funciona <b>offline</b></span>
+        <span class="sep">·</span>
+        <span><b>iOS</b> · web · PWA</span>
       </div>
     </div>
 
-    <!-- Cycle of five steps — primary hero visual -->
+    <!-- HERO MOCKUP — interactive Mi Día -->
+    <div class="hero-stage reveal">
+      <div class="device-frame" id="deviceFrame">
+        <div class="device-bar">
+          <div class="traffic" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="url"><span class="lock">●</span>usefocus.me / mi día</div>
+        </div>
+
+        <div class="device-content">
+          <!-- Sidebar -->
+          <aside class="mock-side" aria-hidden="true">
+            <div class="mock-side-h">Hoy</div>
+            <div class="mock-side-item active">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <span>Mi día</span>
+            </div>
+            <div class="mock-side-item">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"/>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+              <span>Tareas</span>
+            </div>
+            <div class="mock-side-item">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Próximos</span>
+            </div>
+            <div class="mock-side-divider"></div>
+            <div class="mock-side-item">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+              <span>Ajustes</span>
+            </div>
+            <div class="mock-side-foot">
+              <div class="mock-avatar"></div>
+              <div class="mock-avatar-txt">Tu cuenta<span>tu@email.com</span></div>
+            </div>
+          </aside>
+
+          <!-- Day -->
+          <div class="mock-day" aria-hidden="true">
+            <div class="mock-day-head">
+              <div class="mock-day-title">
+                <span class="live-d"></span>
+                Mi día
+              </div>
+              <span class="mock-day-date">VIE · 25 ABR</span>
+            </div>
+            <div class="mock-events" id="mockEvents">
+              <div class="mock-event">
+                <span class="t">09:00</span>
+                <span class="b meet"></span>
+                <div class="mock-event-body">
+                  <div class="mock-event-title">Reunión equipo · weekly</div>
+                  <div class="mock-event-meta">Sala virtual · 45 min</div>
+                </div>
+              </div>
+              <div class="mock-event">
+                <span class="t">11:00</span>
+                <span class="b focus"></span>
+                <div class="mock-event-body">
+                  <div class="mock-event-title">Foco profundo · Specs Q3</div>
+                  <div class="mock-event-meta">Sin notificaciones · 90 min</div>
+                </div>
+              </div>
+              <div class="mock-event now">
+                <span class="t">14:30</span>
+                <span class="b work"></span>
+                <div class="mock-event-body">
+                  <div class="mock-event-title">Llamada con Carlos</div>
+                  <div class="mock-event-meta">Cliente · 30 min</div>
+                </div>
+              </div>
+              <div class="mock-event">
+                <span class="t">17:00</span>
+                <span class="b focus"></span>
+                <div class="mock-event-body">
+                  <div class="mock-event-title">Revisar PRs pendientes</div>
+                  <div class="mock-event-meta">3 abiertos · estimado 60 min</div>
+                </div>
+              </div>
+              <div class="mock-event">
+                <span class="t">19:00</span>
+                <span class="b personal"></span>
+                <div class="mock-event-body">
+                  <div class="mock-event-title">Gimnasio · piernas</div>
+                  <div class="mock-event-meta">Recurrente · 60 min</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nova panel -->
+          <aside class="mock-nova" aria-hidden="true">
+            <div class="mock-nova-head">
+              <div class="mock-nova-orb"></div>
+              <div>
+                <div class="mock-nova-name">Nova</div>
+                <div class="mock-nova-status">● Atenta</div>
+              </div>
+            </div>
+
+            <div class="mock-nova-msg">
+              <div class="mock-nova-msg-tag">▸ Propone</div>
+              <div class="mock-nova-msg-body">
+                Tu llamada con <b>Carlos a las 14:30</b> no tiene agenda. ¿Bloqueo 30 min antes para que la prepares?
+              </div>
+              <div class="mock-nova-msg-actions">
+                <span class="mock-mb accept">Aceptar</span>
+                <span class="mock-mb later">No ahora</span>
+              </div>
+            </div>
+
+            <div class="mock-nova-suggestions">
+              <div class="mock-sug">
+                <svg class="mock-sug-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                <span><b>Lunes</b> tienes el examen — ¿reservo repaso?</span>
+              </div>
+              <div class="mock-sug">
+                <svg class="mock-sug-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <span>Tu energía cae a las <b>16:00</b>. Sugiero foco antes.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SECCIÓN: Cycle ───────────────────── -->
+  <section class="section sistema" id="ciclo">
     <div class="container">
+      <span class="eyebrow reveal" style="margin: 0 auto 28px; display: inline-flex">
+        <span class="dot" aria-hidden="true"></span>
+        El ciclo · Focus + Nova
+      </span>
+      <h2 class="reveal">Cinco pasos. <span class="serif-em">Una sola</span> pantalla.</h2>
+      <p class="subhead reveal">
+        Tu día no es una lista — es un loop. Captura, organiza, ejecuta, revisa, mejora. Nova al centro de cada vuelta.
+      </p>
+
       <div class="cycle-stage reveal" aria-label="Ciclo de cinco pasos con Nova al centro">
         <svg class="cycle-orbit-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <defs>
             <path id="cycPath" d="M 400 80 a 320 320 0 1 1 0 640 a 320 320 0 1 1 0 -640" fill="none"/>
           </defs>
+          <use href="#cycPath" class="ring-glow"/>
           <use href="#cycPath" class="ring"/>
           <circle r="5" class="particle" fill="#a78bfa" opacity=".95">
             <animateMotion dur="18s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#cycPath"/>
+            </animateMotion>
+          </circle>
+          <circle r="3.5" class="particle-2" fill="#818cf8" opacity=".75">
+            <animateMotion dur="18s" begin="-9s" repeatCount="indefinite" rotate="auto">
               <mpath href="#cycPath"/>
             </animateMotion>
           </circle>
@@ -1666,374 +1980,163 @@
       </div>
 
       <p class="cycle-caption reveal">
-        Cada paso alimenta al siguiente. <b>No es otra lista de tareas — es la capa que hace que tu día tenga memoria.</b>
+        Cada paso alimenta al siguiente. <b>Focus es la única capa que hace que tu día tenga memoria.</b>
       </p>
     </div>
   </section>
 
-  <!-- ─── TRUST STRIP ───────────────────────── -->
-  <section class="strip">
-    <div class="container">
-      <div class="strip-row">
-        <span><b>v1.0</b> en producción</span>
-        <span class="sep">·</span>
-        <span><b>0 kb</b> de tracking</span>
-        <span class="sep">·</span>
-        <span>funciona <b>offline</b></span>
-        <span class="sep">·</span>
-        <span><b>3 apps</b> disponibles</span>
-        <span class="sep">·</span>
-        <span><b>gratis</b> en beta</span>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── FOCUS — DISPONIBLE HOY ─────────────── -->
-  <section class="section apps" id="apps">
-    <div class="container">
-      <span class="eyebrow live reveal">● Focus · Disponible hoy</span>
-      <h2 class="reveal">El calendario que <br>piensa contigo.</h2>
-      <p class="subhead reveal">Tu agenda, tareas y recordatorios en un solo lugar. Con Nova al pie de cada decisión.</p>
-
-      <div class="focus-feature reveal" style="margin-top:72px">
-        <div>
-          <span class="eyebrow live">Disponible</span>
-          <h3>Mi Día. Lo importante, en orden.</h3>
-          <p class="body">No te enseña la lista entera ni te abruma con todo lo pendiente. Te muestra los bloques de hoy, agendados con tu energía y prioridades reales. Lenguaje natural para crear eventos, ritual diario para empezar y cerrar, modo offline. Funciona en móvil instalado como PWA.</p>
-          <a href="https://usefocus.me" class="feature-cta">Abrir Focus <span class="arrow">→</span></a>
-        </div>
-        <div class="focus-mini" aria-hidden="true" id="focusMini">
-          <div class="focus-mini-head">
-            <span><span class="live-dot"></span>Mi Día</span>
-            <span class="d">vie · 25 abr</span>
-          </div>
-          <div class="focus-mini-row"><span class="t">09:00</span><span class="b c"></span><span class="l">Reunión equipo</span></div>
-          <div class="focus-mini-row"><span class="t">11:00</span><span class="b b"></span><span class="l">Foco profundo</span></div>
-          <div class="focus-mini-row"><span class="t">14:30</span><span class="b a"></span><span class="l">Llamada cliente</span></div>
-          <div class="focus-mini-row"><span class="t">17:00</span><span class="b b"></span><span class="l">Revisar PRs</span></div>
-          <div class="focus-mini-row"><span class="t">19:00</span><span class="b d"></span><span class="l">Gimnasio</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── ECOSISTEMA — Family flow + deep dives ─ -->
-  <section class="section apps" id="ecosistema" style="padding-top:0">
-    <div class="container">
-      <span class="eyebrow muted reveal">El ecosistema</span>
-      <h2 class="reveal">Tres apps. Una sola Nova.</h2>
-      <p class="subhead reveal">Misma capa AI por debajo. Misma cuenta. Cada app con un trabajo. Ninguna se mete con la otra.</p>
-
-      <!-- Family flow stage -->
-      <div class="ecosystem-stage-wrap reveal">
-        <div class="eco-stage">
-          <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="eco-card echos" style="cursor:pointer;text-decoration:none">
-            <div class="eco-card-head">
-              <span class="eco-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#9b82ff" stroke-width="1.7" stroke-linecap="round">
-                  <path d="M7.5 12a4.5 4.5 0 0 1 4.5-4.5"/>
-                  <path d="M7.5 12a4.5 4.5 0 0 0 4.5 4.5"/>
-                  <path d="M11 12a2 2 0 0 1 2-2"/>
-                  <path d="M11 12a2 2 0 0 0 2 2"/>
-                  <circle cx="15.5" cy="12" r="1" fill="#9b82ff" stroke="none"/>
-                </svg>
-              </span>
-              <h3>Kairos</h3>
-              <span class="eco-role">Captura</span>
-            </div>
-            <div class="eco-content">
-              <span class="eco-pill">Concepto · Mitosis</span>
-              <span class="eco-pill">Fecha · 30 abr</span>
-            </div>
-            <span class="eco-status live">Disponible</span>
-          </a>
-
-          <article class="eco-card focus">
-            <div class="eco-card-head">
-              <span class="eco-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#5e9eff" stroke-width="1.7">
-                  <circle cx="12" cy="12" r="6"/>
-                  <circle cx="12" cy="12" r="3"/>
-                  <circle cx="12" cy="12" r="1.2" fill="#5e9eff" stroke="none"/>
-                </svg>
-              </span>
-              <h3>Focus</h3>
-              <span class="eco-role">Organiza</span>
-            </div>
-            <div class="eco-content">
-              <span class="eco-pill">11:00 · Foco profundo</span>
-              <span class="eco-pill">28 abr · Estudio Bio</span>
-            </div>
-            <span class="eco-status live">Disponible</span>
-          </article>
-
-          <a href="https://sparkstudio.me" target="_blank" rel="noopener noreferrer" class="eco-card spark" style="cursor:pointer;text-decoration:none">
-            <div class="eco-card-head">
-              <span class="eco-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="#F97316" stroke="#F97316" stroke-width="1.2" stroke-linejoin="round">
-                  <path d="M14 4 L7 14 H11 L10 20 L17 10 H13 L14 4 Z"/>
-                </svg>
-              </span>
-              <h3>Spark</h3>
-              <span class="eco-role">Memoriza</span>
-            </div>
-            <div class="eco-content">
-              <span class="eco-pill">12 flashcards listas</span>
-              <span class="eco-pill">Próximo · jueves</span>
-            </div>
-            <span class="eco-status live">Disponible</span>
-          </a>
-        </div>
-
-        <div class="eco-flow" aria-hidden="true">
-          <svg viewBox="0 0 1020 148" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="flowEchos" x1="0" y1="0" x2="0.6" y2="1">
-                <stop offset="0%" stop-color="#9b82ff" stop-opacity="0"/>
-                <stop offset="50%" stop-color="#9b82ff" stop-opacity=".55"/>
-                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
-              </linearGradient>
-              <linearGradient id="flowFocus" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#5e9eff" stop-opacity="0"/>
-                <stop offset="50%" stop-color="#5e9eff" stop-opacity=".55"/>
-                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
-              </linearGradient>
-              <linearGradient id="flowSpark" x1="1" y1="0" x2="0.4" y2="1">
-                <stop offset="0%" stop-color="#F97316" stop-opacity="0"/>
-                <stop offset="50%" stop-color="#F97316" stop-opacity=".55"/>
-                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
-              </linearGradient>
-              <path id="pathEchos" d="M170 0 C 170 70 320 100 510 130"/>
-              <path id="pathFocus" d="M510 0 C 510 65 510 95 510 130"/>
-              <path id="pathSpark" d="M850 0 C 850 70 700 100 510 130"/>
-            </defs>
-
-            <use href="#pathEchos" stroke="url(#flowEchos)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
-            <use href="#pathFocus" stroke="url(#flowFocus)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
-            <use href="#pathSpark" stroke="url(#flowSpark)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
-
-            <circle class="particle" r="3.5" fill="#9b82ff" opacity=".95">
-              <animateMotion dur="3.6s" repeatCount="indefinite" rotate="auto">
-                <mpath href="#pathEchos"/>
-              </animateMotion>
-              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" repeatCount="indefinite"/>
-            </circle>
-            <circle class="particle" r="3.5" fill="#5e9eff" opacity=".95">
-              <animateMotion dur="3.6s" begin="1.2s" repeatCount="indefinite" rotate="auto">
-                <mpath href="#pathFocus"/>
-              </animateMotion>
-              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" begin="1.2s" repeatCount="indefinite"/>
-            </circle>
-            <circle class="particle" r="3.5" fill="#F97316" opacity=".95">
-              <animateMotion dur="3.6s" begin="2.4s" repeatCount="indefinite" rotate="auto">
-                <mpath href="#pathSpark"/>
-              </animateMotion>
-              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" begin="2.4s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
-        </div>
-
-        <div class="eco-hub" aria-hidden="true">
-          <div class="eco-hub-orb"></div>
-          <div class="eco-hub-label">Nova</div>
-        </div>
-      </div>
-
-      <p class="eco-caption reveal">
-        Lo que <span class="c-echos">Kairos</span> captura llega a <span class="c-focus">Focus</span> como sugerencia. Los conceptos viajan a <span class="c-spark">Spark</span> como flashcards. <b>Nova es la única capa que las ve a las tres.</b>
-      </p>
-
-      <!-- ─── DEEP DIVES ──────────────────────── -->
-      <div class="reveal" style="margin-top:120px;text-align:center">
-        <span class="eyebrow muted">En detalle</span>
-        <h2 style="margin:8px auto 0;max-width:18ch">Cada app, de cerca.</h2>
-      </div>
-
-      <!-- Echos showcase -->
-      <article class="echos-showcase reveal" style="margin-top:48px" aria-labelledby="echos-h">
-        <header class="echos-showcase-header">
-          <span class="eyebrow echos">Kairos · Disponible</span>
-          <h3 id="echos-h">El cuaderno que <br>ordena lo que aprendes.</h3>
-          <p class="body">La libreta académica con bloques semánticos: Concepto, Definición, Duda, Fecha, Tarea. Nova lee cada clase, extrae lo importante con cita literal y manda las fechas a Focus como sugerencia. Tu cuaderno sigue siendo tuyo.</p>
-          <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="btn btn-text" style="padding-left:0;color:#9b82ff">Abrir Kairos <span class="arrow">→</span></a>
-        </header>
-
-        <div class="kviz" aria-hidden="true">
-          <div class="kviz-meta">
-            <span class="kviz-meta-l">
-              <span class="squig"></span>
-              Apuntes · Biología · 25 abr
-            </span>
-            <span class="kviz-meta-r">
-              <span class="pulse"></span>
-              Nova leyendo
-            </span>
-          </div>
-
-          <div class="kviz-grid">
-            <div class="kviz-source">
-              <div class="kviz-source-label">Texto en bruto</div>
-              <p>
-                Hoy vimos <em class="kw" style="--kw-c:#b69bff;--i:0">mitosis</em> — división celular que produce dos células hijas idénticas a la madre. Cuatro fases: profase, metafase, anafase, telofase.
-              </p>
-              <p>
-                Definimos <em class="kw" style="--kw-c:#7da2ff;--i:1">cromosoma homólogo</em> como par con la misma información genética. Quedó la duda: <em class="kw" style="--kw-c:#f4b454;--i:2">¿por qué la meiosis necesita dos divisiones?</em>
-              </p>
-              <p>
-                El profe avisó: <em class="kw" style="--kw-c:#ff8db4;--i:3">examen parcial el 30 de abril</em>.
-              </p>
-            </div>
-
-            <div class="kviz-spine"></div>
-
-            <div class="kviz-out">
-              <div class="kviz-out-label">Nova ordena</div>
-              <div class="kchip" style="--c:#b69bff;--i:0">
-                <span class="kchip-tag">Concepto</span>
-                <span class="kchip-text">Mitosis</span>
-                <span class="kchip-sub">División celular · 4 fases</span>
-              </div>
-              <div class="kchip" style="--c:#7da2ff;--i:1">
-                <span class="kchip-tag">Definición</span>
-                <span class="kchip-text">Cromosoma homólogo</span>
-              </div>
-              <div class="kchip" style="--c:#f4b454;--i:2">
-                <span class="kchip-tag">Duda abierta</span>
-                <span class="kchip-text">Meiosis · 2 divisiones</span>
-              </div>
-              <div class="kchip" style="--c:#ff8db4;--i:3">
-                <span class="kchip-tag">Fecha</span>
-                <span class="kchip-text">Examen · 30 abr</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="kviz-routes">
-            <div class="kroute" style="--c:#5e9eff;--delay:0s">
-              <span class="kr-arrow">→</span>
-              <span class="kr-name">Focus</span>
-              <span class="kr-cargo">bloque de estudio sugerido · 28 abr</span>
-            </div>
-            <div class="kroute" style="--c:#F97316;--delay:1.6s">
-              <span class="kr-arrow">→</span>
-              <span class="kr-name">Spark</span>
-              <span class="kr-cargo">3 flashcards generadas</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Spark teaser -->
-      <article class="spark-teaser reveal" aria-labelledby="spark-h">
-        <div>
-          <span class="eyebrow spark">Spark · Disponible</span>
-          <h3 id="spark-h">El repaso que se queda.</h3>
-          <p class="tagline">De los apuntes de Kairos al examen de Focus.</p>
-          <p class="body">Las preguntas que Nova encuentra en tus apuntes se vuelven flashcards de repaso espaciado. Cuando Focus tiene un examen agendado, Spark prepara el material y bloquea las sesiones para que llegues listo.</p>
-          <a href="https://sparkstudio.me" target="_blank" rel="noopener noreferrer" class="btn btn-text" style="padding-left:0;color:#F97316">Abrir Spark <span class="arrow">→</span></a>
-        </div>
-        <div class="spark-cards" aria-hidden="true">
-          <div class="spark-card">
-            <span class="lbl">Flashcard 1 / 12</span>
-            <div class="q">¿Qué diferencia clave hay entre mitosis y meiosis?</div>
-          </div>
-          <div class="spark-card flip">
-            <span class="lbl">Repaso programado</span>
-            <div class="q">3 sesiones agendadas en Focus</div>
-            <div class="meta">Próxima · jueves 18:00</div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ─── NOVA ──────────────────────────────── -->
+  <!-- ─── SECCIÓN: Nova ────────────────────── -->
   <section class="section nova" id="nova">
-    <div class="container nova-inner">
-      <span class="eyebrow reveal">Nova</span>
-      <h2 class="reveal">La inteligencia <br>que conecta todo.</h2>
-      <p class="subhead reveal">Nova no es un chatbot. Es el hilo que conecta las tres apps. Aprende. Propone. Nunca actúa sola.</p>
+    <div class="container">
+      <span class="eyebrow reveal">
+        <span class="dot" aria-hidden="true"></span>
+        Nova · La inteligencia
+      </span>
+      <h2 class="reveal">No es un chatbot.<br><span class="grad-text">Es un copiloto.</span></h2>
+      <p class="subhead reveal">
+        Nova vive al pie de tu día. Aprende cómo trabajas, propone cambios concretos y nunca toca tu agenda sin que tú decidas.
+      </p>
 
-      <div class="nova-orb reveal" aria-hidden="true"></div>
+      <div class="nova-canvas reveal">
+        <!-- Stage: live conversation -->
+        <div class="nova-stage" aria-hidden="true">
+          <div class="nova-stage-meta">
+            <div class="nova-bubble"></div>
+            <div>
+              <div class="nova-stage-name">Nova</div>
+              <div class="nova-stage-status"><span class="live-d"></span>Atenta a tu día</div>
+            </div>
+          </div>
 
-      <div class="nova-demo reveal" aria-hidden="true">
-        <div class="nova-demo-head">
-          <span class="nova-prop-dot"></span>
-          <span>Nova propone</span>
+          <div class="nova-thread" id="novaThread">
+            <div class="nova-msg">
+              <div class="nova-msg-tag">▸ Detecta</div>
+              <div class="nova-msg-body">
+                Tienes <b>3 reuniones seguidas</b> el jueves entre las 10 y las 13. Ningún espacio para preparar la del cliente.
+              </div>
+            </div>
+
+            <div class="nova-msg">
+              <div class="nova-msg-tag">▸ Propone</div>
+              <div class="nova-msg-body">
+                Sugiero mover <span class="h">"Sync con diseño"</span> al viernes 11:00. Te abre <b>30 min</b> antes de la llamada con cliente — y nadie pierde el espacio.
+              </div>
+              <div class="nova-msg-actions">
+                <span class="mock-mb accept">Aceptar</span>
+                <span class="mock-mb later">Más tarde</span>
+              </div>
+            </div>
+
+            <div class="nova-user">
+              Hazlo. Y avísame el viernes 30 min antes.
+            </div>
+
+            <div class="nova-thinking">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <span>Aplicando cambio</span>
+            </div>
+          </div>
         </div>
-        <div class="nova-demo-body">Tu reunión de las <b>14:00 con Carlos</b> quedó sin agenda. ¿Bloqueo 30 min antes para que la prepares?</div>
-        <div class="nova-demo-actions">
-          <button class="mock-btn accept">Aceptar</button>
-          <button class="mock-btn later">No ahora</button>
-        </div>
+
+        <!-- Side: principles -->
+        <aside class="nova-side">
+          <div class="nova-pri">
+            <div class="nova-pri-marker">01</div>
+            <div>
+              <h4>Aprende de cómo vives.</h4>
+              <p>Cuándo rindes, qué postergas, cómo agendas. Sin tracking externo: solo tu propio uso.</p>
+            </div>
+          </div>
+          <div class="nova-pri">
+            <div class="nova-pri-marker">02</div>
+            <div>
+              <h4>Propone, no impone.</h4>
+              <p>Cada cambio es una sugerencia con motivo. En lenguaje natural, al pie de tu día.</p>
+            </div>
+          </div>
+          <div class="nova-pri">
+            <div class="nova-pri-marker">03</div>
+            <div>
+              <h4>Tu permiso siempre.</h4>
+              <p>Aceptas o rechazas. Tu calendario nunca se mueve sin que tú lo decidas.</p>
+            </div>
+          </div>
+        </aside>
       </div>
+    </div>
+  </section>
 
-      <div class="principles reveal">
-        <div class="principle">
-          <span class="label">Aprende</span>
-          <h4>De cómo vives.</h4>
-          <p>Cómo agendas, qué postergas, cuándo rindes mejor. Sin tracking externo: solo tu propio uso.</p>
+  <!-- ─── SECCIÓN: Stats ───────────────────── -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid reveal-stagger">
+        <div class="stat">
+          <div class="stat-num" data-count="0">0 kb</div>
+          <div class="stat-label">Tracking externo</div>
         </div>
-        <div class="principle">
-          <span class="label">Propone</span>
-          <h4>Cambios concretos.</h4>
-          <p>Mover una reunión, bloquear foco, agregar una tarea. En lenguaje natural, al pie de tu día.</p>
+        <div class="stat">
+          <div class="stat-num" data-count="100">100 %</div>
+          <div class="stat-label">Exportable</div>
         </div>
-        <div class="principle">
-          <span class="label">Pide permiso</span>
-          <h4>Nunca actúa sola.</h4>
-          <p>Cada cambio pasa por una bandeja. Apruebas o rechazas. Tu agenda nunca se mueve sin que tú decidas.</p>
+        <div class="stat">
+          <div class="stat-num" data-count="3">3</div>
+          <div class="stat-label">Plataformas — iOS · web · PWA</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="24">24/7</div>
+          <div class="stat-label">Funciona offline</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── CAPACIDADES ─────────────────────────── -->
-  <section class="caps" id="vs">
-    <div class="container caps-inner">
-      <span class="eyebrow muted reveal">Capacidades</span>
-      <h2 class="reveal">Lo que hace <span class="gradient-text">distinto</span><br>a Focus OS.</h2>
-      <p class="subhead reveal" style="margin-left:auto;margin-right:auto">No es una lista de features sueltas. Es un sistema que entiende tu día, lo recuerda y lo mejora — sin que tengas que pedírselo.</p>
+  <!-- ─── SECCIÓN: Capacidades ─────────────── -->
+  <section class="caps" id="capacidades">
+    <div class="container">
+      <span class="eyebrow muted reveal">
+        <span class="dot" aria-hidden="true"></span>
+        Capacidades
+      </span>
+      <h2 class="reveal">Lo que hace <span class="grad-text">distinto</span> a Focus.</h2>
+      <p class="subhead reveal">
+        No es una lista de features sueltas. Es un sistema que entiende tu día, lo recuerda y lo mejora — sin que tengas que pedírselo.
+      </p>
 
       <div class="caps-grid reveal">
-        <!-- Hero card: Modo invitado -->
+        <!-- C1 — Anticipación -->
         <article class="cap c1">
           <div>
-            <span class="cap-tag">Sin fricción</span>
-            <h3>Pruébalo en <span class="em">5 segundos</span> — sin email, sin tarjeta.</h3>
-            <p>Las tres apps tienen modo invitado. Entras, juegas, y solo creas cuenta cuando quieras guardarlo todo en la nube.</p>
+            <span class="cap-tag">Anticipación</span>
+            <h3>Tu semana, <span class="em">prevista</span> con tiempo.</h3>
+            <p>Nova lee tu calendario, tus pendientes y cómo trabajas. Reserva foco antes del examen, prep antes de la llamada — sin que tengas que pedirlo.</p>
           </div>
-          <div class="cap-apps">
-            <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="cap-app k">
-              <span class="d"></span>Kairos<span class="arr">→</span>
-            </a>
-            <a href="https://usefocus.me" target="_blank" rel="noopener noreferrer" class="cap-app f">
-              <span class="d"></span>Focus<span class="arr">→</span>
-            </a>
-            <a href="https://sparkstudio.me" target="_blank" rel="noopener noreferrer" class="cap-app s">
-              <span class="d"></span>Spark<span class="arr">→</span>
-            </a>
+          <div class="cap-forecast">
+            <div class="cap-fc-row">
+              <span class="cap-fc-day">LUN</span>
+              <span class="cap-fc-time">09:00</span>
+              <span class="cap-fc-what">Repaso Cálculo</span>
+              <span class="cap-fc-tag nova">NOVA</span>
+            </div>
+            <div class="cap-fc-row">
+              <span class="cap-fc-day">MIÉ</span>
+              <span class="cap-fc-time">14:00</span>
+              <span class="cap-fc-what">Foco profundo · proyecto</span>
+              <span class="cap-fc-tag nova">NOVA</span>
+            </div>
+            <div class="cap-fc-row">
+              <span class="cap-fc-day">VIE</span>
+              <span class="cap-fc-time">10:30</span>
+              <span class="cap-fc-what">Prep llamada cliente</span>
+              <span class="cap-fc-tag nova">NOVA</span>
+            </div>
           </div>
         </article>
 
-        <!-- Memoria -->
+        <!-- C2 — Captura multimodal -->
         <article class="cap c2">
-          <span class="cap-tag">Memoria</span>
-          <h3>Aprende de tu ritmo.</h3>
-          <p>Cuándo rindes, qué postergas, cómo agendas. Nova ajusta lo que propone.</p>
-          <div class="cap-vis" aria-hidden="true">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </div>
-        </article>
-
-        <!-- Multimodal -->
-        <article class="cap c3">
           <span class="cap-tag">Captura</span>
           <h3>Texto, voz, foto.</h3>
-          <p>Pegas un PDF, dictas una idea o subes una foto del pizarrón. Nova lo entiende.</p>
+          <p>Dictas una idea, pegas un correo o subes una foto. Nova lo entiende y lo lleva a su lugar.</p>
           <div class="cap-vis" aria-hidden="true">
             <span class="cap-modal" title="Voz">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -2058,25 +2161,57 @@
           </div>
         </article>
 
-        <!-- Sincronizado -->
-        <article class="cap c4">
-          <span class="cap-tag">Sincronía</span>
-          <h3>Las 3 apps al mismo tiempo.</h3>
-          <p>Lo que escribes en Kairos llega a Spark y Focus al instante.</p>
+        <!-- C3 — Memoria del ritmo -->
+        <article class="cap c3">
+          <span class="cap-tag">Memoria</span>
+          <h3>Aprende de tu ritmo.</h3>
+          <p>Cuándo rindes, qué postergas, cómo agendas. Nova ajusta lo que propone.</p>
           <div class="cap-vis" aria-hidden="true">
-            <span class="dot"></span>
-            <span class="line"></span>
-            <span class="dot"></span>
-            <span class="line"></span>
-            <span class="dot"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
           </div>
         </article>
 
-        <!-- Privado -->
+        <!-- C4 — Sincronía -->
+        <article class="cap c4">
+          <span class="cap-tag">Sincronía</span>
+          <h3>Tus dispositivos al instante.</h3>
+          <p>Móvil, escritorio o tablet — todo se sincroniza en tiempo real, sin un botón de refresh.</p>
+          <div class="cap-vis" aria-hidden="true">
+            <span class="cap-device" title="Móvil">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <rect x="6" y="2" width="12" height="20" rx="2"/>
+                <line x1="12" y1="18" x2="12" y2="18.01"/>
+              </svg>
+            </span>
+            <span class="cap-sync-line"></span>
+            <span class="cap-device" title="Escritorio">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </span>
+            <span class="cap-sync-line"></span>
+            <span class="cap-device" title="Tablet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                <line x1="11" y1="18" x2="13" y2="18"/>
+              </svg>
+            </span>
+          </div>
+        </article>
+
+        <!-- C5 — Privacidad -->
         <article class="cap c5">
           <span class="cap-tag">Privacidad</span>
           <h3>Tus datos, tu control.</h3>
-          <p>0 kb de tracking. Funciona offline y exportas todo cuando quieras.</p>
+          <p>0 kb de tracking. Funciona offline. Exportas todo cuando quieras, sin pedir permiso.</p>
           <div class="cap-vis" aria-hidden="true">
             <span class="cap-shield">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
@@ -2091,47 +2226,180 @@
           </div>
         </article>
 
-        <!-- Predicción -->
+        <!-- C6 — Lenguaje natural -->
         <article class="cap c6">
-          <span class="cap-tag">Anticipación</span>
-          <h3>Tu semana, prevista.</h3>
-          <p>Nova reserva tiempo de repaso antes de que llegue la prueba.</p>
+          <span class="cap-tag">Lenguaje natural</span>
+          <h3>Hablas. Focus entiende.</h3>
+          <p>Sin formularios. Sin clasificar. Escribes como hablas y Focus lo lleva a su lugar.</p>
           <div class="cap-vis" aria-hidden="true">
-            <div class="cap-fcast">
-              <span class="day">LUN</span>
-              <span class="what">Repaso Cálculo</span>
-              <span class="pct">2h</span>
-            </div>
-            <div class="cap-fcast">
-              <span class="day">MIÉ</span>
-              <span class="what">Foco profundo</span>
-              <span class="pct">90m</span>
-            </div>
+            <div class="cap-nl"><span><b>"dentista mañana 10"</b></span></div>
+            <div class="cap-nl"><span><b>"prep llamada Carlos"</b></span></div>
           </div>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- ─── SECCIÓN: Ecosistema ──────────────── -->
+  <section class="section eco" id="ecosistema">
+    <div class="container">
+      <span class="eyebrow muted reveal">
+        <span class="dot" aria-hidden="true"></span>
+        Más allá de Focus
+      </span>
+      <h2 class="reveal">Focus es parte de un ecosistema. <span class="serif-em">No te exige</span> usarlo todo.</h2>
+      <p class="subhead reveal">
+        Focus funciona solo. Si quieres más, conecta con Kairos para tus clases o Spark para tus repasos. Misma cuenta. Misma Nova.
+      </p>
+
+      <!-- Family flow stage -->
+      <div class="ecosystem-stage-wrap reveal">
+        <div class="eco-stage">
+          <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="eco-card echos" style="cursor:pointer;text-decoration:none">
+            <div class="eco-card-head">
+              <span class="eco-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#9b82ff" stroke-width="1.7" stroke-linecap="round">
+                  <path d="M7.5 12a4.5 4.5 0 0 1 4.5-4.5"/>
+                  <path d="M7.5 12a4.5 4.5 0 0 0 4.5 4.5"/>
+                  <path d="M11 12a2 2 0 0 1 2-2"/>
+                  <path d="M11 12a2 2 0 0 0 2 2"/>
+                  <circle cx="15.5" cy="12" r="1" fill="#9b82ff" stroke="none"/>
+                </svg>
+              </span>
+              <h3>Kairos</h3>
+              <span class="eco-role">Aprende</span>
+            </div>
+            <div class="eco-content">
+              <span class="eco-pill">Cuaderno de clases</span>
+              <span class="eco-pill">Bloques semánticos</span>
+            </div>
+            <span class="eco-status live">Disponible</span>
+          </a>
+
+          <article class="eco-card focus this">
+            <div class="eco-card-head">
+              <span class="eco-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#5e9eff" stroke-width="1.7">
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <circle cx="12" cy="12" r="1.2" fill="#5e9eff" stroke="none"/>
+                </svg>
+              </span>
+              <h3>Focus</h3>
+              <span class="eco-role">Organiza</span>
+            </div>
+            <div class="eco-content">
+              <span class="eco-pill">Tu día con Nova</span>
+              <span class="eco-pill">Calendario inteligente</span>
+            </div>
+            <span class="eco-status live">Estás aquí</span>
+          </article>
+
+          <a href="https://sparkstudio.me" target="_blank" rel="noopener noreferrer" class="eco-card spark" style="cursor:pointer;text-decoration:none">
+            <div class="eco-card-head">
+              <span class="eco-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="#fb923c" stroke="#fb923c" stroke-width="1.2" stroke-linejoin="round">
+                  <path d="M14 4 L7 14 H11 L10 20 L17 10 H13 L14 4 Z"/>
+                </svg>
+              </span>
+              <h3>Spark</h3>
+              <span class="eco-role">Memoriza</span>
+            </div>
+            <div class="eco-content">
+              <span class="eco-pill">Repaso espaciado</span>
+              <span class="eco-pill">Flashcards activas</span>
+            </div>
+            <span class="eco-status live">Disponible</span>
+          </a>
+        </div>
+
+        <div class="eco-flow" aria-hidden="true">
+          <svg viewBox="0 0 1020 156" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="flowEchos" x1="0" y1="0" x2="0.6" y2="1">
+                <stop offset="0%" stop-color="#9b82ff" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#9b82ff" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="flowFocus" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5e9eff" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#5e9eff" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="flowSpark" x1="1" y1="0" x2="0.4" y2="1">
+                <stop offset="0%" stop-color="#fb923c" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#fb923c" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+              </linearGradient>
+              <path id="pathEchos" d="M170 0 C 170 75 320 105 510 138"/>
+              <path id="pathFocus" d="M510 0 C 510 70 510 100 510 138"/>
+              <path id="pathSpark" d="M850 0 C 850 75 700 105 510 138"/>
+            </defs>
+
+            <use href="#pathEchos" stroke="url(#flowEchos)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
+            <use href="#pathFocus" stroke="url(#flowFocus)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
+            <use href="#pathSpark" stroke="url(#flowSpark)" stroke-width="1.4" stroke-dasharray="3 6" fill="none"/>
+
+            <circle class="particle" r="3.5" fill="#9b82ff" opacity=".95">
+              <animateMotion dur="3.6s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#pathEchos"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="particle" r="3.5" fill="#5e9eff" opacity=".95">
+              <animateMotion dur="3.6s" begin="1.2s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#pathFocus"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" begin="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="particle" r="3.5" fill="#fb923c" opacity=".95">
+              <animateMotion dur="3.6s" begin="2.4s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#pathSpark"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;0.15;0.85;1" dur="3.6s" begin="2.4s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+
+        <div class="eco-hub" aria-hidden="true">
+          <div class="eco-hub-orb"></div>
+          <div class="eco-hub-label">Nova</div>
+        </div>
+      </div>
+
+      <p class="eco-caption reveal">
+        <b>Focus es independiente.</b> Funciona perfecto solo. Pero si trabajas con <span class="c-echos">Kairos</span> o <span class="c-spark">Spark</span>, los conceptos viajan entre apps — Nova ve a las tres y conecta lo que importa.
+      </p>
+    </div>
+  </section>
+
   <!-- ─── CTA FINAL ─────────────────────────── -->
   <section class="final" id="empezar">
     <div class="container-narrow">
-      <span class="eyebrow live reveal">Empieza hoy</span>
-      <h2 class="reveal">Tu día <span class="gradient-text">tiene memoria</span><br>desde hoy.</h2>
-      <p class="subhead reveal" style="margin-left:auto;margin-right:auto">Focus para tu día. Kairos para tus clases. Spark para lo que quieres recordar. Las tres conectadas por Nova — gratis en beta.</p>
-      <div class="hero-ctas reveal">
-        <a href="https://usefocus.me" class="btn btn-pill">Probar Focus</a>
-        <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer" class="btn btn-text">Kairos <span class="arrow">→</span></a>
-        <a href="https://sparkstudio.me" target="_blank" rel="noopener noreferrer" class="btn btn-text" style="color:#fb923c">Spark <span class="arrow">→</span></a>
+      <span class="eyebrow live reveal">
+        <span class="dot" aria-hidden="true"></span>
+        Empieza hoy
+      </span>
+      <h2 class="reveal">Tu día <span class="grad-text">tiene memoria</span><br>desde hoy.</h2>
+      <p class="subhead reveal">
+        Sin tarjeta. Sin email obligatorio. Empiezas en menos de un minuto y Nova aprende de cómo trabajas desde el primer evento.
+      </p>
+      <div class="hero-ctas reveal" style="margin-bottom: 0">
+        <a href="https://usefocus.me" class="btn btn-pill" id="finalCTA">
+          Probar Focus <span class="arrow">→</span>
+        </a>
+        <a href="#producto" class="btn btn-ghost">
+          Volver arriba
+        </a>
       </div>
       <div class="final-meta reveal">
-        <span>gratis en beta</span>
-        <span class="sep">·</span>
-        <span>3 apps disponibles</span>
+        <span><b>gratis</b> en beta</span>
         <span class="sep">·</span>
         <span>sin tracking</span>
         <span class="sep">·</span>
         <span>funciona offline</span>
+        <span class="sep">·</span>
+        <span>iOS · web · PWA</span>
       </div>
     </div>
   </section>
@@ -2143,25 +2411,26 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="brand-mark" aria-hidden="true"></span>
-      <b>FOCUS&nbsp;OS</b>
-      <span style="color:var(--text-3)">— Focus · Kairos · Spark</span>
+      <b>Focus</b>
+      <span class="footer-sep">·</span>
+      <span class="footer-os">parte de Focus OS</span>
     </div>
     <div class="footer-links">
       <a href="https://usefocus.me">Focus</a>
       <a href="https://kairostudios.me" target="_blank" rel="noopener noreferrer">Kairos</a>
       <a href="https://sparkstudio.me" target="_blank" rel="noopener noreferrer">Spark</a>
-      <a href="#sistema">Sistema</a>
       <a href="#nova">Nova</a>
+      <a href="#capacidades">Capacidades</a>
     </div>
     <div class="footer-meta">© 2026</div>
   </div>
 </footer>
 
 <script>
-  // Scroll-triggered fade-up reveal
+  // ─── Reveal on scroll ─────────────────
   (function () {
     if (typeof IntersectionObserver === 'undefined') {
-      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      document.querySelectorAll('.reveal, .reveal-stagger').forEach(function (el) { el.classList.add('in'); });
       return;
     }
     var io = new IntersectionObserver(function (entries) {
@@ -2171,34 +2440,51 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.02, rootMargin: '180px 0px 80px 0px' });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.04, rootMargin: '180px 0px 80px 0px' });
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(function (el) { io.observe(el); });
   })();
 
-  // Floating header — add 'scrolled' class once user scrolls past the hero pill
+  // ─── Floating header scroll state ────
   (function () {
     var header = document.getElementById('siteHeader');
     if (!header) return;
     var ticking = false;
-    function update(){
+    function update() {
       if (window.scrollY > 40) header.classList.add('scrolled');
       else header.classList.remove('scrolled');
       ticking = false;
     }
-    window.addEventListener('scroll', function(){
-      if (!ticking){ requestAnimationFrame(update); ticking = true; }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
     }, { passive: true });
     update();
   })();
 
-  // Hero spotlight — cursor-following gradient (desktop only, respects reduced motion)
+  // ─── Scroll progress bar ─────────────
+  (function () {
+    var bar = document.getElementById('scrollProgress');
+    if (!bar) return;
+    var ticking = false;
+    function update() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      bar.style.width = pct + '%';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  })();
+
+  // ─── Hero spotlight cursor ───────────
   (function () {
     var hero = document.querySelector('.hero');
     if (!hero) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
     var rafId = null, lastX = 50, lastY = 30;
-    function apply(){
+    function apply() {
       hero.style.setProperty('--mx', lastX + '%');
       hero.style.setProperty('--my', lastY + '%');
       rafId = null;
@@ -2215,33 +2501,85 @@
     });
   })();
 
-  // Mi Día — cycle a "now" highlight through the rows
+  // ─── Capability cards: glow follows cursor ─
   (function () {
-    var mini = document.getElementById('focusMini');
-    if (!mini) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var rows = mini.querySelectorAll('.focus-mini-row');
-    if (!rows.length) return;
-    var i = 0, started = false, timer = null;
+    if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
+    document.querySelectorAll('.cap').forEach(function (cap) {
+      cap.addEventListener('mousemove', function (e) {
+        var rect = cap.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width) * 100;
+        var y = ((e.clientY - rect.top) / rect.height) * 100;
+        cap.style.setProperty('--cap-mx', x + '%');
+        cap.style.setProperty('--cap-my', y + '%');
+      });
+    });
+  })();
 
-    function tick(){
+  // ─── Mark device frame as "in" when in view to trigger animations ─
+  (function () {
+    var df = document.getElementById('deviceFrame');
+    if (!df) return;
+    if (typeof IntersectionObserver === 'undefined') { df.classList.add('in'); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          df.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(df);
+  })();
+
+  // ─── Mi Día — cycle a "now" highlight through the rows ─
+  (function () {
+    var events = document.getElementById('mockEvents');
+    if (!events) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var rows = events.querySelectorAll('.mock-event');
+    if (!rows.length) return;
+    var i = 2, started = false, timer = null;
+
+    function tick() {
       rows.forEach(function (r) { r.classList.remove('now'); });
       rows[i].classList.add('now');
       i = (i + 1) % rows.length;
     }
-    function start(){
+    function start() {
       if (started) return;
       started = true;
       // wait for the staggered reveal to finish
-      setTimeout(function(){ tick(); timer = setInterval(tick, 1800); }, 1100);
+      setTimeout(function () { tick(); timer = setInterval(tick, 2400); }, 1300);
     }
     if (typeof IntersectionObserver === 'undefined') { start(); return; }
-    var io2 = new IntersectionObserver(function (entries) {
+    var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) { start(); io2.unobserve(entry.target); }
+        if (entry.isIntersecting) { start(); io.unobserve(entry.target); }
       });
     }, { threshold: 0.25 });
-    io2.observe(mini);
+    io.observe(events);
+  })();
+
+  // ─── Magnetic CTAs (subtle) ─────────
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
+    var targets = document.querySelectorAll('#heroCTA, #finalCTA, #headerCTA');
+    targets.forEach(function (btn) {
+      var bounding;
+      btn.addEventListener('mouseenter', function () { bounding = btn.getBoundingClientRect(); });
+      btn.addEventListener('mousemove', function (e) {
+        if (!bounding) bounding = btn.getBoundingClientRect();
+        var x = e.clientX - bounding.left - bounding.width / 2;
+        var y = e.clientY - bounding.top - bounding.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.18) + 'px, ' + (y * 0.18 - 1) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform = '';
+        bounding = null;
+      });
+    });
   })();
 </script>
 
