@@ -493,182 +493,72 @@
   /* HERO CARDS */
   .hero-stage {
     position: relative; margin: 72px auto 0;
-    max-width: 880px;
+    max-width: 980px;
     padding: 0 24px;
   }
   .hero-stage::before {
-    content: ''; position: absolute; inset: -60px -40px -40px;
+    content: ''; position: absolute; inset: -80px -60px -60px;
     background:
-      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(167,139,250,.2), transparent 70%),
-      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(99,102,241,.12), transparent 70%);
+      radial-gradient(ellipse 70% 50% at 42% 0%, rgba(167,139,250,.22), transparent 68%),
+      radial-gradient(ellipse 60% 40% at 60% 100%, rgba(99,102,241,.14), transparent 70%);
     pointer-events: none; z-index: 0;
   }
-  /* Hero cards layout */
-  .hero-cards {
+  /* Hero screens — real app mockups */
+  .hero-screens {
     display: flex;
-    gap: 16px;
     align-items: flex-start;
     justify-content: center;
     position: relative; z-index: 1;
   }
-  .hcard {
-    background: rgba(14,16,24,.88);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 18px;
-    padding: 20px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow:
-      0 48px 100px -24px rgba(0,0,0,.7),
-      inset 0 0 0 1px rgba(255,255,255,.03);
+  .hs-img {
+    border-radius: 10px;
+    -webkit-mask-image: radial-gradient(ellipse 92% 82% at 50% 58%, black 52%, rgba(0,0,0,.3) 78%, transparent 100%);
+    mask-image: radial-gradient(ellipse 92% 82% at 50% 58%, black 52%, rgba(0,0,0,.3) 78%, transparent 100%);
+    filter: brightness(1.08) contrast(1.05) saturate(1.12);
+    transition: transform .5s cubic-bezier(.22,.68,0,1.15), filter .4s ease;
+    display: block;
   }
-  .hcard-day { flex: 1; max-width: 440px; }
-  .hcard-nova {
-    width: 256px; margin-top: 52px;
-    background:
-      radial-gradient(ellipse 80% 55% at 50% 0%, rgba(167,139,250,.13), transparent 70%),
-      rgba(14,16,24,.88);
-    border-color: rgba(167,139,250,.16);
+  .hero-screens:hover .hs-img {
+    filter: brightness(1.04) contrast(1.06) saturate(1.12);
   }
-  .hcard-head {
-    display: flex; align-items: center; justify-content: space-between;
-    padding-bottom: 14px; margin-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,.06);
+  .hs-main {
+    width: 62%;
+    position: relative; z-index: 2;
+    transform: translateX(4%) rotate(-1.2deg) translateY(0);
   }
-  .hcard-head-left {
-    display: flex; align-items: center; gap: 8px;
-    font: 600 14px/1 Inter, sans-serif;
-    color: var(--text); letter-spacing: -.01em;
-  }
-  .hcard-live {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--live);
-    animation: livePulse 2.2s ease-out infinite;
-  }
-  .hcard-date {
-    font: 500 12px/1 Inter, sans-serif;
-    color: var(--text-3);
-  }
-  .hcard-events { display: flex; flex-direction: column; gap: 3px; }
-  .hcard-event {
-    display: grid;
-    grid-template-columns: 44px 3px 1fr auto;
-    gap: 10px; align-items: center;
-    padding: 9px 8px; border-radius: 10px;
-    transition: background .2s;
-    opacity: 0; transform: translateX(-10px);
+  .hs-secondary {
+    width: 54%;
+    margin-left: -12%;
+    margin-top: 52px;
+    z-index: 1;
     position: relative;
+    transform: translateX(-2%) rotate(1.8deg) translateY(0);
   }
-  .hcard.in .hcard-event { animation: eventIn .6s var(--ease-out) forwards; }
-  .hcard.in .hcard-event:nth-child(1) { animation-delay: .15s; }
-  .hcard.in .hcard-event:nth-child(2) { animation-delay: .30s; }
-  .hcard.in .hcard-event:nth-child(3) { animation-delay: .45s; }
-  .hcard.in .hcard-event:nth-child(4) { animation-delay: .60s; }
-  @keyframes eventIn {
-    0%   { opacity: 0; transform: translateX(-10px); }
-    100% { opacity: 1; transform: translateX(0); }
+  .hero-screens:hover .hs-main {
+    transform: translateX(2%) rotate(-0.6deg) translateY(-10px);
+    box-shadow: 0 72px 140px -24px rgba(0,0,0,.9), 0 0 0 1px rgba(167,139,250,.14);
   }
-  .hcard-event:hover { background: rgba(255,255,255,.025); }
-  .hcard-event-now {
-    background: linear-gradient(90deg, rgba(167,139,250,.10), rgba(167,139,250,.03));
+  .hero-screens:hover .hs-secondary {
+    transform: translateX(-1%) rotate(0.9deg) translateY(-4px);
+    box-shadow: 0 56px 120px -20px rgba(0,0,0,.85), 0 0 0 1px rgba(167,139,250,.08);
   }
-  .he-time {
-    font: 500 12px/1 Inter, sans-serif;
+  /* label badges */
+  .hs-badge {
+    position: absolute;
+    bottom: -18px; left: 50%; transform: translateX(-50%);
+    font: 600 11px/1 Inter, sans-serif; letter-spacing: .04em; text-transform: uppercase;
     color: var(--text-3);
-    font-variant-numeric: tabular-nums;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 999px; padding: 5px 12px;
+    white-space: nowrap;
+    pointer-events: none;
   }
-  .he-bar { align-self: stretch; border-radius: 2px; }
-  .he-bar.meet    { background: #30d158; }
-  .he-bar.focus   { background: #a78bfa; }
-  .he-bar.work    { background: #5e9eff; }
-  .he-bar.personal{ background: #ffd60a; }
-  .he-title {
-    font: 500 13px/1.3 Inter, sans-serif;
-    color: var(--text); letter-spacing: -.005em;
-  }
-  .he-meta {
-    font: 400 11.5px/1.4 Inter, sans-serif;
-    color: var(--text-3); margin-top: 2px;
-  }
-  .he-now {
-    font: 600 9.5px/1 Inter, sans-serif;
-    letter-spacing: .05em; text-transform: uppercase;
-    color: var(--accent);
-    padding: 3px 7px;
-    background: rgba(167,139,250,.14);
-    border-radius: 999px;
-  }
-
-  /* Nova card */
-  .hn-head {
-    display: flex; align-items: center; gap: 10px;
-    padding-bottom: 12px; margin-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,.05);
-  }
-  .hn-orb {
-    width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
-    background:
-      radial-gradient(circle at 32% 28%, rgba(255,255,255,.82) 0%, transparent 28%),
-      radial-gradient(circle at 50% 50%, var(--nova-core) 0%, var(--nova-mid) 50%, var(--nova-glow) 100%);
-    box-shadow: inset 0 0 0 1px rgba(167,139,250,.35), 0 0 16px rgba(167,139,250,.5);
-    animation: novaMicroBreath 4s ease-in-out infinite;
-  }
-  @keyframes novaMicroBreath {
-    0%, 100% { transform: scale(1); }
-    50%       { transform: scale(1.08); }
-  }
+  .hs-wrap { position: relative; }
   @keyframes msgIn {
     0%   { opacity: 0; transform: translateY(8px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-  .hn-name {
-    font: 600 13px/1 Inter, sans-serif; color: var(--text); letter-spacing: -.005em;
-  }
-  .hn-status {
-    font: 500 11px/1 Inter, sans-serif; color: var(--text-3); margin-top: 3px;
-  }
-  .hn-msg {
-    background: linear-gradient(180deg, rgba(167,139,250,.08) 0%, rgba(167,139,250,.02) 100%);
-    border: 1px solid rgba(167,139,250,.18);
-    border-left: 3px solid var(--accent);
-    border-radius: 10px; padding: 12px 14px;
-    margin-bottom: 10px;
-    opacity: 0; transform: translateY(8px);
-  }
-  .hcard-nova.in .hn-msg { animation: msgIn .7s var(--ease-out) forwards; animation-delay: 1.1s; }
-  .hn-msg-tag {
-    font: 600 10px/1 Inter, sans-serif;
-    letter-spacing: .06em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 8px;
-  }
-  .hn-msg-body {
-    font: 400 12.5px/1.5 Inter, sans-serif;
-    color: var(--text-2); letter-spacing: -.003em;
-  }
-  .hn-msg-body b { color: var(--text); font-weight: 500; }
-  .hn-actions { display: flex; gap: 7px; margin-top: 10px; }
-  .hn-btn {
-    font: 500 11.5px/1 Inter, sans-serif;
-    padding: 6px 12px; border-radius: 980px;
-    cursor: pointer; transition: all .15s;
-  }
-  .hn-accept { background: var(--text); color: #000; border: none; }
-  .hn-accept:hover { opacity: .9; }
-  .hn-later { background: none; border: 1px solid var(--border-2); color: var(--text-2); }
-  .hn-later:hover { background: rgba(255,255,255,.04); }
-  .hn-sug {
-    display: flex; align-items: center; gap: 8px;
-    padding: 8px 10px; border-radius: 8px;
-    background: rgba(255,255,255,.025);
-    border: 1px solid rgba(255,255,255,.05);
-    font: 500 12px/1.3 Inter, sans-serif; color: var(--text-2);
-    transition: all .2s;
-    opacity: 0; transform: translateY(6px);
-  }
-  .hcard-nova.in .hn-sug { animation: msgIn .55s var(--ease-out) forwards; animation-delay: 1.5s; }
-  .hn-sug:hover { border-color: rgba(167,139,250,.22); }
-  .hn-sug-ic { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
-  .hn-sug b { color: var(--text); font-weight: 500; }
 
   /* ─── SECTION: Cycle / Sistema ──────────── */
   .sistema {
@@ -1666,10 +1556,10 @@
   @media (max-width: 980px) {
     .section { padding: 96px 0; }
     .hero { padding: 132px 0 64px; }
-    .hero-stage { margin-top: 56px; }
-    .hero-cards { flex-direction: column; align-items: center; gap: 12px; }
-    .hcard-day { max-width: 100%; width: 100%; }
-    .hcard-nova { width: 100%; max-width: 440px; margin-top: 0; }
+    .hero-stage { margin-top: 48px; }
+    .hero-screens { gap: 0; }
+    .hs-main { width: 70%; }
+    .hs-secondary { width: 60%; margin-left: -16%; margin-top: 36px; }
     .nova-canvas { grid-template-columns: 1fr; }
     .cycle-stage { aspect-ratio: auto; max-width: 520px; min-height: 0; }
     .cycle-orbit-svg, .cycle-orb { display: none; }
@@ -1777,81 +1667,17 @@
       </div>
     </div>
 
-    <!-- HERO MOCKUP — interactive Mi Día -->
+    <!-- HERO MOCKUP — real app screenshots -->
     <div class="hero-stage reveal">
-      <div class="hero-cards" aria-hidden="true">
-
-        <!-- Mi Día card -->
-        <div class="hcard hcard-day" id="hcardDay">
-          <div class="hcard-head">
-            <div class="hcard-head-left">
-              <span class="hcard-live"></span>
-              Mi Día
-            </div>
-            <span class="hcard-date">Vie · 25 abr</span>
-          </div>
-          <div class="hcard-events">
-            <div class="hcard-event">
-              <span class="he-time">09:00</span>
-              <span class="he-bar meet"></span>
-              <div>
-                <div class="he-title">Reunión equipo · weekly</div>
-                <div class="he-meta">Sala virtual · 45 min</div>
-              </div>
-            </div>
-            <div class="hcard-event">
-              <span class="he-time">11:00</span>
-              <span class="he-bar focus"></span>
-              <div>
-                <div class="he-title">Foco profundo · Specs Q3</div>
-                <div class="he-meta">Sin notificaciones · 90 min</div>
-              </div>
-            </div>
-            <div class="hcard-event hcard-event-now">
-              <span class="he-time">14:30</span>
-              <span class="he-bar work"></span>
-              <div>
-                <div class="he-title">Llamada con Carlos</div>
-                <div class="he-meta">Cliente · 30 min</div>
-              </div>
-              <span class="he-now">ahora</span>
-            </div>
-            <div class="hcard-event">
-              <span class="he-time">17:00</span>
-              <span class="he-bar focus"></span>
-              <div>
-                <div class="he-title">Revisar PRs pendientes</div>
-                <div class="he-meta">3 abiertos · ~60 min</div>
-              </div>
-            </div>
-          </div>
+      <div class="hero-screens" aria-hidden="true">
+        <div class="hs-wrap">
+          <img class="hs-img hs-main" src="/icons/mockup-mi-dia.jpg" alt="Focus Mi Día" loading="eager" width="840" height="840">
+          <span class="hs-badge">Mi Día</span>
         </div>
-
-        <!-- Nova card -->
-        <div class="hcard hcard-nova" id="hcardNova">
-          <div class="hn-head">
-            <div class="hn-orb"></div>
-            <div>
-              <div class="hn-name">Nova</div>
-              <div class="hn-status">Atenta</div>
-            </div>
-          </div>
-          <div class="hn-msg">
-            <div class="hn-msg-tag">Propone</div>
-            <div class="hn-msg-body">
-              Tu llamada con <b>Carlos a las 14:30</b> no tiene agenda. ¿Bloqueo 30 min antes?
-            </div>
-            <div class="hn-actions">
-              <button class="hn-btn hn-accept">Aceptar</button>
-              <button class="hn-btn hn-later">No ahora</button>
-            </div>
-          </div>
-          <div class="hn-sug">
-            <svg class="hn-sug-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <span><b>Lunes</b> tienes el examen — ¿reservo repaso?</span>
-          </div>
+        <div class="hs-wrap">
+          <img class="hs-img hs-secondary" src="/icons/mockup-calendario.jpg" alt="Focus Calendario" loading="eager" width="840" height="840">
+          <span class="hs-badge">Calendario</span>
         </div>
-
       </div>
     </div>
   </section>
@@ -2448,51 +2274,6 @@
     });
   })();
 
-  // ─── Mark hero cards as "in" when in view to trigger animations ─
-  (function () {
-    var cards = ['hcardDay', 'hcardNova'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
-    if (!cards.length) return;
-    if (typeof IntersectionObserver === 'undefined') {
-      cards.forEach(function (c) { c.classList.add('in'); }); return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    cards.forEach(function (c) { io.observe(c); });
-  })();
-
-  // ─── Mi Día — cycle a "now" highlight through the rows ─
-  (function () {
-    var dayCard = document.getElementById('hcardDay');
-    if (!dayCard) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var rows = dayCard.querySelectorAll('.hcard-event');
-    if (!rows.length) return;
-    var i = 2, started = false;
-
-    function tick() {
-      rows.forEach(function (r) { r.classList.remove('hcard-event-now'); });
-      rows[i].classList.add('hcard-event-now');
-      i = (i + 1) % rows.length;
-    }
-    function start() {
-      if (started) return;
-      started = true;
-      setTimeout(function () { setInterval(tick, 2400); }, 1200);
-    }
-    if (typeof IntersectionObserver === 'undefined') { start(); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { start(); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.25 });
-    io.observe(dayCard);
-  })();
 
   // ─── Hero parallax on scroll ─────────
   (function () {
